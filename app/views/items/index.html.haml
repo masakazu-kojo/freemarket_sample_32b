@@ -1,1 +1,19 @@
-hello world!!
+.menu
+  - if user_signed_in?
+    .right-menu__list
+      .right-menu__list__btn
+        = link_to edit_user_path(current_user) do
+          <input type="button" class="btn1" value="登録編集">
+    .right-menu__list
+      .right-menu__list__btn
+        = link_to destroy_user_session_path, method: :delete do
+          <input type="button" class="btn1" value="ログアウト">
+  - else
+    .right-menu__list
+      .right-menu__list__btn
+        = link_to new_user_registration_path do
+          <input type="button" class="btn1" value="新規登録">
+    .right-menu__list
+      .right-menu__list__btn
+        = link_to new_user_session_path do
+          <input type="button" class="btn1" value="ログイン">
