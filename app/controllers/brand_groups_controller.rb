@@ -1,0 +1,2 @@
+class BrandGroupsController < ApplicationController
+end
