@@ -1,50 +1,10 @@
-.header
-  .header__wrapper
-    .header__main
-      .header__main--logo
-        = image_tag 'logo/logo.png'
-      .header__main__form
-        = form_with(mode: @items, local: true) do |f|
-          .header__main__form__search
-            = f.text_field :"item_name",class: '.header__main__form__search--box', placeholder: 'キーワードから探す'
-            = f.submit '', class: '.header__main__form__search--btn', id: "icon__serch"
-            = f.label :icon__serch do
-              .header__main__form__search--icon
-                = image_tag 'icon/icon-search 1.png'
-          -# = button_tag type: :submit do
-          -#   = image_tag 'icon/icon-search 1.png'
-          -# = image_submit_tag 'icon/icon-search 1.png'
-    .header__nav
-      %ul.header__nav__left
-        %li.header__nav__left--category
-          = link_to category1s_path do
-            カテゴリー
-        %li.header__nav__left--brand
-          = link_to brands_path do
-            ブランド
-      %ul.header__nav__right
-        - if user_signed_in?
-          = link_to edit_user_path(current_user) do
-            <input type="button" class="btn1" value="登録編集">
-          = link_to destroy_user_session_path, method: :delete do
-            <input type="button" class="btn1" value="ログアウト">
-          = link_to users_path do
-            <input type="button" value="マイページ">
+= render "shared/header"
 
-        - else
-          %li.header__nav__right--usermenu
-            = link_to new_user_session_path do
-              ログイン
-          %li.header__nav__right--usermenu
-            = link_to new_user_registration_path do
-              新規会員登録
-
-
-  -# .link__item
-  -#   .link__item__new
-  -#     = link_to new_item_path do
-  -#       <input type="button" value="出品する">
-  -#   .link__item__show
-  -#     - @items.each do |item|
-  -#       = link_to item_path(item.id) do
-  -#         <input type="button" value="商品詳細#{item.id}">
+.link__item
+  .link__item__new
+    = link_to new_item_path do
+      出品する
+  .link__item__show
+    - @items.each do |item|
+      = link_to item_path(item.id) do
+        商品詳細
