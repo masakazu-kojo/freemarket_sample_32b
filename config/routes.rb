@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   end
   
   resources :category1s, only: [:index, :show] do
-    resources :category2s, only: [:index] do
-      resources :category3s, only: [:index] do
+    resources :category2s, only: [:show] do
+      resources :category3s, only: [:show] do
       end
     end
   end

@@ -1,0 +1,21 @@
+.default-container
+  .header
+  .nav
+  .category-index
+    .visible-pc
+      = render 'brands/category-nav'
+      .initial-index
+        - @initials_index.each do |initial|
+          ="#{initial[:initial]}|"
+      .category-index__box
+        .category-index__box__list
+          .category-index__box__list__name
+            ="#{@category1.category1_name}"
+          .category-index__box__list__inner-box
+            .category-index__box__list__inner-box__name
+            .category-index__box__list__inner-box__sub-box
+              - @category_brands.each do |category_brand|
+                .category-index__box__list__inner-box__sub-box__name
+                  .category23-all
+                    = "#{category_brand[:brand_name]}"
+                    
