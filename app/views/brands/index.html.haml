@@ -1,7 +1,9 @@
 .default-container
-  .header
+  = render "shared/header"
   .nav
   .category-index
     .visible-pc
+      .gray
+        %h2 ブランド一覧
       = render 'brands/category-nav'
 
