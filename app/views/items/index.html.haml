@@ -1,1 +1,49 @@
 = render "shared/header"
+
+.main
+  .main__visual
+    .main__visual__contents
+      .main__visual__contents--subtitle
+        <br>人生を変えるフリマアプリ
+      .main__visual__contents--text
+        FURIMAはだれでもかんたんに出品・購入できる<br>
+        フリマアプリです
+      .main__visual__contents__btn
+        .main__visual__contents__btn--icon
+          = image_tag 'logo/app-store-badge.svg'
+        .main__visual__contents__btn--icon
+          = image_tag 'logo/google-play-badge.svg'
+  .main__intro
+    .main__intro--subtitle
+      FURIMAが選ばれる3つの理由
+    %ul.main__intro__lists
+      %li.main__intro__lists__list
+        .main__intro__lists__image
+          %span 1
+          .main__intro__lists__image--pict
+            = image_tag 'pict/pict-reason-01.jpg'
+        .main__intro__lists--title
+          %span 3分
+          ですぐに出品
+        .main__intro__lists--text
+          スマホで入力するだけで簡単に出品できる！
+      %li.main__intro__lists__list
+        .main__intro__lists__image
+          %span 2
+          .main__intro__lists__image--pict
+            = image_tag 'pict/pict-reason-02.jpg'
+        .main__intro__lists--title
+          %span シンプル
+          で使いやすい
+        .main__intro__lists--text
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+      %li.main__intro__lists__list--last
+        .main__intro__lists__image
+          %span 3
+          .main__intro__lists__image--pict
+            = image_tag 'pict/pict-reason-03.jpg'
+        .main__intro__lists--title
+          手数料
+          %span 業界最安
+        .main__intro__lists--text
+          最大3%でお得に出品&購入！
