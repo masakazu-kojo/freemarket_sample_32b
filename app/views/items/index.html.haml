@@ -2,3 +2,5 @@
 
 = link_to "出品",new_item_path
 = link_to "マイページ",users_path
+- @items.each do |item|
+  = link_to "商品#{item.id}の出品詳細",new_item_path(item.id)
