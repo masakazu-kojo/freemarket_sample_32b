@@ -8,6 +8,7 @@ body {
 
 img {
   width: 100%;
+  vertical-align: bottom;
 }
 
 .header {
@@ -224,6 +225,97 @@ img {
         font-size: 18px;
         line-height: 1.5;
         margin: 16px 0 0;
+      }
+    }
+  }
+  &__middle-visual {
+    height: 400px;
+    background-image: url('pict/bg-topMiddleDl-pict.jpg');
+    background-size: cover;
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+
+    &__contents {
+      color: #fff;
+      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      text-align: left;
+      max-width: 1040px;
+      width: 100%;
+      margin: 0 auto;
+
+      &--subtitle {
+        font-size: 27px;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      &--text {
+        font-size: 18px;
+        margin: 20px 0 30px;
+        line-height: 1.5;
+      }
+      &__btn {
+         display: flex;
+        &--icon {
+          width: 180px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+  &__features {
+    padding: 60px 100px;
+    background-color: #fff;
+
+    &--subtitle {
+      font-size: 27px;
+      text-align: center;
+      margin: 0 0 40px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      position: relative;
+      &::after {
+        content: "";
+        width: 70px;
+        height: 4px;
+        background-color: #3CCACE;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    &__lists {
+      max-width: 1020px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+
+      &__list {
+        display: flex;
+        flex-direction: column;
+        width: 33%;
+        text-align: center;
+        padding: 0 20px;
+
+        &--pict {
+          width: 70%;
+          margin: 0 auto;
+        }
+        &--title {
+          margin: 38px 0 10px;
+          font-size: 19px;
+          font-weight: bold;
+        }
+        &--text {
+          margin: 0 0 40px;
+          font-size: 17px;
+          font-weight: 200;
+          text-align: left;
+        }
       }
     }
   }
