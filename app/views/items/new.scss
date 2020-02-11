@@ -1,0 +1,24 @@
+body{
+  position: relative;
+  min-height: 100%;
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  font-size: 14px;
+  color: rgb(51, 51, 51);
+  line-height: 1;
+  background: rgb(245, 245, 245);  
+}
+
+.sell-container{
+  padding: 0 0 220px;
+  &__header{
+    height: 128px;
+    .list{
+      margin: 40px 0 0;
+      .icon{
+        width: 185px;
+        height: 49px;
+        line-height: 49px;
+      }
+    }
+  }
+}
