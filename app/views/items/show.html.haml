@@ -1,1 +1,61 @@
 商品詳細
+.default-container
+  .default-container__header
+    .default-container__header__inner
+      .default-container
+      header_inner_top
+        %h1.list
+          =link_to top_path do
+            = icon('')
+    .default-container__header__inner__nav-box-clearfix
+      .default-container__header__inner__links
+        =link_to todo_list_user_path(current_user) do
+          =icon('check')
+      .default-container__header__inner__menu
+        =link_to mypage_user_path(current_user) do
+          =icon('check')
+      .default-container__header__inner__user
+        %h3.user__name
+          =current_user.name
+  
+  .default-container__itemtype
+    %li.list
+      出品商品画面
+  
+  .default-container__item-container
+    %h2.ltem-name
+    .default-container__item-container__main-content.clearfix
+      .default-container__item-container__main-content.clearfix__item-photo
+        .default-container__item-container__main-content.clearfix__item-photo__main.photo
+        .default-container__item-container__main-content.clearfix__item-photo__under.photo
+      .default-container__item-container__main-content.clearfix__item-detail-table
+        .default-container__item-container__main-content.clearfix__item-detail-table__box
+          .default-container__item-container__main-content.clearfix__item-detail-table__box__name
+          .default-container__item-container__main-content.clearfix__item-detail-table__box__category
+          .default-container__item-container__main-content.clearfix__item-detail-table__box__condition
+          .default-container__item-container__main-content.clearfix__item-detail-table__box__shipping.due
+          .default-container__item-container__main-content.clearfix__item-detail-table__box__shipping.method
+          .default-container__item-container__main-content.clearfix__item-detail-table__box__shipping.origin
+          .default-container__item-container__main-content.clearfix__item-detail-table__box__indication
+    .default-container__item-container__price-box
+      %span{ data: { hogehoge: 'mokemoke' } }
+      %span{ data: { hogehoge: 'mokemoke' } }
+      %span{ data: { hogehoge: 'mokemoke' } }
+
+    .default-container__item-container__item-description
+      .default-container__item-container__item-description-inner
+        %span{ data: { hogehoge: 'mokemoke' } }
+  .default-container__low-container
+    .default-container__low-container__change-box
+        = link_to Edit_users_path do
+          <input type="button" value="商品の編集">
+        = link_to Exhibition_users_path do
+          <input type="button" value="出品を再開する">
+        = link_to Delete_users_path do
+          <input type="button" value="商品のを削除する">          
+  .default-container__item-container__item-detail-message
+    %p.hoge 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+    = f.text_field :content, class: 'texterea-default', placeholder: 'コメントがあればどうぞ'
+    = f.submit 'Send', class: 'message-submit btn-default btn-gray'
+  .default-container__item-container__app__banner
+  .default-container__item-container__fotter

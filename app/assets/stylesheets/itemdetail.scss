@@ -1,0 +1,61 @@
+.sell-container{
+  position: relative;
+  min-height: 100%;
+  background: #f5f5f5;
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
+  font-size: 14px;
+  color: #333;
+  line-height: 1;
+  
+  &__header{
+    height: 128px;
+    .list{
+      margin: 40px 0 0;
+      .icon{
+        width: 185px;
+        height: 49px;
+        line-height: 49px;
+      }
+    }
+  }
+  &__main{
+    display: block;
+    &__item-container{
+      width: 700px;
+      margin: 0 auto;
+      &__sell-container{
+        background-repeat: no-repeat;
+        margin: 0;
+        padding: 0;
+        &__inner{
+          background-repeat: no-repeat;
+          margin: 0;
+          padding: 0;
+          .single-head{
+            padding: 32px 16px;
+            font-size: 22px;
+          }
+          &__sell-form{
+            border-top: 1px solid #eee;
+            &__upload-box{
+              width: 620px;
+              padding: 40px;
+              .sell-upload-head{
+                font-size: 16px;
+                p{
+                  display: flex;
+                  width: 100%;
+                  position: relative;
+                }
+              }
+              &__upload-box-image{
+                display: block;
+                width: 620px;
+              }
+          }
+        }
+      }
+    }
+  }
+}
+}
