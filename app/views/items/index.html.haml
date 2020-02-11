@@ -28,10 +28,10 @@
   .link__item__new
     = link_to new_item_path do
       <input type="button" value="出品する">
-  .link__item__show
-    - @items.each do |item|
-      = link_to item_path(item.id) do
-        <input type="button" value="商品詳細#{item.id}">
+  -# .link__item__show
+  -#   - @items.each do |item|
+  -#     = link_to item_path(item.id) do
+  -#       <input type="button" value="商品詳細#{item.id}">
 
 .link__brands
   .link__brands__index

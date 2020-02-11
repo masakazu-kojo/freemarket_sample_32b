@@ -6,5 +6,9 @@ class Category1sController < ApplicationController
     @category3s = Category3.order("id ASC")
   end
 
+  def show
+    @category1 = Category1.find(params[:id])
+  end
+
 
 end
