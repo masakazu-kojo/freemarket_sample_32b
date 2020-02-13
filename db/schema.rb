@@ -57,8 +57,9 @@ ActiveRecord::Schema.define(version: 2020_02_04_154905) do
     t.string "item_name", null: false
     t.text "explanation", null: false
     t.integer "price", null: false
+    t.string "size"
     t.string "condition", null: false
-    t.boolean "sent_charge", null: false
+    t.string "sent_charge", null: false
     t.string "shipping_area", null: false
     t.string "days_to_ship", null: false
     t.bigint "user_id"
