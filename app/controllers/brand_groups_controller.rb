@@ -12,7 +12,7 @@ class BrandGroupsController < ApplicationController
   def initial_index(items)
     initials = []
     items.each do |item|
-      initials << {id: item.brand_id, initial: Brand.find(item.brand_id).brand_name.slice(0)}
+      initials << {initial: Brand.find(item.brand_id).brand_name.slice(0),id: item.brand_id }
     end
     initials.uniq!(&:first)
     return initials
