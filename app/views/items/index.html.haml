@@ -85,3 +85,162 @@
           様々な支払いに対応
         .main__features__lists__list--text
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+  .main__pickupArea
+    .main__pickupArea--title
+      ピックアップカテゴリー
+    .main__pickupArea--product
+      = link_to root_path do
+        新規投稿商品
+    %ul.main__pickupArea__lists
+      %li.main__pickupArea__list
+        = link_to root_path do
+          .main__pickupArea__list--image
+          .main__pickupArea__list__index
+            .main__pickupArea__list__index--name
+              item-name
+            .main__pickupArea__list__index__details
+              %ul
+                %li item-price
+                %li
+                  .main__pickupArea__list__index__details--icon
+                    = icon('fas', 'star')
+                    0
+              %p (税込)
+      %li.main__pickupArea__list
+        = link_to root_path do
+          .main__pickupArea__list--image
+          .main__pickupArea__list__index
+            .main__pickupArea__list__index--name
+              item-name
+            .main__pickupArea__list__index__details
+              %ul
+                %li item-price
+                %li
+                  .main__pickupArea__list__index__details--icon
+                    = icon('fas', 'star')
+                    0
+              %p (税込)
+      %li.main__pickupArea__list
+        = link_to root_path do
+          .main__pickupArea__list--image
+          .main__pickupArea__list__index
+            .main__pickupArea__list__index--name
+              item-name
+            .main__pickupArea__list__index__details
+              %ul
+                %li item-price
+                %li
+                  .main__pickupArea__list__index__details--icon
+                    = icon('fas', 'star')
+                    0
+              %p (税込)
+  .main__pickupArea
+    .main__pickupArea--title
+      ピックアップブランド
+    .main__pickupArea--product
+      = link_to root_path do
+        アーカイバ
+    %ul.main__pickupArea__lists
+      %li.main__pickupArea__list
+        = link_to root_path do
+          .main__pickupArea__list--image
+          .main__pickupArea__list__index
+            .main__pickupArea__list__index--name
+              item-name
+            .main__pickupArea__list__index__details
+              %ul
+                %li 20000円
+                %li
+                  = icon('fas', 'star', class: 'main__pickupArea__list__index__details--icon')
+                  0
+              %p (税込)
+      %li.main__pickupArea__list
+        = link_to root_path do
+          .main__pickupArea__list--image
+          .main__pickupArea__list__index
+            .main__pickupArea__list__index--name
+              item-name
+            .main__pickupArea__list__index__details
+              %ul
+                %li 20000円
+                %li
+                  = icon('fas', 'star', class: 'main__pickupArea__list__index__details--icon')
+                  0
+              %p (税込)
+      %li.main__pickupArea__list
+        = link_to root_path do
+          .main__pickupArea__list--image
+          .main__pickupArea__list__index
+            .main__pickupArea__list__index--name
+              item-name
+            .main__pickupArea__list__index__details
+              %ul
+                %li 20000円
+                %li
+                  = icon('fas', 'star', class: 'main__pickupArea__list__index__details--icon')
+                  0
+              %p (税込)
+
+%aside.appBanner
+  .appBanner__contents
+    %h2.appBanner__contents--title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.appBanner__contents--text
+      今すぐ無料ダウンロード！
+    .appBanner__contents__btn
+      .appBanner__contents__btn--icon
+        = image_tag 'logo/app-store-badge.svg'
+      .appBanner__contents__btn--icon
+        = image_tag 'logo/google-play-badge.svg'
+
+.footer
+  %ul.footer__lists
+    %li.footer__lists__list
+      .footer__lists__list--title
+        FURIMAについて
+      %ul
+        %li
+          = link_to root_path do
+            会社概要（運営会社）
+        %li
+          = link_to root_path do
+            プライバシーポリシー
+        %li
+          = link_to root_path do
+            FURIMA利用規約
+        %li
+          = link_to root_path do
+            ポイントに関する特約
+    %li.footer__lists__list
+      .footer__lists__list--title
+        FURIMAを見る
+      %ul
+        %li
+          = link_to root_path do
+            カテゴリー一覧
+        %li
+          = link_to root_path do
+            ブランド一覧
+    %li.footer__lists__list
+      .footer__lists__list--title
+        ヘルプ＆ガイド
+      %ul
+        %li
+          = link_to root_path do
+            FURIMAガイド
+        %li
+          = link_to root_path do
+            FURIMAロゴ利用ガイドライン
+        %li
+          = link_to root_path do
+            お知らせ
+  .footer--logo
+    = link_to root_path do
+      = image_tag 'logo/logo-white.png'
+  %p © FURIMA
+
+= link_to root_path do
+  .saleItemBtn
+    .saleItemBtn--text
+      出品する
+    = image_tag 'icon/icon_camera.png', class:'saleItemBtn--icon'
