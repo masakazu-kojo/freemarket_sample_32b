@@ -8,6 +8,7 @@ class Category1sController < ApplicationController
 
   def show
     @category1 = Category1.find(params[:id])
+    @items = Item.where(category1_id: params[:id])
   end
 
 
