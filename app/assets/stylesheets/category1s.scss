@@ -18,7 +18,7 @@
     .visible-pc {
       width: 700px;
       margin: 0 auto;
-      .gray {
+      .category-index__title {
         font-size: 22px;
         padding: 8px 0;
       }
@@ -79,11 +79,39 @@
               padding: 0 20px 10px;
               &__name {
                 padding: 0 20px 0 0;
-                  font-size: 14px;
-                  width: 275px;
-                  line-height: 16px;
-                  margin: 8px 0;
+                font-size: 14px;
+                width: 275px;
+                line-height: 16px;
+                margin: 8px 0;
+                display: inline-block;
+                .category23-all {
                   display: inline-block;
+                  text-decoration: none;
+                  color: #0099E8;
+                }
+                .category23-all:hover {
+                  text-decoration: underline;
+                }
+              }
+              
+            }
+          }
+          // brand_groupページ用
+          &__initial-box {
+            &__title {
+              font-size: 14px;
+              background-color: #EEEEEE;
+              padding: 10px 30px;
+            }
+            &__brand-list {
+              padding: 10px 50px;
+              &__name {
+                padding: 0 20px 0 0;
+                font-size: 14px;
+                width: 275px;
+                line-height: 16px;
+                margin: 8px 0;
+                display: inline-block;
                 .category23-all {
                   display: inline-block;
                   text-decoration: none;
