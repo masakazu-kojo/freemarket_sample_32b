@@ -12,16 +12,16 @@
   = form_for([@brand], html: {class: "item-out"}) do |f|
     = f.text_field :brand_name, placeholder: "ブランド名"
     -# = f.submit "ブランド名を登録"
-    = form_for([@item], html: {class: "item-out"}) do |f|
-      -# = f.collection_select(:brand_id, @brands, :id, :brand_name, {prompt: "ブランドを選択"})
-      = f.text_area :explanation, placeholder: "紹介文"
-      = f.number_field :price, placeholder: "値段"
-      = f.select :condition, [["新品、未使用",0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["全体的に状態が悪い", 5]], prompt: "商品の状態"
-      = f.select :sent_charge, [["送料込み（出品者負担）",0], ["着払い（購入者負担）", 1]], prompt: "配送料の負担"
-      = f.select :shipping_area, [["北海道"], ["青森県"]], prompt: "発送元の地域"
-      = f.select :days_to_ship, [["１〜２日で発送",0], ["3〜4日で発送", 1], ["4〜7日で発送", 2]], prompt: "発送までの日数"
-    
-      = f.submit "出品"
+  = form_for([@item], html: {class: "item-out"}) do |f|
+    -# = f.collection_select(:brand_id, @brands, :id, :brand_name, {prompt: "ブランドを選択"})
+    = f.text_area :explanation, placeholder: "紹介文"
+    = f.number_field :price, placeholder: "値段"
+    = f.select :condition, [["新品、未使用",0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["全体的に状態が悪い", 5]], prompt: "商品の状態"
+    = f.select :sent_charge, [["送料込み（出品者負担）",0], ["着払い（購入者負担）", 1]], prompt: "配送料の負担"
+    = f.select :shipping_area, [["北海道"], ["青森県"]], prompt: "発送元の地域"
+    = f.select :days_to_ship, [["１〜２日で発送",0], ["3〜4日で発送", 1], ["4〜7日で発送", 2]], prompt: "発送までの日数"
+  
+    = f.submit "出品"
 
 
 
