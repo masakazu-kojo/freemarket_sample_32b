@@ -1,6 +1,246 @@
 = render "shared/header"
 
-= link_to "出品",new_item_path
-= link_to "マイページ",users_path
-- @items.each do |item|
-  = link_to "商品#{item.id}の出品詳細",new_item_path(item.id)
+.main
+  .main__visual
+    .main__visual__contents
+      .main__visual__contents--subtitle
+        <br>人生を変えるフリマアプリ
+      .main__visual__contents--text
+        FURIMAはだれでもかんたんに出品・購入できる<br>
+        フリマアプリです
+      .main__visual__contents__btn
+        .main__visual__contents__btn--icon
+          = image_tag 'logo/app-store-badge.svg'
+        .main__visual__contents__btn--icon
+          = image_tag 'logo/google-play-badge.svg'
+  .main__intro
+    .main__intro--subtitle
+      FURIMAが選ばれる3つの理由
+    %ul.main__intro__lists
+      %li.main__intro__lists__list
+        .main__intro__lists__image
+          %span 1
+          .main__intro__lists__image--pict
+            = image_tag 'pict/pict-reason-01.jpg'
+        .main__intro__lists--title
+          %span 3分
+          ですぐに出品
+        .main__intro__lists--text
+          スマホで入力するだけで簡単に出品できる！
+      %li.main__intro__lists__list
+        .main__intro__lists__image
+          %span 2
+          .main__intro__lists__image--pict
+            = image_tag 'pict/pict-reason-02.jpg'
+        .main__intro__lists--title
+          %span シンプル
+          で使いやすい
+        .main__intro__lists--text
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+      %li.main__intro__lists__list--last
+        .main__intro__lists__image
+          %span 3
+          .main__intro__lists__image--pict
+            = image_tag 'pict/pict-reason-03.jpg'
+        .main__intro__lists--title
+          手数料
+          %span 業界最安
+        .main__intro__lists--text
+          最大3%でお得に出品&購入！
+  .main__middle-visual
+    .main__middle-visual__contents
+      .main__middle-visual__contents--subtitle
+        会員数日本一位
+      .main__middle-visual__contents--text
+        FURIMAは、フリマアプリで最も人気。<br>
+        出品・購入回数も業界最多です！<br>
+        ほしかったあの商品に出会えるかもしれません。
+      .main__middle-visual__contents__btn
+        .main__middle-visual__contents__btn--icon
+          = image_tag 'logo/app-store-badge.svg'
+        .main__middle-visual__contents__btn--icon
+          = image_tag 'logo/google-play-badge.svg'
+  .main__features
+    .main__features--subtitle
+      FURIMAの特徴
+    %ul.main__features__lists
+      %li.main__features__lists__list
+        .main__features__lists__list--pict
+          = image_tag 'icon/icon-01.png'
+        .main__features__lists__list--title
+          簡単に売り買いできる
+        .main__features__lists__list--text
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      %li.main__features__lists__list
+        .main__features__lists__list--pict
+          = image_tag 'icon/icon-03.png'
+        .main__features__lists__list--title
+          売上金は即日振込みに対応
+        .main__features__lists__list--text
+          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+      %li.main__features__lists__list
+        .main__features__lists__list--pict
+          = image_tag 'icon/icon-04.png'
+        .main__features__lists__list--title
+          様々な支払いに対応
+        .main__features__lists__list--text
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+  .main__pickupArea
+    .main__pickupArea--title
+      ピックアップカテゴリー
+    .main__pickupArea--product
+      = link_to root_path do
+        新規投稿商品
+    %ul.main__pickupArea__lists
+      %li.main__pickupArea__list
+        = link_to root_path do
+          .main__pickupArea__list--image
+          .main__pickupArea__list__index
+            .main__pickupArea__list__index--name
+              item-name
+            .main__pickupArea__list__index__details
+              %ul
+                %li item-price
+                %li
+                  .main__pickupArea__list__index__details--icon
+                    = icon('fas', 'star')
+                    0
+              %p (税込)
+      %li.main__pickupArea__list
+        = link_to root_path do
+          .main__pickupArea__list--image
+          .main__pickupArea__list__index
+            .main__pickupArea__list__index--name
+              item-name
+            .main__pickupArea__list__index__details
+              %ul
+                %li item-price
+                %li
+                  .main__pickupArea__list__index__details--icon
+                    = icon('fas', 'star')
+                    0
+              %p (税込)
+      %li.main__pickupArea__list
+        = link_to root_path do
+          .main__pickupArea__list--image
+          .main__pickupArea__list__index
+            .main__pickupArea__list__index--name
+              item-name
+            .main__pickupArea__list__index__details
+              %ul
+                %li item-price
+                %li
+                  .main__pickupArea__list__index__details--icon
+                    = icon('fas', 'star')
+                    0
+              %p (税込)
+  .main__pickupArea
+    .main__pickupArea--title
+      ピックアップブランド
+    .main__pickupArea--product
+      = link_to root_path do
+        アーカイバ
+    %ul.main__pickupArea__lists
+      %li.main__pickupArea__list
+        = link_to root_path do
+          .main__pickupArea__list--image
+          .main__pickupArea__list__index
+            .main__pickupArea__list__index--name
+              item-name
+            .main__pickupArea__list__index__details
+              %ul
+                %li 20000円
+                %li
+                  = icon('fas', 'star', class: 'main__pickupArea__list__index__details--icon')
+                  0
+              %p (税込)
+      %li.main__pickupArea__list
+        = link_to root_path do
+          .main__pickupArea__list--image
+          .main__pickupArea__list__index
+            .main__pickupArea__list__index--name
+              item-name
+            .main__pickupArea__list__index__details
+              %ul
+                %li 20000円
+                %li
+                  = icon('fas', 'star', class: 'main__pickupArea__list__index__details--icon')
+                  0
+              %p (税込)
+      %li.main__pickupArea__list
+        = link_to root_path do
+          .main__pickupArea__list--image
+          .main__pickupArea__list__index
+            .main__pickupArea__list__index--name
+              item-name
+            .main__pickupArea__list__index__details
+              %ul
+                %li 20000円
+                %li
+                  = icon('fas', 'star', class: 'main__pickupArea__list__index__details--icon')
+                  0
+              %p (税込)
+
+%aside.appBanner
+  .appBanner__contents
+    %h2.appBanner__contents--title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.appBanner__contents--text
+      今すぐ無料ダウンロード！
+    .appBanner__contents__btn
+      .appBanner__contents__btn--icon
+        = image_tag 'logo/app-store-badge.svg'
+      .appBanner__contents__btn--icon
+        = image_tag 'logo/google-play-badge.svg'
+
+.footer
+  %ul.footer__lists
+    %li.footer__lists__list
+      .footer__lists__list--title
+        FURIMAについて
+      %ul
+        %li
+          = link_to root_path do
+            会社概要（運営会社）
+        %li
+          = link_to root_path do
+            プライバシーポリシー
+        %li
+          = link_to root_path do
+            FURIMA利用規約
+        %li
+          = link_to root_path do
+            ポイントに関する特約
+    %li.footer__lists__list
+      .footer__lists__list--title
+        FURIMAを見る
+      %ul
+        %li
+          = link_to root_path do
+            カテゴリー一覧
+        %li
+          = link_to root_path do
+            ブランド一覧
+    %li.footer__lists__list
+      .footer__lists__list--title
+        ヘルプ＆ガイド
+      %ul
+        %li
+          = link_to root_path do
+            FURIMAガイド
+        %li
+          = link_to root_path do
+            FURIMAロゴ利用ガイドライン
+        %li
+          = link_to root_path do
+            お知らせ
+  .footer--logo
+    = link_to root_path do
+      = image_tag 'logo/logo-white.png'
+  %p © FURIMA
+
+= link_to new_item_path do
+  .saleItemBtn
+    .saleItemBtn--text
+      出品する
+    = image_tag 'icon/icon_camera.png', class:'saleItemBtn--icon'
