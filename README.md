@@ -1,4 +1,4 @@
-## User
+## Users
 |Type|Colume|Options|
 |------|----|-------|
 |t.string|nickname|null: false, unique: true, index: true|
@@ -10,12 +10,18 @@
 |t.datetime |:reset_password_sent_at||
 |t.datetime |:remember_created_at||
 ### Association
-- belongs_to :address
 - has_many :items
 - has_many :credit_cards
-- has_many :items, through: :During_trading_exihition
+- has_many :todos
+- has_many :informations
+- has_many :identitys
+- has_many :addresss
+- has_many :profiles
+- has_many :tradings
+- has_many :purchaseds
+- has_many :comments
 
-## Identity(本人確認情報)
+## Identitys(本人確認情報)
 |Type|Colume|Options|
 |------|----|-------|
 |t.string| :name|,null: false|
@@ -25,78 +31,80 @@
 |t.string| :house_number||      #番地
 |t.string| :building_name||      #建物名
 |t.string| :identity_image||   #本人確認
-|t.references| :user|, foreign_key: true|
+|t.references| :user|, foreign_key: true, null: false|
 ### Association
 - belongs_to :user
 
-## Sent_address(発送元・お届け先住所変更)
+## Addresss(発送元・お届け先住所変更)
 |Type|Colume|Options|
 |------|----|-------|
-|t.string| :familyname|,null: false
-|t.string| :firstname|,null: false
-|t.string| :familyname_kana|,null: false
-|t.string| :firstname_kana|,null: false
-|t.integer| :postal_code|,null: false  #郵便番号
-|t.string| :prefecture|,null: false  #都道府県
-|t.string| :municipality|,null: false  #市区町村
-|t.string| :house_number|,null: false  #番地
+|t.string| :familyname|,null: false|
+|t.string| :firstname|,null: false|
+|t.string| :familyname_kana|,null: false|
+|t.string| :firstname_kana|,null: false|
+|t.integer| :postal_code|,null: false|  #郵便番号
+|t.string| :prefecture|,null: false|  #都道府県
+|t.string| :municipality|,null: false|  #市区町村
+|t.string| :house_number|,null: false|  #番地
 |t.string| :building_name||      #建物名
 |t.integer| :phone_number||      #電話
-|t.references| :user||, foreign_key: true
+|t.references| :user||, foreign_key: true, null: false|
 ### Association
 - belongs_to :user
 
-## Credit_card
+## Credit_cards
 |Type|Colume|Options|
 |------|----|-------|
 |t.string|:card_name, | null: false|
 |t.integer| :card_number,|                   null: false
 |t.integer |:expiration_rate_year,|          null: false   #有効期限・年
 |t.integer |:expiration_rate_month,|         null: false   #有効期限・月
-|t.references| :user,| foreign_key: true|
+|t.references| :user,| foreign_key: true, null: false|
 ### Association
 - belongs_to :user
 
-## todo
+## todos
 |Type|Colume|Options|
 |------|----|-------|
-|t.text |:todo,|null: false|
+|t.text |todo|null: false|
+|t.references |user |foreign_key: true, null: false|
 ### Association
 - belongs_to :user
 
 
-## Information
+## Informations
 |Type|Colume|Options|
 |------|----|-------|
 |t.text| :information,|null: false|
+|t.references |user |foreign_key: true, null: false|
 ### Association
 - belongs_to :user
 
 
 
-## Favorite (いいね！)
+## Favorites (いいね！)
 |Type|Colume|Options|
 |------|----|-------|
-|t.references :|user, |foreign_key: true|
-|t.references :|item, |foreign_key: true|
+|t.references :|user, |foreign_key: true, null: false|
+|t.references :|item, |foreign_key: true, null: false|
 |t.timestamps
 ### Association
 - belongs_to :user
 - belongs_to :item
 
 
-## Trading(出品した商品:取引中-売却済み)
+## Tradings(出品した商品:取引中-売却済み)
 |Type|Colume|Options|
 |------|----|-------|
-|t.boolean :status, default: false, null: false #売約済みでtrue、取引中でfalse
-|t.references :user, foreign_key: true
-|t.references :item, foreign_key: true
+|t.boolean :|status,| default: false, null: false| #売約済みでtrue、取引中でfalse
+|t.references :|user, |foreign_key: true, null: false|
+|t.references :|item, |foreign_key: true, null: false|
 |t.timestamps
 ### Association
 - belongs_to :user
 - belongs_to :item
 
-## Purchased
+## Purchaseds
 |Type|Colume|Options|
 |------|----|-------|
 |t.boolean :status, default: false, null: false #購入済みでtrue、取引中でfalse
@@ -109,10 +117,10 @@
 - belongs_to :item
 
 
-## Item(商品)
+## Items(商品)
 |Type|Colume|Options|
 |------|----|-------|
-|t.string |:item_name,null|: false, index: true|          #商品名
+|t.string |:item_name,null|: false, index: true|     #商品名
 |t.text |:explanation,null|: false|    #説明
 |t.integer |:price,null|: false|        #価格
 |t.string |:size||                      #サイズ
@@ -120,77 +128,51 @@
 |t.string |:sent_charge|,null: false|  #配送料の負担
 |t.string |:shipping_area|,null: false|  #発送元の地域（選択式）
 |t.string |:days_to_ship|,null: false|  #発送までの日数（選択式）
-|t.references |:user|, foreign_key: true| #出品者
+|t.references |:user|, foreign_key: true, null: false| #出品者
 |t.references |:brand|, foreign_key: true| #ブランド
-|t.references |:category1|, foreign_key: true|
-|t.references |:category2|, foreign_key: true|
-|t.references |:category3|, foreign_key: true|
+|t.references |:category|, foreign_key: true, null: false|
 |t.timestamps
 ### Association
 - belongs_to :user
 - belongs_to :brand
-- belongs_to :category1
-- belongs_to :category2
-- belongs_to :category3
+- belongs_to :category
 - has_many :images
 - has_many :favorites
 - has_many :tradings
 - has_many :purchaseds
 
 
-## Image
+## Images
 |Type|Colume|Options|
 |------|----|-------|
 |t.string :|image,|null: false, index: true|
-|t.references :|item, |foreign_key: true|
-|t.timestamps
+|t.references :|item, |foreign_key: true, null: false|
+|t.timestamps|
 ### Association
 - belongs_to :item
 
 
-## Comment(itemへのコメント)
+## Comments(itemへのコメント)
 |Type|Colume|Options|
 |------|----|-------|
 |t.text| :comment||
-|t.references| :item,| foreign_key: true|
-|t.timestamps
+|t.references| :item,| foreign_key: true, null: false|
+|t.timestamps|
 ### Association
 - belongs_to :item
+- belongs_to :user
 
 
-## Category1
+## Categorys
 |Type|Colume|Options|
 |------|----|-------|
-|t.string| :category1_name,null: false, |index: true|      #カテゴリー1の名称
+|t.string: |category_name,null: false, |index: true|
+|t.string: |ancestry, |index: true|
 ### Association
 - has_many :items
-- has_many :category2s
-- has_many :category3s, through: category2s
+- has_ancestry
 
-
-## Category2
-|Type|Colume|Options|
-|------|----|-------|
-|t.string |:category2_name,|null: false, index: true|      #カテゴリー2の名称
-|t.references| :category1, |foreign_key: true|
-### Association
-- belongs_to :category1
-- has_many :items
-- has_many :category3s
-
-
-## Category3
-|Type|Colume|Options|
-|------|----|-------|
-|t.string :|category3_name,null: |false, index: true|       #カテゴリー3の名称
-|t.references :|category2, |foreign_key: true|
-### Association
-- belongs_to :category2
-- has_many :items
-- has_one :category1, through: :category2
-
-
-## Brand
+## Brands
 |Type|Colume|Options|
 |------|----|-------|
 |t.string :|brand_name,|null: false, unique: true, index: true|
