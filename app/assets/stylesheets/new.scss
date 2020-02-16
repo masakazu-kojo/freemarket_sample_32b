@@ -1,0 +1,189 @@
+body {
+  position: relative;
+  min-height: 100%;
+  font-size: 14px;
+  color: rgb(51, 51, 51);
+  line-height: 1;
+  background: rgb(245, 245, 245);
+  height: auto;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  &__header {
+    height: 128px;
+    .list {
+      color: inherit;
+      text-decoration: none;
+      text-align: center;
+    }
+    img {
+      width: 185px;
+      height: 49px;
+    }
+  }
+  &__sell-main {
+    width: 100%;
+    height: 100%;
+    &__item-container {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+      width: 100%;
+      background-color: white;
+      &__sell-container {
+        background-color: rgb(255, 255, 255);
+        padding: 40px;
+        .sell-upload-head {
+          font-weight: 600;
+          P {
+            font-size: 16px;
+          }
+        }
+        &__inner {
+          padding: calc(100% - 525px);
+          margin: 2em auto;
+          border: 3px dashed #c0c0c0;
+          color: #a0a0a0;
+          background-color: ghostwhite;
+          &__sell-form {
+            width: 100%;
+            margin-left: 0;
+            background-color: red
+          }
+            &__upload-box {
+              width: 620px;
+              padding: 40px;
+            }
+            &__upload-box-image {
+              display: block;
+              width: 620px;
+            }
+          }
+        }
+      &__sell-content {
+          padding: 30px;
+          border-top: 1px solid #eee;
+          &__form-group {
+            padding: 40px;
+            margin: 2em auto;
+            border: 3px dashed #c0c0c0;
+            color: #a0a0a0;
+            background-color: ghostwhite;
+          }
+          .sell-form-title {
+            font-weight: 600;
+            P {
+              font-size: 16px;
+            }
+          }
+          .sell-form-pr {
+            font-weight: 600;
+            P {
+              font-size: 16px;
+            }
+          }
+          &__form-pr {
+            padding: 80px;
+            margin: 2em auto;
+            border: 3px dashed #c0c0c0;
+            color: #a0a0a0;
+            background-color: ghostwhite;
+          }
+        }
+      &__cleafix {
+        padding: 30px;
+        border-top: 1px solid #eee;
+        background-color: white;
+        display: flex; 
+        .sell-sub-head {
+          justify-content: flex-start;
+          }
+        &__form-box {
+          float: right;justify-content: flex-end;
+          width: 400px;
+          margin: 0;
+          margin: 20px;
+          &__form-group{
+            margin: 0;
+            P {
+            font-weight: 600;
+            }
+            &__select{
+              position: relative;
+              z-index: 2;
+              height: 48px;
+              padding: 0 16px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: 0;
+              font-size: 16px;
+              line-height: 1.5;
+              cursor: pointer;
+            }
+          }
+          &__form-group{
+            margin: 0;
+            P {
+            font-weight: 600;
+            }
+            &__select{
+              position: relative;
+              z-index: 2;
+              height: 48px;
+              padding: 0 16px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: 0;
+              font-size: 16px;
+              line-height: 1.5;
+              cursor: pointer;
+            }
+            &__price-form{
+              position: relative;
+              z-index: 2;
+              height: 48px;
+              padding: 0 16px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: 0;
+              font-size: 16px;
+              line-height: 1.5;
+              cursor: pointer; 
+            }
+          }
+        }
+      }
+      &__sell-btn-box {
+        padding: 40px;
+        border-top: 1px solid #eee;
+        &__red-btn{
+          margin: 40px 0 0;
+          display: block;
+          line-height: 48px;
+          font-size: 14px;
+          transition: all ease-out .3s;
+          cursor: pointer;
+          text-align: center;
+        }
+        &__gray-btn{
+          width: 45%;
+          margin: 24px auto 0;
+          display: block;
+          line-height: 48px;
+          font-size: 14px;
+          transition: all ease-out .3s;
+          cursor: pointer;
+          text-align: center;
+        }
+      }
+      }
+      }
+  &__footer{
+    width: 456px;
+    height: 220px;
+    margin: 0 auto;
+  }
+ }
+}
