@@ -155,7 +155,7 @@
 ## Comments(itemへのコメント)
 |Type|Colume|Options|
 |------|----|-------|
-|t.text| :comment||
+|t.text| :comment,|null: false|
 |t.references| :item,| foreign_key: true, null: false|
 |t.timestamps|
 ### Association
@@ -166,7 +166,7 @@
 ## Categorys
 |Type|Colume|Options|
 |------|----|-------|
-|t.string: |category_name,null: false, |index: true|
+|t.string: |category_name,|null: false,index: true|
 |t.string: |ancestry, |index: true|
 ### Association
 - has_many :items
