@@ -16,6 +16,8 @@
 - has_many :items, through: :During_trading_exihition
 
 ## Identity(本人確認情報)
+|Type|Colume|Options|
+|------|----|-------|
 |t.string| :name|,null: false|
 |t.string| :name_kana|,null: false|
 |t.integer| :birthday|,null: false|
@@ -28,19 +30,21 @@
 - belongs_to :user
 
 ## Sent_address(発送元・お届け先住所変更)
-t.string :familyname,null: false
-t.string :firstname,null: false
-t.string :familyname_kana,null: false
-t.string :firstname_kana,null: false
-t.integer :postal_code,null: false  #郵便番号
-t.string :prefecture,null: false  #都道府県
-t.string :municipality,null: false  #市区町村
-t.string :house_number,null: false  #番地
-t.string :building_name      #建物名
-t.integer :phone_number      #電話
-t.references :user, foreign_key: true
+|Type|Colume|Options|
+|------|----|-------|
+|t.string :familyname,null: false
+|t.string :firstname,null: false
+|t.string :familyname_kana,null: false
+|t.string :firstname_kana,null: false
+|t.integer :postal_code,null: false  #郵便番号
+|t.string :prefecture,null: false  #都道府県
+|t.string :municipality,null: false  #市区町村
+|t.string :house_number,null: false  #番地
+|t.string :building_name      #建物名
+|t.integer :phone_number      #電話
+|t.references :user, foreign_key: true
 ### Association
-belongs_to :user
+- belongs_to :user
 
 ## Credit_card
 t.string :card_name,                      null: false
