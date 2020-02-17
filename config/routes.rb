@@ -17,8 +17,8 @@ Rails.application.routes.draw do
 
   resources :items
   
-  resources :brands, only: [:index,:show,:create,:edit,:update] do
-    resources :brand_groups, only: [:index] do
+  resources :brands, only: [:index,:create,:edit,:update] do
+    resources :brand_groups, only: [:index,:show] do
     end
   end
   
