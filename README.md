@@ -157,6 +157,7 @@
 |------|----|-------|
 |t.text| :comment,|null: false|
 |t.references| :item,| foreign_key: true, null: false|
+|t.references| :user,| foreign_key: true, null: false|
 |t.timestamps|
 ### Association
 - belongs_to :item
