@@ -1,0 +1,31 @@
+.default-container
+  = render "shared/header"
+  .nav
+  .category-index
+    .visible-pc
+      .category-index__title
+        %h2 カテゴリー一覧
+      .category-list-nav
+        - @category1s.each do |category1|
+          .category-list-nav__list
+            %p{class: "category1-name"} #{category1.category_name}
+      .category-index__box
+        - @category1s.each do |category1|
+          .category-index__box__list
+            .category-index__box__list__name
+              ="#{category1.category_name}"
+            .category-index__box__list__inner-box
+              = link_to category_path(category1.id) do
+                %p{class:"category1-all"} すべて
+              - @categorys.where(ancestry: category1.id).each do |category2|
+                .category-index__box__list__inner-box__name
+                  ="#{category2.category_name}"
+                .category-index__box__list__inner-box__sub-box
+                  .category-index__box__list__inner-box__sub-box__name
+                    = link_to "すべて",category_path(category2.id), class: "category23-all"
+                  - category2.children.each do |category3|
+                    .category-index__box__list__inner-box__sub-box__name
+                      = link_to "#{category3.category_name}",category_path(category3.id), class: "category23-all"
+                      
+
+-# - @categorys.where(ancestry: category1.id/category2.id).each do |category3|

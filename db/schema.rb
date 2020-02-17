@@ -10,11 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_04_154905) do
+ActiveRecord::Schema.define(version: 2020_02_06_020219) do
+
+  create_table "brand_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "category1_id"
+    t.bigint "brand_id"
+    t.index ["brand_id"], name: "index_brand_groups_on_brand_id"
+    t.index ["category1_id"], name: "index_brand_groups_on_category1_id"
+  end
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "brand_name", null: false
     t.index ["brand_name"], name: "index_brands_on_brand_name"
+  end
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "category_name", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+    t.index ["category_name"], name: "index_categories_on_category_name"
   end
 
   create_table "category1s", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -57,9 +71,8 @@ ActiveRecord::Schema.define(version: 2020_02_04_154905) do
     t.string "item_name", null: false
     t.text "explanation", null: false
     t.integer "price", null: false
-    t.string "size"
     t.string "condition", null: false
-    t.string "sent_charge", null: false
+    t.boolean "sent_charge", null: false
     t.string "shipping_area", null: false
     t.string "days_to_ship", null: false
     t.bigint "user_id"
@@ -91,6 +104,8 @@ ActiveRecord::Schema.define(version: 2020_02_04_154905) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "brand_groups", "brands"
+  add_foreign_key "brand_groups", "category1s"
   add_foreign_key "category2s", "category1s"
   add_foreign_key "category3s", "category2s"
   add_foreign_key "comments", "items"

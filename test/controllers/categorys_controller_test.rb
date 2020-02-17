@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Category3Test < ActiveSupport::TestCase
+class CategorysControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
