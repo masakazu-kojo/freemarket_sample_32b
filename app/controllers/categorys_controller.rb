@@ -1,14 +1,14 @@
 class CategorysController < ApplicationController
 
   def index
-    @category1s = Category.order("id ASC").limit(13)
-    @category2s = Category.order("id ASC")
-    @category3s = Category.order("id ASC")
+    @categorys = Category.order("id ASC")
+    @category1s = @categorys.limit(13)
+    
   end
 
   def show
-    @category1 = Category.find(params[:id])
-    @items = Item.where(category1_id: params[:id])
+    @category = Category.find(params[:id])
+    @items = Item.where(category_id: params[:id])
   end
 
 
