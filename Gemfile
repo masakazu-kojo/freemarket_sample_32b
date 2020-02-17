@@ -66,6 +66,8 @@ gem "font-awesome-sass"
 gem 'devise'
 gem 'activerecord-import'
 gem 'pry-rails'
+gem 'ancestry'
+
 
 group :production do
   gem 'unicorn', '5.4.1'

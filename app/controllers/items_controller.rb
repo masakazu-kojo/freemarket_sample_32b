@@ -7,10 +7,8 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @brand = Brand.new
-    @category1 = Category1.new
-    @category2 = Category2.new
-    @category3 = Category3.new
-    @category1s = Category1.all.order("id")
+    @category1 = Category.new
+    @category1s = Category.all.order("id")
     # @category2s = Category2.all.order("id")
     # @category3s = Category3.all.order("id")
     @brands = Brand.all.order("id")
@@ -35,5 +33,6 @@ class ItemsController < ApplicationController
     params.require(:brand).permit(:brand_name)
   end
   def item_params
-    params.require(:item).permit(:item_name,:brand_name,:category1_id,:explanation,:price,:condition,:sent_charge,:shipping_area,:days_to_ship).merge(user_id: current_user.id, brand_id: @brand.id)
+    params.require(:item).permit(:item_name,:brand_name,:category_id,:explanation,:price,:condition,:sent_charge,:shipping_area,:days_to_ship).merge(user_id: current_user.id, brand_id: @brand.id)
   end
+end
