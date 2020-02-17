@@ -31,8 +31,6 @@
           %li.header__nav__right--usermenu
             = link_to destroy_user_session_path, method: :delete do
               ログアウト
-
-
         - else
           %li.header__nav__right--usermenu
             = link_to new_user_session_path do
