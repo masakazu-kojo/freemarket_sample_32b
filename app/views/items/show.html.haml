@@ -55,3 +55,68 @@
           %p.hoge 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
           = f.text_field :content, class: 'texterea-default', placeholder: 'コメントがあればどうぞ'
           = f.submit 'Send', class: 'message-submit btn-default btn-gray'
+
+
+%aside.appBanner
+  .appBanner__contents
+    %h2.appBanner__contents--title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.appBanner__contents--text
+      今すぐ無料ダウンロード！
+    .appBanner__contents__btn
+      .appBanner__contents__btn--icon
+        = image_tag 'logo/app-store-badge.svg'
+      .appBanner__contents__btn--icon
+        = image_tag 'logo/google-play-badge.svg'
+
+.footer
+  %ul.footer__lists
+    %li.footer__lists__list
+      .footer__lists__list--title
+        FURIMAについて
+      %ul
+        %li
+          = link_to root_path do
+            会社概要（運営会社）
+        %li
+          = link_to root_path do
+            プライバシーポリシー
+        %li
+          = link_to root_path do
+            FURIMA利用規約
+        %li
+          = link_to root_path do
+            ポイントに関する特約
+    %li.footer__lists__list
+      .footer__lists__list--title
+        FURIMAを見る
+      %ul
+        %li
+          = link_to root_path do
+            カテゴリー一覧
+        %li
+          = link_to root_path do
+            ブランド一覧
+    %li.footer__lists__list
+      .footer__lists__list--title
+        ヘルプ＆ガイド
+      %ul
+        %li
+          = link_to root_path do
+            FURIMAガイド
+        %li
+          = link_to root_path do
+            FURIMAロゴ利用ガイドライン
+        %li
+          = link_to root_path do
+            お知らせ
+  .footer--logo
+    = link_to root_path do
+      = image_tag 'logo/logo-white.png'
+  %p © FURIMA
+
+= link_to root_path do
+  .saleItemBtn
+    .saleItemBtn--text
+      出品する
+    = image_tag 'icon/icon_camera.png', class:'saleItemBtn--icon'

@@ -35,42 +35,86 @@
           = form_for([@brand], html: {class: "item-out"}) do |f|
             %P ブランド 
             .container__sell-main__item-container__cleafix__form-box__form-group__select
-              = f.text_field :brand_name, placeholder: "ブランド名"
+            = f.text_field :brand_name, placeholder: "ブランド名"
+      .container__sell-main__item-container__cleafix__form-box__form-group
+        = form_for([@item], html: {class: "item-out"}) do |f|
+          %P 商品の状態
+        .container__sell-main__item-container__cleafix__form-box__form-group__select
+          = f.select :condition, [["新品、未使用",0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["全体的に状態が悪い", 5]], prompt: "商品の状態"
+      .container__sell-main__item-container__cleafix
+        %h3.sell-sub-head
+          %P 配送について
+        .container__sell-main__item-container__cleafix__form-box
           .container__sell-main__item-container__cleafix__form-box__form-group
-          = form_for([@item], html: {class: "item-out"}) do |f|
-            %P 商品の状態
+            %P 配送料の負担
             .container__sell-main__item-container__cleafix__form-box__form-group__select
-              = f.select :condition, [["新品、未使用",0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["全体的に状態が悪い", 5]], prompt: "商品の状態"
-          .container__sell-main__item-container__cleafix
-            %h3.sell-sub-head
-              %P 配送について
-            .container__sell-main__item-container__cleafix__form-box
-              .container__sell-main__item-container__cleafix__form-box__form-group
-                %P 配送料の負担
-                .container__sell-main__item-container__cleafix__form-box__form-group__select
-                  = f.select :sent_charge, [["送料込み（出品者負担）",0], ["着払い（購入者負担）", 1]], prompt: "配送料の負担"
-              .container__sell-main__item-container__cleafix__form-box__form-group
-                %P 発送元の地域
-                .container__sell-main__item-container__cleafix__form-box__form-group__select
-                  = f.select :shipping_area, [["北海道"], ["青森県"]], prompt: "発送元の地域"
-              .container__sell-main__item-container__cleafix__form-box__form-group
-                %P 発送までの日数
-                .container__sell-main__item-container__cleafix__form-box__form-group__select
-                  = f.select :days_to_ship, [["１〜２日で発送",0], ["3〜4日で発送", 1], ["4〜7日で発送", 2]], prompt: "発送までの日数"
-          .container__sell-main__item-container__cleafix
-            %h3.sell-sub-head
-              %P 販売価格
-            .container__sell-main__item-container__cleafix__form-box
-              .container__sell-main__item-container__cleafix__form-box__form-group
-                %P 販売価格
-                = f.text_field :item_name, placeholder: "価格"
+              = f.select :sent_charge, [["送料込み（出品者負担）",0], ["着払い（購入者負担）", 1]], prompt: "配送料の負担"
+          .container__sell-main__item-container__cleafix__form-box__form-group
+            %P 発送元の地域
+            .container__sell-main__item-container__cleafix__form-box__form-group__select
+              = f.select :shipping_area, [["北海道"], ["青森県"]], prompt: "発送元の地域"
+          .container__sell-main__item-container__cleafix__form-box__form-group
+            %P 発送までの日数
+            .container__sell-main__item-container__cleafix__form-box__form-group__select
+              = f.select :days_to_ship, [["１〜２日で発送",0], ["3〜4日で発送", 1], ["4〜7日で発送", 2]], prompt: "発送までの日数"
+      .container__sell-main__item-container__cleafix
+        %h3.sell-sub-head
+          %P 販売価格
+        .container__sell-main__item-container__cleafix__form-box
+          .container__sell-main__item-container__cleafix__form-box__form-group
+            %P 販売価格
+            = f.text_field :item_name, placeholder: "価格"
                 
           .container__sell-main__item-container__sell-btn-box
             .container__sell-main__item-container__sell-btn-box__red-btn
               = f.submit "出品する"
             .container__sell-main__item-container__sell-btn-box__gray-btn
               = link_to "マイページ",users_path ,class: 'btn btn-default'
-      .container__footer
+  .container__footer
+    %ul.container__footer__lists
+      %li.container__footer__lists__list
+        .container__footer__lists__list--title
+          FURIMAについて
+        %ul
+          %li
+            = link_to root_path do
+              会社概要（運営会社）
+          %li
+            = link_to root_path do
+              プライバシーポリシー
+          %li
+            = link_to root_path do
+              FURIMA利用規約
+          %li
+            = link_to root_path do
+              ポイントに関する特約
+      %li.container__footer__lists__list
+        .container__footer__lists__list--title
+          FURIMAを見る
+        %ul
+          %li
+            = link_to root_path do
+              カテゴリー一覧
+          %li
+            = link_to root_path do
+              ブランド一覧
+      %li.container__footer__lists__list
+        .container__footer__lists__list--title
+          ヘルプ＆ガイド
+        %ul
+          %li
+            = link_to root_path do
+              FURIMAガイド
+          %li
+            = link_to root_path do
+              FURIMAロゴ利用ガイドライン
+          %li
+            = link_to root_path do
+              お知らせ
+    .container__footer--logo
+      = link_to root_path do
+        = image_tag 'logo/logo-white.png'
+    %p © FURIMA
 
 
 
