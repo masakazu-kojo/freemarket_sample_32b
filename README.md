@@ -56,7 +56,7 @@
 ## Credit_cards
 |Type|Colume|Options|
 |------|----|-------|
-|t.string|:card_name, | null: false|
+|t.string|:name, | null: false|
 |t.integer| :card_number,|                   null: false
 |t.integer |:expiration_rate_year,|          null: false   #有効期限・年
 |t.integer |:expiration_rate_month,|         null: false   #有効期限・月
@@ -121,8 +121,8 @@
 ## Items(商品)
 |Type|Colume|Options|
 |------|----|-------|
-|t.string |:item_name,null|: false, index: true|     #商品名
-|t.text |:explanation,null|: false|    #説明
+|t.string |:name,|null: false, index: true|     #商品名
+|t.text |:explanation,|null: false|    #説明
 |t.integer |:price,null|: false|        #価格
 |t.string |:size||                      #サイズ
 |t.string |:condition|,null: false|     #状態（選択式）
@@ -168,7 +168,7 @@
 ## Categorys
 |Type|Colume|Options|
 |------|----|-------|
-|t.string: |category_name,|null: false,index: true|
+|t.string: |name,|null: false,index: true|
 |t.string: |ancestry, |index: true|
 ### Association
 - has_many :items
@@ -177,7 +177,7 @@
 ## Brands
 |Type|Colume|Options|
 |------|----|-------|
-|t.string :|brand_name,|null: false, unique: true, index: true|
+|t.string :|name,|null: false, unique: true, index: true|
 ### Association
 - has_many :items
 
