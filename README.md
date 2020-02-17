@@ -10,16 +10,17 @@
 |t.datetime |:reset_password_sent_at||
 |t.datetime |:remember_created_at||
 ### Association
-- has_many :items
-- has_many :credit_cards
-- has_many :todos
-- has_many :informations
+- has_many :items, dependent: :destroy
+- has_many :credit_cards, dependent: :destroy
+- has_many :todos, dependent: :destroy
+- has_many :informations, dependent: :destroy
 - has_many :tradings
 - has_many :purchaseds
 - has_many :comments
-- has_one :identitys
-- has_one :addresss
-- has_one :profiles
+- has_many :favorites
+- has_one :identitys, dependent: :destroy
+- has_one :addresss, dependent: :destroy
+- has_one :profiles, dependent: :destroy
 
 ## Identitys(本人確認情報)
 |Type|Colume|Options|
@@ -136,8 +137,8 @@
 - belongs_to :user
 - belongs_to :brand, optional: true
 - belongs_to :category
-- has_many :images
-- has_many :favorites
+- has_many :images, dependent: :destroy
+- has_many :favorites, dependent: :destroy
 - has_many :tradings
 - has_many :purchaseds
 
