@@ -10,17 +10,17 @@
         - @category1s.each do |category1|
           .category-index__box__list
             .category-index__box__list__name
-              ="#{category1.category1_name}"
+              ="#{category1.category_name}"
             .category-index__box__list__inner-box
-              = link_to category1_path(category1.id) do
+              = link_to category_path(category1.id) do
                 %p{class:"category1-all"} すべて
-              - @category2s.where(category1_id: category1.id).each do |category2|
+              - @category2s.where(ancestry: category1.id).each do |category2|
                 .category-index__box__list__inner-box__name
-                  ="#{category2.category2_name}"
+                  ="#{category2.category_name}"
                 .category-index__box__list__inner-box__sub-box
                   .category-index__box__list__inner-box__sub-box__name
-                    = link_to "すべて",category1_category2_path(category1.id, category2.id), class: "category23-all"
-                  - @category3s.where(category2_id: category2.id).each do |category3|
+                    = link_to "すべて",category_path(category2.id), class: "category23-all"
+                  - @category3s.where(ancestry: category2.id).each do |category3|
                     .category-index__box__list__inner-box__sub-box__name
-                      = link_to "#{category3.category3_name}",category1_category2_category3_path(category1.id, category2.id, category3.id), class: "category23-all"
+                      = link_to "#{category3.category_name}",category1_category2_category3_path(category3.id), class: "category23-all"
                       
