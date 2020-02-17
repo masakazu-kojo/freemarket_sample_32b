@@ -14,12 +14,12 @@
 - has_many :credit_cards
 - has_many :todos
 - has_many :informations
-- has_many :identitys
-- has_many :addresss
-- has_many :profiles
 - has_many :tradings
 - has_many :purchaseds
 - has_many :comments
+- has_one :identitys
+- has_one :addresss
+- has_one :profiles
 
 ## Identitys(本人確認情報)
 |Type|Colume|Options|
@@ -134,7 +134,7 @@
 |t.timestamps
 ### Association
 - belongs_to :user
-- belongs_to :brand
+- belongs_to :brand, optional: true
 - belongs_to :category
 - has_many :images
 - has_many :favorites
