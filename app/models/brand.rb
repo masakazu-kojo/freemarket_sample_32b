@@ -1,5 +1,5 @@
 class Brand < ApplicationRecord
-  validates :brand_name, uniqueness: true
-
+  validates :name, uniqueness: true
+  validates :name, presence: true
   has_many :items 
 end

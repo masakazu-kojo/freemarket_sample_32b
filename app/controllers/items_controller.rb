@@ -18,11 +18,12 @@ class ItemsController < ApplicationController
     @brand = Brand.new(brand_params)
     if @brand.save
       @item = Item.new(item_params)
-    else
+    elsif @brand.name.present?
       b_id = Brand.find_by(name: @brand.name).id
       @item = Item.new(item_params)
       @item["brand_id"] = b_id
-      
+    else
+      @item = Item.new(item_params)
     end
     @item.save
     redirect_to new_item_path, notice: "出品しました"
@@ -33,7 +34,6 @@ class ItemsController < ApplicationController
     params.require(:brand).permit(:name)
   end
   def item_params
-    binding.pry
     params.require(:item).permit(:name,:category_id,:explanation,:price,:condition,:sent_charge,:shipping_area,:days_to_ship).merge(user_id: current_user.id, brand_id: @brand.id)
   end
 end
