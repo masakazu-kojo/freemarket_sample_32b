@@ -181,4 +181,4 @@
 ### Association
 - has_many :items
 
-[![Image from Gyazo](https://i.gyazo.com/f2f474aa8aac625560a6da79a9d73771.png)](https://gyazo.com/f2f474aa8aac625560a6da79a9d73771)
+[![Image from Gyazo](https://i.gyazo.com/4c32a92ee8f817fe5257571b287d39c4.png)](https://gyazo.com/4c32a92ee8f817fe5257571b287d39c4)
