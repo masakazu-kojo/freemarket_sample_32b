@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @brand = Brand.new
     @category1 = Category.new
-    @category1s = Category.all.order("id")
+    @category1s = Category.order("id").limit(13)
     # @category2s = Category2.all.order("id")
     # @category3s = Category3.all.order("id")
     @brands = Brand.all.order("id")
@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
     if @brand.save
       @item = Item.new(item_params)
     else
-      b_id = Brand.find_by(brand_name: @brand.brand_name).id
+      b_id = Brand.find_by(name: @brand.name).id
       @item = Item.new(item_params)
       @item["brand_id"] = b_id
       
@@ -30,9 +30,10 @@ class ItemsController < ApplicationController
   
   private
   def brand_params
-    params.require(:brand).permit(:brand_name)
+    params.require(:brand).permit(:name)
   end
   def item_params
-    params.require(:item).permit(:item_name,:brand_name,:category_id,:explanation,:price,:condition,:sent_charge,:shipping_area,:days_to_ship).merge(user_id: current_user.id, brand_id: @brand.id)
+    binding.pry
+    params.require(:item).permit(:name,:category_id,:explanation,:price,:condition,:sent_charge,:shipping_area,:days_to_ship).merge(user_id: current_user.id, brand_id: @brand.id)
   end
 end
