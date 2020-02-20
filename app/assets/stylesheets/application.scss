@@ -1,9 +1,19 @@
 @import "config/reset";
 @import "config/colors";
+@import "mixin/shared";
 @import "modules/flash";
 @import "font-awesome-sprockets";
 @import "./font-awesome";
 
+// 全体適用
+@import "modules/shared";
+
+// ヘッダー用
+@import "modules/header";
+// フッター用
+@import "modules/footer";
+// 出品ボタン用
+@import "modules/newItemBtn";
 // トップページ用
 @import "modules/toppage";
 
