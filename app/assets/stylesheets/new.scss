@@ -32,7 +32,7 @@ body {
         max-width: 700px;
         margin: 0 auto;
         width: 100%;
-        background-color: white;
+        background-color: #f5f5f5;
         &__sell-container {
           padding: 40px;
           .sell-upload-head {
@@ -90,7 +90,7 @@ body {
                   border-radius: 4px;
                   box-sizing: border-box;
                   font-family: inherit;
-                  font-size: inherit;
+                  font-size: 16px;
                   height: 48px;
                   outline: none;
                   padding: 0 16px;
@@ -102,12 +102,15 @@ body {
                   border-radius: 4px;
                   box-sizing: border-box;
                   font-family: inherit;
-                  font-size: inherit;
+                  font-size: 16px;
                   height: 180px;
                   outline: none;
-                  padding: 0 16px;
+                  padding: 13px 16px;
                   width: inherit;
                   margin-bottom: 20px;
+                  margin: 0px;
+                  color: rgb(34, 34, 34);
+                  resize: vertical;
                 }
                }
               }
@@ -228,7 +231,7 @@ body {
               border-radius: 4px;
               box-sizing: border-box;
               font-family: inherit;
-              font-size: inherit;
+              font-size: 16px;
               height: 48px;
               margin-bottom: 15px;
               margin-top: 10px;
@@ -259,12 +262,13 @@ body {
                 border-radius: 4px;
                 box-sizing: border-box;
                 font-family: inherit;
-                font-size: inherit;
+                font-size: 16px;
                 height: 48px;
                 margin: 0;
                 outline: none;
                 padding: 0 16px;
                 width: 200px;
+                text-align: right;
                }
               }
             }
@@ -313,11 +317,7 @@ body {
     padding: 40px 0px 41px;
     margin-top: auto;
     text-align: center;
+    background: #e5e5e5;
   }
-      }
-     }
-    // /&__footer{
-    //   width: 456px;
-    //   height: 220px;
-    //   margin: 0 auto;
-    // }
+ }
+}

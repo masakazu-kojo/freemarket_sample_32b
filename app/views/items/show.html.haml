@@ -1,57 +1,23 @@
-商品詳細
-.header
-  .header__wrapper
-    .header__main
-      .header__main--logo
-        = image_tag 'logo/logo.png'
-      .header__main__form
-        = form_with(mode: @items, local: true) do |f|
-          .header__main__form__search
-            = f.text_field :"item_name",class: '.header__main__form__search--box', placeholder: 'キーワードから探す'
-            = f.submit '', class: '.header__main__form__search--btn', id: "icon__serch"
-            = f.label :icon__serch do
-              .header__main__form__search--icon
-                = image_tag 'icon/icon-search 1.png'
-          -# = button_tag type: :submit do
-          -#   = image_tag 'icon/icon-search 1.png'
-          -# = image_submit_tag 'icon/icon-search 1.png'
-    .header__nav
-      %ul.header__nav__left
-        %li.header__nav__left--category
-          = link_to category1s_path do
-            カテゴリー
-        %li.header__nav__left--brand
-          = link_to brands_path do
-            ブランド
-      %ul.header__nav__right
-        - if user_signed_in?
-          = link_to edit_user_path(current_user) do
-            <input type="button" class="btn1" value="登録編集">
-          = link_to destroy_user_session_path, method: :delete do
-            <input type="button" class="btn1" value="ログアウト">
-          = link_to users_path do
-            <input type="button" value="マイページ">
 .main
   .main__showmain
-    .main__showmain__contentleft
-    .main__showmain__contentright
-      .main__showmain__contentright__topcontent
-        .main__showmain__contentright__topcontent__itembox
+    .main__showmain__content
+      .main__showmain__content__topcontent
+        .main__showmain__content__topcontent__itembox
           %h2.itembox__name
-          .main__showmain__contentright__topcontent__itembox__body
+          .main__showmain__content__topcontent__itembox__body
             写真
-          .main__showmain__contentright__topcontent__itembox__price
+          .main__showmain__content__topcontent__itembox__price
             値段
-            .main__showmain__contentright__topcontent__itembox__price__detail
+            .main__showmain__content__topcontent__itembox__price__detail
               税込
               送料込み
-          .main__showmain__contentright__topcontent__itembox__detail
+          .main__showmain__content__topcontent__itembox__detail
             商品詳細
-          .main__showmain__contentright__topcontent__itembox__table
+          .main__showmain__content__topcontent__itembox__table
             table
-          .main__showmain__contentright__topcontent__itembox__option
-      .main__showmain__contentright__topcontent__commentbox
-        .main__showmain__contentright__topcontent__coomentbox__content
+          .main__showmain__content__topcontent__itembox__option
+      .main__showmain__content__topcontent__commentbox
+        .main__showmain__content__topcontent__coomentbox__content
           %p.hoge 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
           = f.text_field :content, class: 'texterea-default', placeholder: 'コメントがあればどうぞ'
           = f.submit 'Send', class: 'message-submit btn-default btn-gray'
