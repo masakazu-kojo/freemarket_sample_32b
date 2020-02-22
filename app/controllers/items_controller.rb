@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.images.new
     @brand = Brand.new
     @category1 = Category.new
     @category1s = Category.order("id").limit(13)
@@ -34,6 +35,6 @@ class ItemsController < ApplicationController
     params.require(:brand).permit(:name)
   end
   def item_params
-    params.require(:item).permit(:name,:category_id,:explanation,:price,:condition,:sent_charge,:shipping_area,:days_to_ship).merge(user_id: current_user.id, brand_id: @brand.id)
+    params.require(:item).permit(:name, :category_id, :explanation,:price, :condition, :sent_charge, :shipping_area, :days_to_ship, images_attributes: [:image]).merge(user_id: current_user.id, brand_id: @brand.id)
   end
 end

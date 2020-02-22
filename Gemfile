@@ -67,6 +67,8 @@ gem 'devise'
 gem 'activerecord-import'
 gem 'pry-rails'
 gem 'ancestry'
+gem 'carrierwave'
+gem 'mini_magick'
 
 
 group :production do
