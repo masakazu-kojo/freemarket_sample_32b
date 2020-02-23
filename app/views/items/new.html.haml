@@ -10,16 +10,19 @@
         .container__sell-main__sell-box__item-container__sell-container
           %h3.sell-upload-head
             %P 出品画像
+            %span 必須
           .container__sell-main__sell-box__item-container__sell-container__inner
             .container__sell-main__sell-box__item-container__sell-container__inner__sell-form
         .container__sell-main__sell-box__item-container__sell-content
           %h3.sell-form-title
             %P 商品名
+            %span 必須
           .container__sell-main__sell-box__item-container__sell-content__sell-group
             .container__sell-main__sell-box__item-container__sell-content__sell-group__title-form
-              = f.text_field :item_name, placeholder: "30文字まで"
+              = f.text_field :name, placeholder: "30文字まで"
           %h3.sell-form-pr
             %P 商品説明
+            %span 必須
           .container__sell-main__sell-box__item-container__sell-content__sell-group
             .container__sell-main__sell-box__item-container__sell-content__sell-group__title-form
               = f.text_area :explanation, placeholder: "商品の説明(色、重さ、定価、注意点など)"
@@ -29,19 +32,23 @@
           .container__sell-main__sell-box__item-container__cleafix__form-box
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
               %P カテゴリー
+              %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
               = f.collection_select(:category1_id, @category1s, :id, :category1_name, {prompt: "カテゴリー1"})
-            .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
+            .container__sell-main__sell-box__item-container__cleafix__form-box__form-any
               %P サイズ 
+              %span 任意
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
               = f.collection_select(:category1_id, @category1s, :id, :category1_name, {prompt: "カテゴリー1"})
-            .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
+            .container__sell-main__sell-box__item-container__cleafix__form-box__form-any
               %P ブランド 
+              %span 任意
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-brand
               = form_for([@brand], html: {class: "item-out"}) do |f|
-                = f.text_field :brand_name, placeholder: "例) div"
+                = f.text_field :name, placeholder: "例) div"
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
               %P 商品の状態
+              %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
               = form_for([@item], html: {class: "item-out"}) do |f|
                 = f.select :condition, [["新品、未使用",0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["全体的に状態が悪い", 5]], prompt: "商品の状態"
@@ -51,14 +58,17 @@
           .container__sell-main__sell-box__item-container__cleafix__form-box
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
               %P 配送料の負担
+              %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
               = f.select :sent_charge, [["送料込み（出品者負担）",0], ["着払い（購入者負担）", 1]], prompt: "配送料の負担"
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
               %P 発送元の地域
+              %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
               = f.select :shipping_area, [["北海道"], ["青森県"]], prompt: "発送元の地域"
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
               %P 発送までの日数
+              %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
               = f.select :days_to_ship, [["１〜２日で発送",0], ["3〜4日で発送", 1], ["4〜7日で発送", 2]], prompt: "発送までの日数"
         .container__sell-main__sell-box__item-container__cleafix
@@ -68,6 +78,7 @@
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-price
               .container__sell-main__sell-box__item-container__cleafix__form-box__form-price__price
                 %P 販売価格
+                %span 必須
               .container__sell-main__sell-box__item-container__cleafix__form-box__form-price__price-box
                 ¥
                 = f.number_field :price, placeholder: "0", min: 300, max: 999999

@@ -37,8 +37,19 @@ body {
           padding: 40px;
           .sell-upload-head {
             font-weight: 600;
+            align-items: center;
+            display: flex;
             P {
               font-size: 16px;
+            }
+            span {
+              margin-left: 8px;
+              background-color: #ff0211;
+              color: #fff;
+              font-size: 12px;
+              padding: 0 4px;
+              line-height: 1.4em;
+              border-radius: 10px;
             }
           }
           &__inner {
@@ -66,15 +77,37 @@ body {
             .sell-form-title {
               font-weight: 600;
               margin: 0!important;
+              align-items: center;
+              display: flex;
               P {
                 font-size: 16px;
+              }
+              span {
+                margin-left: 8px;
+                background-color: #ff0211;
+                color: #fff;
+                font-size: 12px;
+                padding: 0 4px;
+                line-height: 1.4em;
+                border-radius: 10px;
               }
             }
             .sell-form-pr {
               font-weight: 600;
               margin: 0!important;
+              align-items: center;
+              display: flex;
               P {
                 font-size: 16px;
+              }
+              span {
+                margin-left: 8px;
+                background-color: #ff0211;
+                color: #fff;
+                font-size: 12px;
+                padding: 0 4px;
+                line-height: 1.4em;
+                border-radius: 10px;
               }
             }
             &__sell-group{
@@ -85,7 +118,7 @@ body {
                 display: inline-block;
                 position: relative;
                 width: inherit;
-                #item_item_name{
+                #item_name{
                   border: 1px solid #ccc;
                   border-radius: 4px;
                   box-sizing: border-box;
@@ -136,13 +169,44 @@ body {
             margin: 20px;
             &__form-name{
               margin: 0px;
-              padding: 0px;        
+              padding: 0px;
+              align-items: center;
+              display: flex;      
               P {
                 font-size: 14px;
                 font-weight: 600;
                 line-height: 1.4em;
                 }
+              span {
+                margin-left: 8px;
+                background-color: #ff0211;
+                color: #fff;
+                font-size: 12px;
+                padding: 0 4px;
+                line-height: 1.4em;
+                border-radius: 10px;
+              }
             }
+            &__form-any {
+              margin: 0px;
+              padding: 0px;
+              align-items: center;
+              display: flex;      
+              P {
+                font-size: 14px;
+                font-weight: 600;
+                line-height: 1.4em;
+                }
+              span {
+                margin-left: 8px;
+                background-color: #bfbfbf;
+                color: #fff;
+                font-size: 12px;
+                padding: 0 4px;
+                line-height: 1.4em;
+                border-radius: 10px;
+              }
+             }
           &__select{
             display: inline-block;
             position: relative;
@@ -226,7 +290,7 @@ body {
           &__form-brand{
             align-items: center;
             width: 100%;
-            #brand_brand_name{
+            #brand_name{
               border: 1px solid #ccc;
               border-radius: 4px;
               box-sizing: border-box;
@@ -246,11 +310,22 @@ body {
             &__price{
               margin-right: auto;
               white-space: nowrap;
+              align-items: center;
+              display: flex;
               P {
                 font-size: 14px;
                 font-weight: 600;
                 line-height: 1.4em;
                 display: contents;
+              }
+              span {
+                margin-left: 8px;
+                background-color: #ff0211;
+                color: #fff;
+                font-size: 12px;
+                padding: 0 4px;
+                line-height: 1.4em;
+                border-radius: 10px;
               }
             }
             &__price-box {
@@ -267,7 +342,7 @@ body {
                 margin: 0;
                 outline: none;
                 padding: 0 16px;
-                width: 200px;
+                width: 250px;
                 text-align: right;
                }
               }
