@@ -1,11 +1,10 @@
-.sighin
+.new-container
   %header.signin-header
     .signin-header__title
       = image_tag "logo/logo.png"
-  .registration_main
-    .registration_main_container
-      %p.registration_main__title
-        新規会員登録
+  .n-main
+    .n-main-box
+      %h2 新規会員登録
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = render "devise/shared/error_messages", resource: resource
         .field
@@ -25,32 +24,15 @@
           = f.password_field :password_confirmation, autocomplete: "new-password"
         .actions
           = f.submit "Sign up"
-      = render "devise/shared/links"
-      -# .registration_main__box
-      -# -# gemを入れてから
-      -#   -# = link_to new_profile_path, class: "registration_main__box__mail" do
-      -#     %button{type: "submit", class: "registration_main__box__mailbutton"}
-      -#       .btn-text
-      -#         %i.fa.fa-envelope
-      -#         %p メールアドレスで登録
--#         %br
--#         -# = link_to user_facebook_omniauth_authorize_path, class: "registration_main__fbook" do
--#           %button{type: "submit", class: "registration_main__box__fbookbutton"}
--#             = image_tag "profiles/facebook_logo.jpg", class: "registration_main__box__fbookbutton__logo"
--#             Facebookで登録
--#         %br
--#         -# = link_to user_google_oauth2_omniauth_authorize_path, class: "registration_main__box__google" do
--#           %button{type: "submit", class: "registration_main__box__googlebutton"}
--#             =image_tag "profiles/Google_logo.jpg", class: "registration_main__box__googlebutton__logo"
--#             Googleで登録
--#   %footer.signup-footer
--#     %nav
--#       %ul.signup-footer__list.clearfix
--#         %li
--#           = link_to('プライバシーポリシー', "https://www.mercari.com/jp/privacy/")
--#         %li
--#           = link_to('メルカリ利用規約', "https://www.mercari.com/jp/tos/")
--#         %li
--#           = link_to('特定商取引に関する表記', "https://www.mercari.com/jp/tokutei/")
--#         .signup-footer__list__bottom.clearfix:after
-= image_tag "logo/logo-white.png"
+      -# = render "devise/shared/links"
+%footer.signup-footer
+  %nav
+    %ul.signup-footer__list.clearfix
+      %li
+        = link_to('プライバシーポリシー', "")
+      %li
+        = link_to('FURIMA利用規約', "")
+      %li
+        = link_to('特定商取引に関する表記', "")
+  .signup-footer-logo
+    = image_tag "logo/logo-white.png"

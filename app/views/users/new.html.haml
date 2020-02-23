@@ -1,0 +1,33 @@
+.aco-container
+  .sighin
+    %header.signin-header
+      .signin-header__title
+        = image_tag "logo/logo.png"
+  .a-main
+    .a-main-container
+      %h2.a-main-head 新規会員登録
+      .a-main__box
+        .a-main-contents
+          %br
+          = link_to new_user_registration_path ,class: 'btn-default btn-mail' do
+            %i.fa.fa-envelope
+            メールアドレスで登録
+          %br
+          = link_to do
+            %button{type: "submit", class: "a-main__box__fbookbutton"}
+              Facebookで登録
+          %br
+          = link_to do
+            %button{type: "submit", class: "a-main__box__googlebutton"}
+              Googleで登録
+  %footer.signup-footer
+    %nav
+      %ul.signup-footer__list.clearfix
+        %li
+          = link_to('プライバシーポリシー', "")
+        %li
+          = link_to('FURIMA利用規約', "")
+        %li
+          = link_to('特定商取引に関する表記', "")
+    .signup-footer-logo
+      = image_tag "logo/logo-white.png"
