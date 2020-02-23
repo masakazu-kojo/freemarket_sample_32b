@@ -6,7 +6,7 @@
     .signin-main__box
       .signin-main__box__login
         %p アカウントをお持ちでない方はこちら
-        = link_to "新規会員登録", new_user_registration_path
+        = link_to "新規会員登録", new_user_path
       .signin-main__box__link
         #facebook-login
           %i.fab.fa-facebook-square
@@ -23,10 +23,10 @@
         .field
           %br/
           = f.password_field :password, autocomplete: "current-password"
-        - if devise_mapping.rememberable?
-          .field
-            = f.check_box :remember_me
-            = f.label :remember_me
+        -# - if devise_mapping.rememberable?
+        -#   .field
+        -#     = f.check_box :remember_me
+        -#     = f.label :remember_me
         .actions
           = f.submit "Log in"
 %footer.signup-footer
@@ -38,5 +38,5 @@
         = link_to('FURIMA利用規約', "")
       %li
         = link_to('特定商取引に関する表記', "")
-      .signup-footer__list__bottom.clearfix:after
-        = image_tag "logo/logo-white.png"
+  .signup-footer-logo
+    = image_tag "logo/logo-white.png"
