@@ -1,7 +1,14 @@
 = render "shared/header"
 ブランド商品一覧<
+
 ="#{@category1.name}<"
 ="#{@brand.name}<"
-.item-index
+.content
   - @items.each do |item|
-    ="#{item.name}|"
+    ="#{item.name}"
+    ="#{item.explanation}"
+    ="#{item.price}"
+    - item.images.each do |item_image|
+      = image_tag item_image.image.url
+    = link_to "商品編集へ",edit_item_path(id: item.id)
+    = link_to "商品詳細へ",item_path(id: item.id)

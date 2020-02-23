@@ -69,7 +69,7 @@ gem 'pry-rails'
 gem 'ancestry'
 gem 'carrierwave'
 gem 'mini_magick'
-
+gem 'jquery-rails'
 
 group :production do
   gem 'unicorn', '5.4.1'

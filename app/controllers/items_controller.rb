@@ -15,6 +15,16 @@ class ItemsController < ApplicationController
     @brands = Brand.all.order("id")
   end
 
+  def edit
+    @item = Item.find(params[:id])
+    @brand = @item.brand
+    @category1 = @item.category
+    @category1s = Category.order("id").limit(13)
+    # @category2s = Category2.all.order("id")
+    # @category3s = Category3.all.order("id")
+    @brands = Brand.all.order("id")
+  end
+
   def create
     @brand = Brand.new(brand_params)
     if @brand.save

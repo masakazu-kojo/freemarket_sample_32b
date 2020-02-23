@@ -33,6 +33,6 @@ class BrandGroupsController < ApplicationController
   def show
     @category1 = Category.find(params[:brand_id])
     @brand = Brand.find(params[:id])
-    @items = Item.where(category1_id: params[:brand_id],brand_id: params[:id])
+    @items = Item.where(category_id: params[:brand_id],brand_id: params[:id])
   end
 end
