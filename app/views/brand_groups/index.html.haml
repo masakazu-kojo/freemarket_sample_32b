@@ -12,7 +12,7 @@
       .category-index__box
         .category-index__box__list
           .category-index__box__list__name
-            ="#{@category1.category1_name}"
+            ="#{@category1.name}"
           - @initials_index.each do |initial|
             .category-index__box__list__initial-box
               .category-index__box__list__initial-box__title
@@ -21,5 +21,5 @@
                 - @category_brands.each do |category_brand|
                   -if "#{initial[:initial]}" == "#{category_brand[:brand_name]}".slice(0)
                     .category-index__box__list__initial-box__brand-list__name
-                      = link_to "#{category_brand[:brand_name]}",brand_brand_group_path(@category1.id,category_brand[:id]), class: "category23-all"
+                      = link_to "#{category_brand[:name]}",brand_brand_group_path(@category1.id,category_brand[:id]), class: "category23-all"
                     

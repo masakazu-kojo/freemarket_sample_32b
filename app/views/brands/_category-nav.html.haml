@@ -1,4 +1,4 @@
 .category-list-nav
   - @category1s.each do |category1|
     .category-list-nav__list
-      = link_to "#{category1.category1_name}",brand_brand_groups_path(category1.id), class: "category1-name"
+      = link_to "#{category1.name}",brand_brand_groups_path(category1.id), class: "category1-name"

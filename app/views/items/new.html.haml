@@ -4,6 +4,7 @@
     %h1.list
       = link_to image_tag(src= "logo/logo.png", class: "マイページ"), users_path
 
+
   .container__sell-main
     .container__sell-main__item-container
       .container__sell-main__item-container__sell-container
@@ -14,7 +15,7 @@
       .container__sell-main__item-container__sell-content
         %h3.sell-form-title
           %P 商品名
-          = f.text_field :item_name, placeholder: "商品名"
+          = f.text_field :name, placeholder: "商品名"
         .container__sell-main__item-container__sell-content__form-group
         %h3.sell-form-pr
           %P 商品説明
@@ -27,7 +28,7 @@
           .container__sell-main__item-container__cleafix__form-box__form-group
             %P カテゴリー
             .container__sell-main__item-container__cleafix__form-box__form-group__select
-              = f.collection_select(:category1_id, @category1s, :id, :category1_name, {prompt: "カテゴリー1"})
+              = f.collection_select(:category_id, @category1s, :id, :name, {prompt: "カテゴリー1"})
           .container__sell-main__item-container__cleafix__form-box__form-group
             %P サイズ 
             .container__sell-main__item-container__cleafix__form-box__form-group__select
@@ -35,7 +36,7 @@
           = form_for([@brand], html: {class: "item-out"}) do |f|
             %P ブランド 
             .container__sell-main__item-container__cleafix__form-box__form-group__select
-              = f.text_field :brand_name, placeholder: "ブランド名"
+              = f.text_field :name, placeholder: "ブランド名"
           .container__sell-main__item-container__cleafix__form-box__form-group
           = form_for([@item], html: {class: "item-out"}) do |f|
             %P 商品の状態
@@ -63,7 +64,7 @@
             .container__sell-main__item-container__cleafix__form-box
               .container__sell-main__item-container__cleafix__form-box__form-group
                 %P 販売価格
-                = f.text_field :item_name, placeholder: "価格"
+                = f.number_field :price, placeholder: "価格"
                 
           .container__sell-main__item-container__sell-btn-box
             .container__sell-main__item-container__sell-btn-box__red-btn
@@ -75,23 +76,16 @@
 
 
 
--# = form_for([@item], html: {class: "item-out"}) do |f|
-
--#   = f.text_field :item_name, placeholder: "商品名"
-  
--#   = f.collection_select(:category1_id, @category1s, :id, :category1_name, {prompt: "カテゴリー1"})
--#   -# = f.collection_select(:category2_id, @category2s, :id, :category2_name, {prompt: "カテゴリー2"})
--#   -# = f.collection_select(:category3_id, @category3s, :id, :category3_name, {prompt: "カテゴリー3"})
--#   = form_for([@brand], html: {class: "item-out"}) do |f|
--#     = f.text_field :brand_name, placeholder: "ブランド名"
--#     -# = f.submit "ブランド名を登録"
--#     = form_for([@item], html: {class: "item-out"}) do |f|
--#       -# = f.collection_select(:brand_id, @brands, :id, :brand_name, {prompt: "ブランドを選択"})
--#       = f.text_area :explanation, placeholder: "紹介文"
--#       = f.number_field :price, placeholder: "値段"
--#       = f.select :condition, [["新品、未使用",0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["全体的に状態が悪い", 5]], prompt: "商品の状態"
--#       = f.select :sent_charge, [["送料込み（出品者負担）",0], ["着払い（購入者負担）", 1]], prompt: "配送料の負担"
--#       = f.select :shipping_area, [["北海道"], ["青森県"]], prompt: "発送元の地域"
--#       = f.select :days_to_ship, [["１〜２日で発送",0], ["3〜4日で発送", 1], ["4〜7日で発送", 2]], prompt: "発送までの日数"
-    
--#       = f.submit "出品"
+= form_for([@item], html: {class: "item-out"}) do |f|
+  = f.text_field :name, placeholder: "商品名"
+  = f.collection_select(:category_id, @category1s, :id, :name, {prompt: "カテゴリー1"})
+  = form_for([@brand], html: {class: "item-out"}) do |f|
+    = f.text_field :name, placeholder: "ブランド名"
+    = form_for([@item], html: {class: "item-out"}) do |f|
+      = f.text_area :explanation, placeholder: "紹介文"
+      = f.number_field :price, placeholder: "価格"
+      = f.select :condition, [["新品、未使用",0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["全体的に状態が悪い", 5]], prompt: "商品の状態"
+      = f.select :sent_charge, [["送料込み（出品者負担）",0], ["着払い（購入者負担）", 1]], prompt: "配送料の負担"
+      = f.select :shipping_area, [["北海道"], ["青森県"]], prompt: "発送元の地域"
+      = f.select :days_to_ship, [["１〜２日で発送",0], ["3〜4日で発送", 1], ["4〜7日で発送", 2]], prompt: "発送までの日数"
+      = f.submit "出品"

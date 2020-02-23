@@ -1,7 +1,7 @@
 = render "shared/header"
 ブランド商品一覧<
-="#{@category1.category1_name}<"
-="#{@brand.brand_name}<"
+="#{@category1.name}<"
+="#{@brand.name}<"
 .item-index
   - @items.each do |item|
-    ="#{item.item_name}|"
+    ="#{item.name}|"
