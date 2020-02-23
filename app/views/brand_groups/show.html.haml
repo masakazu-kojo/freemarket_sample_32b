@@ -1,10 +1,30 @@
 = render "shared/header"
+.l-container
+  .l-content
+    %ul{class: "parts-nav"}
+      - @items.each do |item|
+        = "#{item.category.name}"
+    %section{class: "items-box-container"}
+      %h1{class: "items-box-container__head"}
+      .items-box-container__content
+        %section{class: "items-box"}
+          %figure{class: "items-box__photo"}
+          .items-box__body
+            %h3{class: "items-box__name"}
+          
+
+
+
+
+
+
 ブランド商品一覧<
 
 ="#{@category1.name}<"
 ="#{@brand.name}<"
-.content
-  - @items.each do |item|
+
+- @items.each do |item|
+  .content-item-image
     ="#{item.name}"
     ="#{item.explanation}"
     ="#{item.price}"

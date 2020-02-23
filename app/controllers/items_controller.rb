@@ -17,6 +17,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @item.images.new
     @brand = @item.brand
     @category1 = @item.category
     @category1s = Category.order("id").limit(13)

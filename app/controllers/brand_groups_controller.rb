@@ -29,10 +29,18 @@ class BrandGroupsController < ApplicationController
     @category_brands = category_brands(@items).sort { |a, b| a[:name] <=> b[:name] }
     @initials_index = initial_index(@items).sort { |a, b| a[:initial] <=> b[:initial] }
   end
+  
+  def category_items(items)
+    categorys = []
+    items.each do |item|
+      categorys << {id: item.category_id, name: Category.find(item.category_id)}
+
+  end
 
   def show
     @category1 = Category.find(params[:brand_id])
     @brand = Brand.find(params[:id])
     @items = Item.where(category_id: params[:brand_id],brand_id: params[:id])
   end
+
 end
