@@ -1,0 +1,19 @@
+@mixin afterGreenLine() {
+  &::after {
+    content: "";
+    width: 70px;
+    height: 4px;
+    background-color: $main_color;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@mixin backImage($url, $size: cover, $position: center, $repeat: no-repeat) {
+  background-image: image-url($url);
+  background-size: $size;
+  background-position: $position;
+  background-repeat: $repeat;
+}
