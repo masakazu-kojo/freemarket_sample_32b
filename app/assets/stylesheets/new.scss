@@ -118,7 +118,7 @@ body {
                 display: inline-block;
                 position: relative;
                 width: inherit;
-                #item_item_name{
+                #item_name{
                   border: 1px solid #ccc;
                   border-radius: 4px;
                   box-sizing: border-box;
@@ -290,7 +290,7 @@ body {
           &__form-brand{
             align-items: center;
             width: 100%;
-            #brand_brand_name{
+            #brand_name{
               border: 1px solid #ccc;
               border-radius: 4px;
               box-sizing: border-box;
