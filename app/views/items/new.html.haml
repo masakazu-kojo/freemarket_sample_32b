@@ -19,7 +19,7 @@
             %span 必須
           .container__sell-main__sell-box__item-container__sell-content__sell-group
             .container__sell-main__sell-box__item-container__sell-content__sell-group__title-form
-              = f.text_field :name, placeholder: "30文字まで"
+              = f.text_field :item_name, placeholder: "30文字まで"
           %h3.sell-form-pr
             %P 商品説明
             %span 必須
@@ -34,18 +34,18 @@
               %P カテゴリー
               %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
-              = f.collection_select(:category1_id, @category1s, :id, :category1_name, {prompt: "カテゴリー1"})
+              = f.collection_select(:category_id, @category1s, :id, :category_name, {prompt: "カテゴリー1"})
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-any
               %P サイズ 
               %span 任意
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
-              = f.collection_select(:category1_id, @category1s, :id, :category1_name, {prompt: "カテゴリー1"})
+              = f.collection_select(:category_id, @category1s, :id, :category_name, {prompt: "サイズ"})
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-any
               %P ブランド 
               %span 任意
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-brand
               = form_for([@brand], html: {class: "item-out"}) do |f|
-                = f.text_field :name, placeholder: "例) div"
+                = f.text_field :brand_name, placeholder: "例) div"
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
               %P 商品の状態
               %span 必須
