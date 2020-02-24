@@ -1,23 +1,40 @@
+.header
+  = render 'shared/header'
+
 .main
   .main__showmain
     .main__showmain__content
       .main__showmain__content__topcontent
         .main__showmain__content__topcontent__itembox
-          %h2.itembox__name
+          %h2.itembox__name タイトル
           .main__showmain__content__topcontent__itembox__body
-            写真
+            .main__showmain__content__topcontent__itembox__body__imagebox
+              .main__showmain__content__topcontent__itembox__body__imagebox__image
+                .main__showmain__content__topcontent__itembox__body__imagebox__image__upimage
+                .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage
           .main__showmain__content__topcontent__itembox__price
-            値段
-            .main__showmain__content__topcontent__itembox__price__detail
-              税込
-              送料込み
+            %span ¥300
+            .main__showmain__content__topcontent__itembox__price__pricedetail
+              %span1 (税込)
+              %spam1 送料込み
           .main__showmain__content__topcontent__itembox__detail
             商品詳細
           .main__showmain__content__topcontent__itembox__table
+            .main__showmain__content__topcontent__itembox__table__tablebox
+              .main__showmain__content__topcontent__itembox__table__tablebox__tablebody
+                .main__showmain__content__topcontent__itembox__table__tablebox__tablebody__record
             table
           .main__showmain__content__topcontent__itembox__option
       .main__showmain__content__topcontent__commentbox
-        .main__showmain__content__topcontent__coomentbox__content
-          %p.hoge 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          = f.text_field :content, class: 'texterea-default', placeholder: 'コメントがあればどうぞ'
-          = f.submit 'Send', class: 'message-submit btn-default btn-gray'
+        .main__showmain__content__topcontent__commentbox__contents
+          .main__showmain__content__topcontent__commentbox__contents__commentform
+            .main__showmain__content__topcontent__commentbox__contents__commentform__format
+            .main__showmain__content__topcontent__commentbox__contents__commentform__textform
+              %p.text 
+                相手のことを考え丁寧なコメントを心がけましょう。
+                %br
+                不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        .main__showmain__content__topcontent__commentbox__commentbotton
+
+.footer
+  = render 'shared/footer'
