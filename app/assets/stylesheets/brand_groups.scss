@@ -1,4 +1,101 @@
-.content-item-image {
-  width: 200px;
-  height: 200px;
+.default-container-brand-groups {
+  width: 100%;
+  height: 100%;
+  background-color: #F5F5F5;
+  .l-container {
+    margin: 24px auto 0;
+    width: 1020px;
+    .l-content {
+      width: 100%;
+      .parts-nav {
+        &__list {
+          margin: 16px 16px 0 0;
+          font-size: 14px;
+          display: inline-block;
+          text-decoration: none;
+          color: #0099E8;
+        }
+        &__list:hover {
+          text-decoration: underline;
+        }
+      }
+      .items-box-container {
+        &__head {
+          margin: 24px 0 8px;
+          font-size: 22px;
+          font-weight: bold;
+          color: #333333;
+        }
+        &__content {
+          .items-box {
+            width: 188px;
+            height: 218px;
+            margin: 0 16px 20px 0;
+            text-decoration: none;
+            color: #333333;
+            display: inline-block;
+            &__photo {
+  
+            }
+            &__body {
+              position: relative;
+              height: 58px;
+              padding: 8px 12px;
+              background-color: #ffffff;
+              &__name {
+                width: 136px;
+                height: 42px;
+              }
+              &__num {
+                position: absolute;
+                bottom: 0;
+                position: relative;
+                &__price {
+                  position: absolute;
+                  left: 0;
+                  bottom: 65px;
+                  height: 24px;
+                  background-color: rgba(0, 0, 0, 0.3);
+                  padding: 4px 12px 4px 8px;
+                  color: #ffffff;
+                  display: inline-block;
+                  font-size: 17px;
+                  font-weight: 600;
+                  z-index: 2;
+                  border-radius: 0 16px 16px 0;
+                }
+                &__like {
+                  position: absolute;
+                  right: 12px;
+                  bottom: 10px;
+                  padding-left: 32px;
+                  background: linear-gradient(to right, rgba(255,255,255,0), #fff 24px);
+                }
+              }
+            }
+          }
+        }
+        
+      }
+      .spacial-description {
+        margin-top: 30px;
+        &__title {
+          padding: 16px 8px;
+          height: 54px;
+          font-size: 22px;
+          font-weight: bold;
+          padding: 16px 8px;
+          background-color: #EA352D;
+          color: #ffffff;
+          border-radius: 4px;
+          text-align: center
+        }
+        &__text {
+          padding: 33px;
+          font-size: 14px;
+          background-color: #ffffff;
+        }
+      }
+    }
+  }
 }

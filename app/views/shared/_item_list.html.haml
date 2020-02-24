@@ -1,0 +1,14 @@
+= link_to item_path(id: item.id), class: "items-box" do
+  %figure{class: "items-box__photo"}
+  - item.images.each do |item_image|
+    = image_tag item_image.image.url
+  .items-box__body
+    %h3{class: "items-box__name"}
+      ="#{item.name}"
+    .items-box__num
+      .items-box__body__num__price
+        ="¥#{item.price}"
+      .items-box__body__num__like
+        %i{class: "far fa-heart"}
+        %span 10
+

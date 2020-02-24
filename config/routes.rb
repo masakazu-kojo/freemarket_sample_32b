@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   
   resources :brands, only: [:index,:create,:edit,:update] do
     resources :brand_groups, only: [:index,:show] do
+      member do
+        get 'brand_category3'
+      end
     end
   end
   
