@@ -1,21 +1,16 @@
 .sighin
-  %header.signin-header
-    .signin-header__title
-      = image_tag "logo/logo.png"
-  %main.signin-main
+  = render partial: 'shared/login-header'
+  .signin-main
     .signin-main__box
-      .signin-main__box__login
+      .signin-main__box--login
         %p アカウントをお持ちでない方はこちら
-        = link_to "新規会員登録", new_user_registration_path
-      .signin-main__box__link
+        = link_to "新規会員登録", new_user_path
+      .signin-main__box--link
         #facebook-login
           %i.fab.fa-facebook-square
             = link_to "Facebookでログイン"
-            -#//gemを入れてから
         #google-login
-          -#//後からg素材入れる
           = link_to "Googleでログイン"
-          -#//gemを入れてから
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field
           %br/
@@ -23,20 +18,6 @@
         .field
           %br/
           = f.password_field :password, autocomplete: "current-password"
-        - if devise_mapping.rememberable?
-          .field
-            = f.check_box :remember_me
-            = f.label :remember_me
         .actions
           = f.submit "Log in"
-%footer.signup-footer
-  %nav
-    %ul.signup-footer__list.clearfix
-      %li
-        = link_to('プライバシーポリシー', "")
-      %li
-        = link_to('FURIMA利用規約', "")
-      %li
-        = link_to('特定商取引に関する表記', "")
-      .signup-footer__list__bottom.clearfix:after
-        = image_tag "logo/logo-white.png"
+= render partial: 'shared/login-footer'

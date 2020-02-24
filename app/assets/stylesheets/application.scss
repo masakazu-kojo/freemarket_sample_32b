@@ -14,14 +14,18 @@
 @import "modules/footer";
 // 出品ボタン用
 @import "modules/newItemBtn";
+
+
+//ログイン用
+@import "logins/login1";
+@import "logins/login2";
+@import "logins/login3";
+
 // トップページ用
 @import "modules/toppage";
 
 // カテゴリー一覧用
 @import "categorys";
-@import "users";
-@import "logins";
-
 
 // 新規出品
 @import "new";
@@ -30,3 +34,4 @@
 @import "show";
 
 @import "brand_groups";
+
