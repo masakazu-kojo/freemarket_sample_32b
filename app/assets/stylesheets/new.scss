@@ -59,12 +59,8 @@ body {
             width: 625px;
             margin-top: 2em;
             color: #a0a0a0;
-            // &__sell-form {
-            //   margin: 0 -8px 32px -8px;
-            //   font-size: 0;
-            //   background-color: red;
-            // }
             .upload-box-image {
+              vertical-align: top;
               height: 150px;
               width: 120px;
               padding: 0;
@@ -83,27 +79,30 @@ body {
                 border: 1px solid #ccc;
                 text-align: center;
                 padding: 0 4px;
+                color: #0099E8;
+                cursor: pointer;
               }
             }
             #upload-box {
-              position: absolute;
-              bottom: 0;
-              text-align: center;
+              cursor: pointer;
+              vertical-align: top;
+              position: relative;
               height: 150px;
-              width: calc(100% - 130px); 
-              // 画像が１から５までのときー画像数×130px 6から１０までのときー(画像数-5)×130px
-              padding: 66px 4px;
+              width: 100%; 
               margin: 8px 0 0;
               display: inline-block;
               border: 2px dashed #c0c0c0;
               background-color: #f5f5f5;
               .file_upload {
-                // display: none;
+                display: none;
               }
               .upload-box__icon {
-                height: 18px;
-                width: 20px;
-                margin: 0 auto;
+                height: 40px;
+                width: 130px;
+                position: absolute;
+                top: 0;right: 0;bottom:0;left: 0;
+                margin: auto; 
+                text-align:center;
                 .photo-black {
                   color: #000000;
                 }
