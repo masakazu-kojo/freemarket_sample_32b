@@ -10,3 +10,21 @@ img {
   width: 100%;
   vertical-align: bottom;
 }
+
+.item {
+  &__soldout{
+    &--text {
+      position: relative;
+      & > span {
+        position: absolute;
+        top: 110px;
+        right: 75px;
+        font-size: 20px;
+        color: #CC0000;
+      }
+    }
+    &--color {
+      opacity: 0.5;
+    }
+  }
+}

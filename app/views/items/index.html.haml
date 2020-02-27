@@ -92,48 +92,41 @@
       = link_to root_path do
         新規投稿商品
     %ul.main__pickupArea__lists
-      %li.main__pickupArea__list
-        = link_to root_path do
-          .main__pickupArea__list--image
-          .main__pickupArea__list__index
-            .main__pickupArea__list__index--name
-              item-name
-            .main__pickupArea__list__index__details
-              %ul
-                %li item-price
-                %li
-                  .main__pickupArea__list__index__details--icon
-                    = icon('fas', 'star')
-                    0
-              %p (税込)
-      %li.main__pickupArea__list
-        = link_to root_path do
-          .main__pickupArea__list--image
-          .main__pickupArea__list__index
-            .main__pickupArea__list__index--name
-              item-name
-            .main__pickupArea__list__index__details
-              %ul
-                %li item-price
-                %li
-                  .main__pickupArea__list__index__details--icon
-                    = icon('fas', 'star')
-                    0
-              %p (税込)
-      %li.main__pickupArea__list
-        = link_to root_path do
-          .main__pickupArea__list--image
-          .main__pickupArea__list__index
-            .main__pickupArea__list__index--name
-              item-name
-            .main__pickupArea__list__index__details
-              %ul
-                %li item-price
-                %li
-                  .main__pickupArea__list__index__details--icon
-                    = icon('fas', 'star')
-                    0
-              %p (税込)
+      - @itemsPickCategory.each do |item|
+        - if item.trading.status == true
+          %li.main__pickupArea__list
+            = link_to root_path do
+              .main__pickupArea__list--image
+              .main__pickupArea__list__index
+                .main__pickupArea__list__index--name
+                  = item.name
+                .main__pickupArea__list__index__details
+                  %ul
+                    %li<
+                      = "#{item.price}円"
+                    %li
+                      .main__pickupArea__list__index__details--icon
+                        = icon('fas', 'star')
+                        0
+                  %p (税込)
+        - else
+          %li.main__pickupArea__list
+            .item__soldout--text
+              %span 売り切れ
+              .item__soldout--color
+                .main__pickupArea__list--image
+                .main__pickupArea__list__index
+                  .main__pickupArea__list__index--name
+                    = item.name
+                  .main__pickupArea__list__index__details
+                    %ul
+                      %li<
+                        = "#{item.price}円"
+                      %li
+                        .main__pickupArea__list__index__details--icon
+                          = icon('fas', 'star')
+                          0
+                    %p (税込)
   .main__pickupArea
     .main__pickupArea--title
       ピックアップブランド
@@ -141,45 +134,41 @@
       = link_to root_path do
         アーカイバ
     %ul.main__pickupArea__lists
-      %li.main__pickupArea__list
-        = link_to root_path do
-          .main__pickupArea__list--image
-          .main__pickupArea__list__index
-            .main__pickupArea__list__index--name
-              item-name
-            .main__pickupArea__list__index__details
-              %ul
-                %li 20000円
-                %li
-                  = icon('fas', 'star', class: 'main__pickupArea__list__index__details--icon')
-                  0
-              %p (税込)
-      %li.main__pickupArea__list
-        = link_to root_path do
-          .main__pickupArea__list--image
-          .main__pickupArea__list__index
-            .main__pickupArea__list__index--name
-              item-name
-            .main__pickupArea__list__index__details
-              %ul
-                %li 20000円
-                %li
-                  = icon('fas', 'star', class: 'main__pickupArea__list__index__details--icon')
-                  0
-              %p (税込)
-      %li.main__pickupArea__list
-        = link_to root_path do
-          .main__pickupArea__list--image
-          .main__pickupArea__list__index
-            .main__pickupArea__list__index--name
-              item-name
-            .main__pickupArea__list__index__details
-              %ul
-                %li 20000円
-                %li
-                  = icon('fas', 'star', class: 'main__pickupArea__list__index__details--icon')
-                  0
-              %p (税込)
+      - @itemsPickBrand.each do |item|
+        - if item.trading.status == true
+          %li.main__pickupArea__list
+            = link_to root_path do
+              .main__pickupArea__list--image
+              .main__pickupArea__list__index
+                .main__pickupArea__list__index--name
+                  = item.name
+                .main__pickupArea__list__index__details
+                  %ul
+                    %li<
+                      = "#{item.price}円"
+                    %li
+                      .main__pickupArea__list__index__details--icon
+                        = icon('fas', 'star')
+                        0
+                  %p (税込)
+        - else
+          %li.main__pickupArea__list
+            .item__soldout--text
+              %span 売り切れ
+              .item__soldout--color
+                .main__pickupArea__list--image
+                .main__pickupArea__list__index
+                  .main__pickupArea__list__index--name
+                    = item.name
+                  .main__pickupArea__list__index__details
+                    %ul
+                      %li<
+                        = "#{item.price}円"
+                      %li
+                        .main__pickupArea__list__index__details--icon
+                          = icon('fas', 'star')
+                          0
+                    %p (税込)
 
 = render 'shared/footer'
 

@@ -200,6 +200,7 @@
     }
     &--product {
       text-align: center;
+      margin-top: 5px;
       & > a {
         font-size: 24px;
         text-decoration: none;
@@ -227,6 +228,7 @@
         margin: 0;
       }
       &__index {
+        position: relative;
         background-color: white;
         color: #333;
         padding: 16px;
