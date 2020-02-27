@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.all
     @itemsPickCategory = Item.order("id DESC").limit(3)
     @itemsPickBrand = Item.order("id DESC").limit(3)
   end
@@ -28,9 +27,17 @@ class ItemsController < ApplicationController
       @item = Item.new(item_params)
     end
     @item.save
+    Trading.create(item_id: @item.id, user_id: current_user.id)
     redirect_to new_item_path, notice: "出品しました"
   end
-  
+
+  def search
+    @items = Item.all.order("id DESC")
+  end
+
+  def show
+  end
+
   private
   def brand_params
     params.require(:brand).permit(:name)
