@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @itemsPick = Item.order("id DESC").limit(3)
   end
 
   def new
