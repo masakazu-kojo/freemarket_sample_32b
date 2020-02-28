@@ -1,42 +1,42 @@
 = render 'shared/header'
 
 .searchPickupArea
-  %ul.main__pickupArea__lists
+  %ul.searchPickupArea__lists
     - @items.each do |item|
       - if item.trading.status == true
-        %li.main__pickupArea__list
+        %li.searchPickupArea__list
           = link_to item_path(item.id) do
-            .main__pickupArea__list--image
-            .main__pickupArea__list__index
-              .main__pickupArea__list__index--name
+            .searchPickupArea__list--image
+            .searchPickupArea__list__index
+              .searchPickupArea__list__index--name
                 = item.name
-              .main__pickupArea__list__index__details
+              .searchPickupArea__list__index__details
                 %ul
                   %li<
                     = "#{item.price}円"
                   %li
-                    .main__pickupArea__list__index__details--icon
+                    .searchPickupArea__list__index__details--icon
                       = icon('fas', 'star')
                       0
                 %p (税込)
       - else
-        %li.main__pickupArea__list
-          .item__soldout--color
-            .main__pickupArea__list--image
-            .main__pickupArea__list__index
-              .main__pickupArea__list__index--name
+        %li.searchPickupArea__list
+          = link_to item_path(item.id) do
+            .searchPickupArea__list--image
+              .item__soldout--text
+                %span SOLD
+            .searchPickupArea__list__index
+              .searchPickupArea__list__index--name
                 = item.name
-              .main__pickupArea__list__index__details
+              .searchPickupArea__list__index__details
                 %ul
                   %li<
                     = "#{item.price}円"
                   %li
-                    .main__pickupArea__list__index__details--icon
+                    .searchPickupArea__list__index__details--icon
                       = icon('fas', 'star')
                       0
                 %p (税込)
-          .item__soldout--text
-            %span 売り切れ
 
 = render 'shared/footer'
 

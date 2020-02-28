@@ -1,3 +1,55 @@
 .searchPickupArea {
   width: 100%;
+  background-color: $back_color_gray;
+  height: 100%;
+  padding: 50px 100px;
+  &__lists {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 220px);
+    column-gap: 8px;
+    row-gap: 20px;
+    justify-content: space-between;
+  }
+  &__list {
+    width: 220px;
+    & > a {
+      text-decoration: none;
+      position: relative;    
+    }
+    &--image {
+      width: 220px;
+      height: 150px;
+      position: relative;
+      overflow: hidden;
+      margin: 0;
+    }
+    &__index {
+      position: relative;
+      background-color: white;
+      color: #333;
+      padding: 16px;
+      font-size: 16px;
+      &--name {
+        overflow: hidden;
+        line-height: 1.5;
+        text-align: left;
+      }
+      &__details {
+        & > ul {
+          padding: 4px 0;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        &--icon {
+          font-size: 14px;
+        }
+        & > p {
+          padding: 2.5px 0;
+          font-size: 10px;
+          text-align: left;
+        }
+      }
+    }
+  }
 }
