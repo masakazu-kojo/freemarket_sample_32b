@@ -2,7 +2,8 @@ class ItemsController < ApplicationController
   before_action :set_category, only: [:new, :create]
 
   def index
-    @items = Item.all
+    @itemsPickCategory = Item.order("id DESC").limit(3)
+    @itemsPickBrand = Item.order("id DESC").limit(3)
   end
 
   def new
@@ -47,13 +48,25 @@ class ItemsController < ApplicationController
     else
       @item = Item.new(item_params)
     end
+
     if @item.save
       redirect_to root_path, notice: "出品しました"
     else
       render :new, notice: "出品に失敗しました"
     end
+
+    Trading.create(item_id: @item.id, user_id: current_user.id)
+    redirect_to new_item_path, notice: "出品しました"
+
   end
-  
+
+  def search
+    @items = Item.all.order("id DESC")
+  end
+
+  def show
+  end
+
   private
 
   def set_category
