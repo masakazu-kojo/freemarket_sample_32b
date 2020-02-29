@@ -10,3 +10,36 @@ img {
   width: 100%;
   vertical-align: bottom;
 }
+
+.item {
+  &__soldout{
+    &--text {
+      position: relative; 
+      & > span {
+        position: absolute;
+        font-size: 18px;
+        font-weight: 450;
+        letter-spacing: 2px;
+        color: $white;
+        top: 18px;
+        left: 0;
+        z-index: 2;
+        transform: rotate(-45deg);
+      }
+      &::after {
+        border-width: 130px 130px 0 0;
+        border-color: $main_color;
+        display: block;
+        content: '';
+        position: absolute;
+        top:  0;
+        left: 0;
+        z-index: 1;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        transform: rotate(-45deg) translate(0px, -100px);
+      }
+    }
+  }
+}

@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items
+  resources :items do
+    collection do
+      get 'search'
+    end
+  end
   
   resources :brands, only: [:index,:create,:edit,:update] do
     resources :brand_groups, only: [:index,:show] do
