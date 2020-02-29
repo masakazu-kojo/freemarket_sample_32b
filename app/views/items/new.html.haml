@@ -19,25 +19,28 @@
             %label{id: "upload-box"}
               = f.fields_for :images do |i|
                 .js-file_group{data:{index: "#{i.index}"}}
-                  = i.file_field :image, class: "file_upload"
+                  = i.file_field :image,required: true , class: "file_upload"
               .upload-box__icon
                 %i{class:"fas fa-camera fa-lg photo-black"}
                 %p クリックして
                 %p ファイルを
                 %p アップロード
+          %p{id:"item_image_invalid"} 画像がありません
         .container__sell-main__sell-box__item-container__sell-content
           %h3.sell-form-title
             %P 商品名
             %span 必須
           .container__sell-main__sell-box__item-container__sell-content__sell-group
             .container__sell-main__sell-box__item-container__sell-content__sell-group__title-form
-              = f.text_field :name, placeholder: "30文字まで", class: "item_name_form"
+              = f.text_field :name,required: true, placeholder: "30文字まで", class: "item_name_form"
+              %p{id:"item_name_invalid"} 入力してください
           %h3.sell-form-pr
             %P 商品説明
             %span 必須
           .container__sell-main__sell-box__item-container__sell-content__sell-group
             .container__sell-main__sell-box__item-container__sell-content__sell-group__title-form
-              = f.text_area :explanation, placeholder: "商品の説明(色、重さ、定価、注意点など)"
+              = f.text_area :explanation,required: true, placeholder: "商品の説明(色、重さ、定価、注意点など)"
+              %p{id:"item_explanation_invalid"} 入力してください
         .container__sell-main__sell-box__item-container__cleafix
           %h3.sell-sub-head
             %P 商品の詳細
@@ -47,7 +50,8 @@
               %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
               .category-box{id: "category1-box"}
-                = f.collection_select(:category_id, @category1s, :id, :name, {prompt: "選択してください"}, class: "select_form")
+                = f.collection_select(:category_id, @category1s, :id, :name, {prompt: "選択してください"},required: true, class: "select_form")
+              %p{id:"category-box_invalid"} 入力してください
             #size-box
               .container__sell-main__sell-box__item-container__cleafix__form-box__form-any
                 %P サイズ 
@@ -65,7 +69,8 @@
               %P 商品の状態
               %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
-              = f.select :condition, [["新品、未使用",0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["全体的に状態が悪い", 5]], {prompt: "商品の状態"}, class: "select_form"
+              = f.select :condition, [["新品、未使用",0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["全体的に状態が悪い", 5]], {prompt: "選択してください"},required: true , class: "select_form"
+              %p{id:"item_condition_invalid"} 入力してください
         .container__sell-main__sell-box__item-container__cleafix
           %h3.sell-sub-head
             %P 配送について
@@ -74,17 +79,20 @@
               %P 配送料の負担
               %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
-              = f.select :sent_charge, [["送料込み（出品者負担）",0], ["着払い（購入者負担）", 1]], {prompt: "配送料の負担"}, class: "select_form"
+              = f.select :sent_charge, [["送料込み（出品者負担）",0], ["着払い（購入者負担）", 1]], {prompt: "選択してください"},required: true , class: "select_form"
+              %p{id:"item_sent_charge_invalid"} 入力してください
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
               %P 発送元の地域
               %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
-              = f.select :shipping_area, [["北海道"], ["青森県"], ["岩手県"], ["宮城県"], ["秋田県"], ["山形県"], ["福島県"], ["茨城県"], ["栃木県"], ["群馬県"], ["埼玉県"], ["千葉県"], ["東京都"], ["神奈川県"], ["新潟県"], ["富山県"], ["石川県"], ["福井県"], ["山梨県"], ["長野県"], ["岐阜県"], ["静岡県"], ["愛知県"], ["三重県"], ["滋賀県"], ["京都府"], ["大阪府"], ["兵庫県"], ["奈良県"], ["和歌山県"], ["鳥取県"], ["島根県"], ["岡山県"], ["広島県"], ["山口県"], ["徳島県"], ["香川県"], ["愛媛県"], ["高知県"], ["福岡県"], ["佐賀県"], ["長崎県"], ["熊本県"], ["大分県"], ["宮崎県"], ["鹿児島県"], ["沖縄県"], ["未定"]], {prompt: "発送元の地域"}, class: "select_form"
+              = f.collection_select(:shipping_area, Prefecture.all, :id, :name, {prompt: "選択してください"},required: true, class: "select_form")
+              %p{id:"item_shipping_area_invalid"} 入力してください
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
               %P 発送までの日数
               %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
-              = f.select :days_to_ship, [["１〜２日で発送",0], ["3〜4日で発送", 1], ["4〜7日で発送", 2]], {prompt: "発送までの日数"}, class: "select_form"
+              = f.select :days_to_ship, [["１〜２日で発送",0], ["3〜4日で発送", 1], ["4〜7日で発送", 2]], {prompt: "選択してください"},required: true , class: "select_form"
+              %p{id:"item_days_to_ship_invalid"} 入力してください
         .container__sell-main__sell-box__item-container__cleafix
           %h3.sell-sub-head
             %P 価格（¥300以上）
@@ -95,11 +103,11 @@
                 %span 必須
               .container__sell-main__sell-box__item-container__cleafix__form-box__form-price__price-box
                 ¥
-                = f.number_field :price, placeholder: "0", min: 300, max: 999999
-                  
+                = f.number_field :price, placeholder: "0",required: true , min: 300, max: 999999
+                %p{id:"item_price_invalid"} 入力してください
             .container__sell-main__sell-box__item-container__cleafix__form-box__sell-btn-box
               .container__sell-main__sell-box__item-container__cleafix__form-box__sell-btn-box__red-btn
-                = f.submit "出品する"
+                = f.submit "出品する", id: "item_submit"
               .container__sell-main__sell-box__item-container__cleafix__form-box__sell-btn-box__gray-btn
                 = link_to "戻る",users_path ,class: 'btn btn-default'
     

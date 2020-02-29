@@ -76,4 +76,87 @@ $(function(){
       $('#upload-box').css('width','+=20%');
     }
   });
+  // バリデーション
+  $('#item_submit').on('click', function(){
+    let item_name = $('#item_name').val();
+    let item_explanation = $('#item_explanation').val();
+    let item_category = $('#item_category_id').val();
+    let item_condition = $('#item_condition').val();
+    let item_sent_charge = $('#item_sent_charge').val();
+    let item_shipping_area = $('#item_shipping_area').val();
+    let item_days_to_ship = $('#item_days_to_ship').val();
+    let item_price = $('#item_price').val();
+    // 画像
+    if (image_count.length == 0){
+      $('#item_image_invalid').css('display','block');
+    }else{
+      $('#item_image_invalid').css('display','none');
+    }
+    // 商品名
+    if (item_name == ""){
+      $('#item_name_invalid').css('display','block');
+      $('#item_name').css('border','tomato 1px solid');
+    }else{
+      $('#item_name_invalid').css('display','none');
+      $('#item_name').css('border','1px solid #ccc');
+    }
+    // 商品説明
+    if (item_explanation == ""){
+      $('#item_explanation_invalid').css('display','block');
+      $('#item_explanation').css('border','tomato 1px solid');
+    }else{
+      $('#item_explanation_invalid').css('display','none');
+      $('#item_explanation').css('border','1px solid #ccc');
+    }
+    // カテゴリー
+    if (item_category == ""){
+      $('#category-box_invalid').css('display','block');
+      $('#item_category_id').css('border','tomato 1px solid');
+    }else{
+      $('#category-box_invalid').css('display','none');
+      $('#item_category_id').css('border','1px solid #ccc');
+    }
+    // 商品の状態
+    if (item_condition == ""){
+      $('#item_condition_invalid').css('display','block');
+      $('#item_condition').css('border','tomato 1px solid');
+    }else{
+      $('#item_condition_invalid').css('display','none');
+      $('#item_condition').css('border','1px solid #ccc');
+    }
+    // 配送料の負担
+    if (item_sent_charge == ""){
+      $('#item_sent_charge_invalid').css('display','block');
+      $('#item_sent_charge').css('border','tomato 1px solid');
+    }else{
+      $('#item_sent_charge_invalid').css('display','none');
+      $('#item_sent_charge').css('border','1px solid #ccc');
+    }
+    // 発送元の地域
+    if (item_shipping_area == ""){
+      $('#item_shipping_area_invalid').css('display','block');
+      $('#item_shipping_area').css('border','tomato 1px solid');
+    }else{
+      $('#item_shipping_area_invalid').css('display','none');
+      $('#item_shipping_area').css('border','1px solid #ccc');
+    }
+    // 発送までの日数
+    if (item_days_to_ship == ""){
+      $('#item_days_to_ship_invalid').css('display','block');
+      $('#item_days_to_ship').css('border','tomato 1px solid');
+    }else{
+      $('#item_days_to_ship_invalid').css('display','none');
+      $('#item_days_to_ship').css('border','1px solid #ccc');
+    }
+    // 販売価格
+    if (item_price == ""){
+      $('#item_price_invalid').css('display','block');
+      $('#item_price').css('border','tomato 1px solid');
+    }else{
+      $('#item_price_invalid').css('display','none');
+      $('#item_price').css('border','1px solid #ccc');
+    }
+
+
+  });
 });

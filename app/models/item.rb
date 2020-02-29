@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   belongs_to :brand, optional: true
   belongs_to :category
@@ -7,4 +8,5 @@ class Item < ApplicationRecord
   has_many :favorites
   has_many :tradings
   has_many :purchaseds
+  belongs_to_active_hash :prefecture
 end

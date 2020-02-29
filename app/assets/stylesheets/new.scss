@@ -14,12 +14,16 @@ body {
   &__header {
     height: 128px;
     background-color: #f5f5f5;
+    position: relative;
     .list {
       color: inherit;
       text-decoration: none;
       text-align: center;
     }
     img {
+      position: absolute;
+      top: 0;right: 0;bottom:0;left: 0;
+      margin: auto;
       width: 185px;
       height: 49px;
     }
@@ -109,7 +113,12 @@ body {
               }
             }
           }
+          #item_image_invalid{
+            color: tomato;
+            margin: 20px 0 5px;
+            display: none;
           }
+        }
         &__sell-content {
             padding: 30px;
             border-top: 1px solid #eee;
@@ -169,6 +178,11 @@ body {
                   width: inherit;
                   margin-bottom: 20px;
                 }
+                #item_name_invalid{
+                  color: tomato;
+                  margin: 5px 0 15px;
+                  display: none;
+                }
                 #item_explanation{
                   border: 1px solid #ccc;
                   border-radius: 4px;
@@ -183,6 +197,11 @@ body {
                   margin: 0px;
                   color: rgb(34, 34, 34);
                   resize: vertical;
+                }
+                #item_explanation_invalid{
+                  color: tomato;
+                  margin: 20px 0 5px;
+                  display: none;
                 }
                }
               }
@@ -256,7 +275,7 @@ body {
               display: inline-block;
               position: relative;
               width: inherit;
-              .select_form{
+              .select_form {
                 background-color: #fff;
                 border: 1px solid #ccc;
                 border-radius: 4px;
@@ -270,6 +289,31 @@ body {
                 outline: none;
                 padding: 0 56px 0 16px;
                 width: 500px;
+              }
+              #category-box_invalid {
+                color: tomato;
+                margin: 0 0 15px;
+                display: none;
+              }
+              #item_condition_invalid {
+                color: tomato;
+                margin: 10px 0 0;
+                display: none;
+              }
+              #item_sent_charge_invalid {
+                color: tomato;
+                margin: 0 0 15px;
+                display: none;
+              }
+              #item_shipping_area_invalid {
+                color: tomato;
+                margin: 0 0 15px;
+                display: none;
+              }
+              #item_days_to_ship_invalid {
+                color: tomato;
+                margin: 0 0 15px;
+                display: none;
               }
             }
             &__form-brand{
@@ -331,6 +375,11 @@ body {
                   padding: 0 16px;
                   width: 250px;
                   text-align: right;
+                }
+                #item_price_invalid {
+                  color: tomato;
+                  margin: 15px 0 0;
+                  display: none;
                 }
               }
             }

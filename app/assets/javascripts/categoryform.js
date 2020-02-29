@@ -6,7 +6,7 @@ $(function(){
   }
   // カテゴリー2の表示作成
   function appendCategory2Box(insertHTML){
-    const html = `<select class="select_form" id= 'category2-form'>
+    const html = `<select required="required" class="select_form" id= 'category2-form'>
                     <option value="">選択してください</option>
                     ${insertHTML}
                   </select>`;
@@ -14,7 +14,7 @@ $(function(){
   }
   // カテゴリー3の表示作成
   function appendCategory3Box(insertHTML){
-    const html = `<select class="select_form" name= 'item[category_id]'  id= 'category3-form'>
+    const html = `<select required="required" class="select_form" name= 'item[category_id]'  id= 'category3-form'>
                     <option value="">選択してください</option>
                     ${insertHTML}
                   </select>`;
