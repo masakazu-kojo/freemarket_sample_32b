@@ -31,5 +31,11 @@ Rails.application.routes.draw do
   
   resources :categorys, only: [:index, :show]
 
-  resources :card, only: [:new, :show, :create]
+  resources :card, only: [:new, :show] do
+    collection do
+      post 'create', to: 'card#create'
+      post 'delete', to: 'card#delete'
+      post 'show', to: 'card#show'
+    end
+  end
 end

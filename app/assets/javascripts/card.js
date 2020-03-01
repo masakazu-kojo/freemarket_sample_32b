@@ -11,7 +11,6 @@ $(function(){
           exp_month: $('#exp_month').val(),
           exp_year:  $('#exp_year').val()
         };
-        console.log(card);
             // トークン生成
     Payjp.createToken(card, (status, response) => {
       if (status === 200) {
@@ -25,7 +24,7 @@ $(function(){
         $("#card_token").append(
         $('<input type="hidden" name="payjp-token">').val(response.id));
         document.inputForm.submit();
-
+        
         alert("登録が完了しました"); //確認用
       } else {
         alert("カード情報が正しくありません。"); //確認用

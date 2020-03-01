@@ -13,7 +13,8 @@
           = link_to new_card_path do
             = image_tag 'logo/app-store-badge.svg'
         .main__visual__contents__btn--icon
-          = image_tag 'logo/google-play-badge.svg'
+          = link_to '/card/show' do
+            = image_tag 'logo/google-play-badge.svg'
   .main__intro
     .main__intro--subtitle
       FURIMAが選ばれる3つの理由

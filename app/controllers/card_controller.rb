@@ -1,8 +1,11 @@
 class CardController < ApplicationController
+  before_action :authenticate_user!
 
   require 'payjp'
 
   def new
+    # @card = Card.where(user_id: current_user.id)
+    # redirect_to root_path if @card.exists?
   end
 
   def create
@@ -20,10 +23,27 @@ class CardController < ApplicationController
     if @card.save
       redirect_to root_path
     else
-      redirect_to action: "create"
+      redirect_to root_path
     end
   end
 
+  def delete
+    @card = Card.where(user_id: current_user.id).first
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    customer.delete
+    @card.delete
+    redirect_to new_card_path
+  end
+
   def show
+    @card = Card.where(user_id: current_user.id).first
+    if @card.blank?
+      redirect_to action: "new" 
+    else
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+    customer = Payjp::Customer.retrieve(@card.customer_id)
+    @default_card = customer.cards.retrieve(@card.card_id)
+    end
   end
 end
