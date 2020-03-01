@@ -1,5 +1,4 @@
-.header
-  = render 'shared/header'
+= render 'shared/header'
 
 .main
   .main__showmain
@@ -12,6 +11,9 @@
               .main__showmain__content__topcontent__itembox__body__imagebox__image
                 .main__showmain__content__topcontent__itembox__body__imagebox__image__upimage
                 .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage
+                  .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage__imagephoto
+                  .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage__imagephoto
+                  .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage__imagephoto
           .main__showmain__content__topcontent__itembox__price
             %span ¥300
             .main__showmain__content__topcontent__itembox__price__pricedetail
@@ -20,21 +22,77 @@
           .main__showmain__content__topcontent__itembox__detail
             商品詳細
           .main__showmain__content__topcontent__itembox__table
-            .main__showmain__content__topcontent__itembox__table__tablebox
-              .main__showmain__content__topcontent__itembox__table__tablebox__tablebody
-                .main__showmain__content__topcontent__itembox__table__tablebox__tablebody__record
-            table
-          .main__showmain__content__topcontent__itembox__option
-      .main__showmain__content__topcontent__commentbox
-        .main__showmain__content__topcontent__commentbox__contents
-          .main__showmain__content__topcontent__commentbox__contents__commentform
-            .main__showmain__content__topcontent__commentbox__contents__commentform__format
-            .main__showmain__content__topcontent__commentbox__contents__commentform__textform
-              %p.text 
-                相手のことを考え丁寧なコメントを心がけましょう。
-                %br
-                不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        .main__showmain__content__topcontent__commentbox__commentbotton
+            .main__showmain__content__topcontent__itembox__table__tablerecord
+              .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__lname            
+                    %span2 出品者
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__rname
+                    %span3 hoge
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__lname            
+                    %span2 カテゴリー
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__rname
+                    %span3 ベビーキッズ,ベビー服(男女兼用)〜95cm,アウター
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__lname            
+                    %span2 ブランド
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__rname
+                    %span3
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__lname              
+                    %span2 商品のサイズ
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__rname
+                    %span3
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__lname             
+                    %span2 商品の状態
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__rname
+                    %span3 未使用に近い
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__lname            
+                    %span2 配送料の負担
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__rname
+                    %span3 送料込み(出品者負担)
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__lname            
+                    %span2 発送元の地域
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__rname
+                    %span3 北海道
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__lname            
+                    %span2 発送日の目安
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record__rname
+                    %span3 4-7日で発送
 
-.footer
-  = render 'shared/footer'
+          .main__showmain__content__topcontent__itembox__option
+          .main__showmain__content__topcontent__itembox__commentbox
+            .main__showmain__content__topcontent__itembox__commentbox__contents
+              .main__showmain__content__topcontent__itembox__commentbox__contents__commentform
+                .main__showmain__content__topcontent__itembox__commentbox__contents__commentform__format
+                .main__showmain__content__topcontent__itembox__commentbox__contents__commentform__textform
+                  %p.text 
+                    相手のことを考え丁寧なコメントを心がけましょう。
+                    %br
+                    不快な言葉遣いなどは利用制限や退会処分となることがあります。
+                .main__showmain__content__topcontent__itembox__commentbox__contents__commentform__commentbotton
+                  = icon('fas', 'comment', class: 'icon')
+                  コメントする
+          %ul
+            %li
+              = icon('fas', 'angle-left', class: 'icon')
+              %span 前の商品
+            %li2
+              %span 後ろの商品
+              = icon('fas', 'angle-right', class: 'icon')
+        .main__showmain__content__topcontent__relateditem
+          %P.text
+            ベビー・キッズをもっとみる
+
+
+            
+            
+
+= render 'shared/footer'
+
+= render 'shared/newItemBtn'

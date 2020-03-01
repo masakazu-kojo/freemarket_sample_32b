@@ -26,14 +26,28 @@
           &__imagebox {
             display: flex;
             position: relative;
-            border: 3px dashed #c0c0c0;
             &__image {
               display: flex;
               flex-direction: column;
               width: 560px;
               align-items: center;
               margin: 0 auto;
-              height: 350px
+              &__upimage{
+                object-fit: cover;
+                height: 346px;
+                width: 100%;
+                vertical-align: bottom;
+                border: 3px dashed #c0c0c0;
+              }
+              &__downimage{
+                display: flex;
+                width: 100%;
+                &__imagephoto{
+                  width: 33.3%;
+                  padding: 50px;
+                  border: 3px dashed #c0c0c0;
+                }
+              }
             }
           }                    
                   }
@@ -58,20 +72,34 @@
         }
         &__table{
           margin-bottom: 20px;
-          &__tablebox {
+          &__tablerecord {
             width: 100%;
             height: 375px;
             border-collapse: collapse;
             border: 1px solid #f8f8f8;
             &__tablebody{
-              display: table-row-group;
-              vertical-align: middle;
-              border-color: inherit;
+
               &__record{
                 box-sizing: border-box;
                 display: table-row;
                 vertical-align: inherit;
                 border-color: inherit;
+                display: flex;
+                &__lname{
+                  background-color: #eee;
+                  font-weight: 400;
+                  padding: 8px;
+                  border: 1px solid #dedede;
+                  font-size: 14px;
+                  text-align: center;
+                  width: 30%;
+                }
+                &__rname{
+                  width: 70%;
+                  padding: 15px 15px;
+                  border: 1px solid #dedede;
+                  font-size: 14px;
+                }
               }
             }
           }
@@ -80,43 +108,74 @@
           display: flex;
           justify-content: space-between;
         }
-        }
-      &__commentbox{
-        padding: 24px;
-        background-color: #fff;
-        margin: 10px 0;
-        text-align: center;
-        &__contents{
-          list-style: none;
-          &__commentform{
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            &__format{
-              width: 100%;
-              min-height: 104px;
-              padding: 10px;
+        &__commentbox{
+          padding: 24px;
+          background-color: #fff;
+          margin: 10px 0;
+          text-align: center;
+          &__contents{
+            list-style: none;
+            &__commentform{
+              margin: 0;
+              padding: 0;
+              text-align: center;
+              &__format{
+                width: 100%;
+                min-height: 104px;
+                padding: 10px;
+                border: 3px dashed #c0c0c0;
+              }
+              &__textform{
+                padding: 8px;
+                font-size: 14px;
+                background-color: #f8f8f8;
+                margin: 10px 0;
+                text-align: left;
+                P {
+                  padding: 5px;
+                }
+              }
+              &__commentbotton{
+                line-height: 48px;
+                background: #3CCACE;
+                border: 1px solid #3CCACE;
+                color: #fff;
+                width: 60%;
+                font-size: 18px;
+                border-radius: 100px;
+                margin: auto;
+              }
+             }
             }
-            &__textform{
-              padding: 8px;
-              font-size: 14px;
-              background-color: #f8f8f8;
-              margin: 10px 0;
-              text-align: left;          
-            }
-           }
           }
-        &__commentbotton{
-          line-height: 48px;
-          background: #3CCACE;
-          border: 1px solid #3CCACE;
-          color: #fff;
-          width: 60%;
-          font-size: 18px;
-          border-radius: 100px;
         }
+        ul {
+          list-style: none;
+          li {
+            float: left;
+            text-decoration: none;
+            color: #3CCACE;
+          }
+          li2 {
+            float: right;
+            text-decoration: none;
+            color: #3CCACE;
+            }
+        }
+        &__relateditem{
+          margin: 0;
+          padding: 0;
+          P {
+            display: block;
+            margin: 24px 0 8px;
+            color: #3CCACE;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 22px;
+            position: relative;
+          }
         }
       }
-              }
-            }
-          }
+        }
+      }      
+  }

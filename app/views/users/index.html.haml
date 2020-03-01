@@ -1,26 +1,44 @@
-マイページ
-.link__mypage
-  .link__mypage__like
-    = link_to like_users_path do
-      <input type="button" value="いいね！一覧">
-  .link__mypage__notification
-    = link_to notification_users_path do
-      <input type="button" value="お知らせ">
-  .link__mypage__todo
-    = link_to todo_users_path do
-      <input type="button" value="やることリスト">
-  .link__mypage__listings_listing
-    = link_to listings_listing_users_path do
-      <input type="button" value="出品した商品ー出品中">
-  .link__mypage__listing_in_progress
-    = link_to listings_in_progress_users_path do
-      <input type="button" value="出品した商品ー取引中">
-  .link__mypage__listing_purchased
-    = link_to listings_purchased_users_path do
-      <input type="button" value="出品した商品ー売却済み">
-  .link__mypage__purchase
-    = link_to purchase_users_path do
-      <input type="button" value="購入した商品-取引中">
-  .link__mypage__purchased
-    = link_to purchased_users_path do
-      <input type="button" value="購入した商品-過去の取引">
+= render 'shared/header'
+
+.maincontainer
+  .maincontainer__lightcontent
+    .maincontainer__lightcontent__iconbox
+    .maincontainer__lightcontent__icontodo
+      .maincontainer__lightcontent__icontodo__tabs
+        .maincontainer__lightcontent__icontodo__tabs__active
+          %h1 お知らせ
+        .maincontainer__lightcontent__icontodo__tabs__active
+          %h1 やることリスト
+      .maincontainer__lightcontent__icontodo__tab-content
+        .maincontainer__lightcontent__icontodo__tab-content__active
+
+  .maincontainer__leftcontent
+    .maincontainer__leftcontent__navi
+      .maincontainer__leftcontent__like
+        = link_to like_users_path do
+          <input type="button" value="いいね！一覧">
+        .maincontainer__leftcontent__notification
+          = link_to notification_users_path do
+            <input type="button" value="お知らせ">
+        .maincontainer__leftcontent__todo
+          = link_to todo_users_path do
+            <input type="button" value="やることリスト">
+        .maincontainer__leftcontent_listing
+          = link_to listings_listing_users_path do
+            <input type="button" value="出品した商品ー出品中">
+        .maincontainer__leftcontent_in_progress
+          = link_to listings_in_progress_users_path do
+            <input type="button" value="出品した商品ー取引中">
+        .maincontainer__leftcontent_purchased
+          = link_to listings_purchased_users_path do
+            <input type="button" value="出品した商品ー売却済み">
+        .maincontainer__leftcontent__purchase
+          = link_to purchase_users_path do
+            <input type="button" value="購入した商品-取引中">
+        .maincontainer__leftcontent__purchased
+          = link_to purchased_users_path do
+            <input type="button" value="購入した商品-過去の取引">
+
+= render 'shared/footer'
+
+= render 'shared/newItemBtn'

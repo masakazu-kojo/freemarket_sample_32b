@@ -1,0 +1,52 @@
+.maincontainer{
+  margin: 40px auto 0;
+  width: 1020px;
+  height: 100vh;
+  &__lightcontent{
+    float: right;
+    width: 700px;
+    &__iconbox{
+      background: radial-gradient(black, transparent);
+      height: 200px;
+      border: 1px solid #ccc;
+    } 
+    &__icontodo{
+      margin: 0;
+      background: #fff;
+      &__tabs{
+        border: 0;
+        background: #eee;
+        font-size: 0;
+        display: flex;
+        &__active{
+          width: 50%;
+          h1 {
+            font-size: 22px;
+            position: relative;
+            display: block;
+            color: #333;
+            font-size: 16px;
+            line-height: 72px;
+            text-align: center;
+          }
+
+        }
+      }
+    }
+  }
+  &__leftcontent{
+    float: left;
+    width: 280px;
+    margin: 0 40px 0 0;
+    &__navi{
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
+      &__like{
+        border: 0;
+        background: #eee;
+        font-size: 0;
+      }
+    }
+  }
+}
