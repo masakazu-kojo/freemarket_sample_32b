@@ -1,4 +1,4 @@
-coding: utf-8
+# coding: utf-8
 
 newCategorys = []
 newCategorys << Category.new(id: 1, name: 'レディース')
