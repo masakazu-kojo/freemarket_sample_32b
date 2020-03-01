@@ -4,9 +4,9 @@
   %main{class: "l-container"}
     .l-content
       %ul{class: "parts-nav"}
-        %li
-          - @items_brand.each do |brand|
-            ="#{brand[:name]}"
+        -# %li
+        -#   - @items_brand.each do |brand|
+        -#     ="#{brand[:name]}"
             -# = link_to "#{brand[:name]}",brand_category3_brand_brand_group_path(@brand, id: "#{category[:id]}"), class: "parts-nav__list"
       %section{class: "items-box-container"}
         %h1{class: "items-box-container__head"}
