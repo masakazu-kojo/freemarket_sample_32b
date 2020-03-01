@@ -1,0 +1,71 @@
+.maincontainer{
+  margin: 40px auto 0;
+  width: 1020px;
+  height: 100vh;
+  &__lightcontent{
+    float: right;
+    width: 700px;
+    &__mypagebox{
+      background: radial-gradient(skyblue, transparent);
+      // background-color: gainsboro;
+      height: 50px;
+      border: 1px solid #ccc;
+      text-align: center;
+      display: table;
+      width: 100%;
+      P {
+        vertical-align: middle;
+        display: table-cell;
+        font-size: 15px;
+      }
+     } 
+    &__panelbody{
+      padding: 15px;
+      line-height: 1.7;
+      color: #212121;
+      clear: both;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      height: 300px;
+      &__panelist{
+        width: 25%;
+        float: left;  
+        min-height: 1px;
+        padding-left: 4px;
+        padding-right: 4px;
+        height: 70%;
+        border: 1px solid #ccc;
+      }
+    }
+   }
+  &__leftcontent{
+    float: left;
+    width: 280px;
+    margin: 0 40px 0 0;
+    &__navi{
+      background-repeat: no-repeat;
+      margin: 0;
+      padding-bottom: 16px;
+      &__title{
+        margin: 0 0 8px;
+        padding: 8px 8px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &__tablist{
+        border: 0;
+        padding: 0;
+        a {
+          input {
+            position: relative;
+            padding: 10px 15px;
+            background-color: #fff;
+            width: 100%;
+            border: 1px solid #e5e5e5;
+            background-color: gainsboro;
+          }
+        }
+        }
+      }
+    }
+  }
