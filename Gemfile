@@ -67,7 +67,10 @@ gem 'devise'
 gem 'activerecord-import'
 gem 'pry-rails'
 gem 'ancestry'
-
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'jquery-rails'
+gem 'active_hash'
 
 group :production do
   gem 'unicorn', '5.4.1'

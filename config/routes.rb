@@ -15,10 +15,19 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items
+  resources :items do
+    collection do
+      get 'get_category2', defaults: { format: 'json' }
+      get 'get_category3', defaults: { format: 'json' }
+      get 'search'
+    end
+  end
   
   resources :brands, only: [:index,:create,:edit,:update] do
     resources :brand_groups, only: [:index,:show] do
+      member do
+        get 'brand_category3'
+      end
     end
   end
   

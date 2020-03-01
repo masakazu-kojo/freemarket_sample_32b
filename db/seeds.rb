@@ -1,4 +1,4 @@
-# coding: utf-8
+coding: utf-8
 
 newCategorys = []
 newCategorys << Category.new(id: 1, name: 'レディース')
@@ -515,5 +515,3 @@ newCategory3s << Category.new(id: 11001, name: '旅行用バッグ/キャリー�
 
 
 Category.import newCategory3s, on_duplicate_key_update: [:id, :name, :ancestry]
-
-
