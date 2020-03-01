@@ -166,11 +166,7 @@ body {
                 display: inline-block;
                 position: relative;
                 width: inherit;
-
-                #item_name{
-
                 .item_name_form{
-
                   border: 1px solid #ccc;
                   border-radius: 4px;
                   box-sizing: border-box;
@@ -275,132 +271,7 @@ body {
                 border-radius: 10px;
               }
              }
-
-          &__select{
-            display: inline-block;
-            position: relative;
-            width: inherit;
-            #item_category_id {
-              background-color: #fff;
-              border: 1px solid #ccc;
-              border-radius: 4px;
-              box-sizing: border-box;
-              color: #222;
-              font-size: 16px;
-              height: 48px;
-              line-height: 1;
-              margin-bottom: 15px;
-              margin-top: 10px;
-              outline: none;
-              padding: 0 56px 0 16px;
-              width: 500px;
-            }
-            #item_condition{
-              background-color: #fff;
-              border: 1px solid #ccc;
-              border-radius: 4px;
-              box-sizing: border-box;
-              color: #222;
-              font-size: 16px;
-              height: 48px;
-              line-height: 1;
-              margin-bottom: 15px;
-              margin-top: 10px;
-              outline: none;
-              padding: 0 56px 0 16px;
-              width: 500px;
-            }
-            #item_sent_charge{
-              background-color: #fff;
-              border: 1px solid #ccc;
-              border-radius: 4px;
-              box-sizing: border-box;
-              color: #222;
-              font-size: 16px;
-              height: 48px;
-              line-height: 1;
-              margin-bottom: 15px;
-              margin-top: 10px;
-              outline: none;
-              padding: 0 56px 0 16px;
-              width: 500px;
-            }
-            #item_shipping_area{
-              background-color: #fff;
-              border: 1px solid #ccc;
-              border-radius: 4px;
-              box-sizing: border-box;
-              color: #222;
-              font-size: 16px;
-              height: 48px;
-              line-height: 1;
-              margin-bottom: 15px;
-              margin-top: 10px;
-              outline: none;
-              padding: 0 56px 0 16px;
-              width: 500px;
-            }
-            #item_days_to_ship{
-              background-color: #fff;
-              border: 1px solid #ccc;
-              border-radius: 4px;
-              box-sizing: border-box;
-              color: #222;
-              font-size: 16px;
-              height: 48px;
-              line-height: 1;
-              margin-bottom: 15px;
-              margin-top: 10px;
-              outline: none;
-              padding: 0 56px 0 16px;
-              width: 500px;
-            }
-          }
-          &__form-brand{
-            align-items: center;
-            width: 100%;
-            #brand_name{
-              border: 1px solid #ccc;
-              border-radius: 4px;
-              box-sizing: border-box;
-              font-family: inherit;
-              font-size: 16px;
-              height: 48px;
-              margin-bottom: 15px;
-              margin-top: 10px;
-              outline: none;
-              padding: 0 16px;
-              width: 500px;
-            }
-          }
-          &__form-price {
-            margin-bottom: 40px;
-            display: flex;
-            &__price{
-              margin-right: auto;
-              white-space: nowrap;
-              align-items: center;
-              display: flex;
-              P {
-                font-size: 14px;
-                font-weight: 600;
-                line-height: 1.4em;
-                display: contents;
-              }
-              span {
-                margin-left: 8px;
-                background-color: #ff0211;
-                color: #fff;
-                font-size: 12px;
-                padding: 0 4px;
-                line-height: 1.4em;
-                border-radius: 10px;
-              }
-            }
-            &__price-box {
-              
             &__select{
-
               display: inline-block;
               position: relative;
               width: inherit;
@@ -531,7 +402,7 @@ body {
               }
               &__gray-btn{
 
-                a {
+                .btn.btn-default{
                   width: 45%;
                   margin: 24px auto 0;
                   display: block;
