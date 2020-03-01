@@ -44,8 +44,9 @@ class BrandGroupsController < ApplicationController
   def category3_items_show(category3_ids, brand_id)
     items = []
     category3_ids.each do |category3_id|
-      if Item.find_by(category_id: category3_id,brand_id: brand_id).present?
-        items << Item.find_by(category_id: category3_id,brand_id: brand_id)
+      @category3_brand_items = Item.where(category_id: category3_id,brand_id: brand_id)
+      @category3_brand_items.each do |item|
+        items << item
       end
     end
     return items
