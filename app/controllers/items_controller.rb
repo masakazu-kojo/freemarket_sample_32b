@@ -48,15 +48,15 @@ class ItemsController < ApplicationController
     else
       @item = Item.new(item_params)
     end
-
+    
     if @item.save
-      redirect_to root_path, notice: "出品しました"
+      Trading.create(item_id: @item.id, user_id: current_user.id)
+      redirect_to new_item_path, notice: "出品しました"
     else
       render :new, notice: "出品に失敗しました"
     end
 
-    Trading.create(item_id: @item.id, user_id: current_user.id)
-    redirect_to new_item_path, notice: "出品しました"
+    
 
   end
 
