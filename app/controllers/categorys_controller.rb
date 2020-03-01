@@ -5,10 +5,13 @@ class CategorysController < ApplicationController
     @category1s = @categorys.limit(13)
     
   end
+  
+
 
   def show
     @category = Category.find(params[:id])
-    @items = Item.where(category_id: params[:id])
+    @items = selected_category_items(@category)
+    @items_brand = category_brands(@items).sort { |a, b| a[:name] <=> b[:name] }
   end
 
 

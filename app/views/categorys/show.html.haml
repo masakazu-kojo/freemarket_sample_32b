@@ -1,8 +1,21 @@
-= render "shared/header"
-= render "shared/newItemBtn"
-カテゴリー１商品一覧<
-="#{@category.name}"
-
-.item-index
-  - @items.each do |item|
-    ="#{item.name}|"
+.default-container-brand-groups
+  = render "shared/header"
+  = render "shared/newItemBtn"
+  %main{class: "l-container"}
+    .l-content
+      %ul{class: "parts-nav"}
+        %li
+          - @items_brand.each do |brand|
+            ="#{brand[:name]}"
+            -# = link_to "#{brand[:name]}",brand_category3_brand_brand_group_path(@brand, id: "#{category[:id]}"), class: "parts-nav__list"
+      %section{class: "items-box-container"}
+        %h1{class: "items-box-container__head"}
+          = "#{@category.name}の商品一覧"
+        .items-box-container__content
+          = render partial: "shared/item_list", collection: @items, as: :item
+      .spacial-description
+        .spacial-description__title
+          %h3{class: "font-white"}
+            ="#{@category.name}"
+        .spacial-description__text
+          %p
