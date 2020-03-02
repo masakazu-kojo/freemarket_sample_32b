@@ -1,5 +1,51 @@
 # coding: utf-8
 
+newSizes = []
+newSizes << Size.new(id: 1, size: '洋服のサイズ')
+newSizes << Size.new(id: 2, size: 'レディース靴のサイズ')
+newSizes << Size.new(id: 3, size: 'メンズ靴のサイズ')
+newSizes << Size.new(id: 101, size: 'XXS以下', ancestry: 1)
+newSizes << Size.new(id: 102, size: 'XS(SS)', ancestry: 1)
+newSizes << Size.new(id: 103, size: 'S', ancestry: 1)
+newSizes << Size.new(id: 104, size: 'M', ancestry: 1)
+newSizes << Size.new(id: 105, size: 'L', ancestry: 1)
+newSizes << Size.new(id: 106, size: 'XL(LL)', ancestry: 1)
+newSizes << Size.new(id: 107, size: '2XL(3L)', ancestry: 1)
+newSizes << Size.new(id: 108, size: '3XL(4L)', ancestry: 1)
+newSizes << Size.new(id: 109, size: '4XL(5L)', ancestry: 1)
+newSizes << Size.new(id: 110, size: 'FREE SIZE', ancestry: 1)
+newSizes << Size.new(id: 201, size: '20cm以下', ancestry: 2)
+newSizes << Size.new(id: 202, size: '20.5cm', ancestry: 2)
+newSizes << Size.new(id: 203, size: '21cm', ancestry: 2)
+newSizes << Size.new(id: 204, size: '21.5cm', ancestry: 2)
+newSizes << Size.new(id: 205, size: '22cm', ancestry: 2)
+newSizes << Size.new(id: 206, size: '22.5cm', ancestry: 2)
+newSizes << Size.new(id: 207, size: '23cm', ancestry: 2)
+newSizes << Size.new(id: 208, size: '23.5cm', ancestry: 2)
+newSizes << Size.new(id: 209, size: '24cm', ancestry: 2)
+newSizes << Size.new(id: 210, size: '24.5cm', ancestry: 2)
+newSizes << Size.new(id: 211, size: '25cm', ancestry: 2)
+newSizes << Size.new(id: 212, size: '25.5cm', ancestry: 2)
+newSizes << Size.new(id: 213, size: '26cm', ancestry: 2)
+newSizes << Size.new(id: 214, size: '26.5cm', ancestry: 2)
+newSizes << Size.new(id: 215, size: '27cm', ancestry: 2)
+newSizes << Size.new(id: 216, size: '27.5cm以上', ancestry: 2)
+newSizes << Size.new(id: 301, size: '23.5cm以下', ancestry: 3)
+newSizes << Size.new(id: 302, size: '24cm', ancestry: 3)
+newSizes << Size.new(id: 303, size: '24.5cm', ancestry: 3)
+newSizes << Size.new(id: 304, size: '25cm', ancestry: 3)
+newSizes << Size.new(id: 305, size: '25.5cm', ancestry: 3)
+newSizes << Size.new(id: 306, size: '26cm', ancestry: 3)
+newSizes << Size.new(id: 307, size: '26.5cm', ancestry: 3)
+newSizes << Size.new(id: 308, size: '27cm', ancestry: 3)
+newSizes << Size.new(id: 309, size: '27.5cm', ancestry: 3)
+newSizes << Size.new(id: 310, size: '28cm', ancestry: 3)
+newSizes << Size.new(id: 311, size: '29.5cm', ancestry: 3)
+newSizes << Size.new(id: 312, size: '30cm', ancestry: 3)
+newSizes << Size.new(id: 313, size: '30.5cm', ancestry: 3)
+newSizes << Size.new(id: 314, size: '31cm以上', ancestry: 3)
+Size.import newSizes, on_duplicate_key_update: [:id, :size, :ancestry]
+
 newCategorys = []
 newCategorys << Category.new(id: 1, name: 'レディース')
 newCategorys << Category.new(id: 2, name: 'メンズ')
@@ -515,3 +561,23 @@ newCategory3s << Category.new(id: 11001, name: '旅行用バッグ/キャリー�
 
 
 Category.import newCategory3s, on_duplicate_key_update: [:id, :name, :ancestry]
+
+
+newCategorySizes = []
+# 洋服のサイズ
+newCategorySizes << CategorySize.new(id: 1,size_id: 1, category_id: 101)
+newCategorySizes << CategorySize.new(id: 2,size_id: 1, category_id: 102)
+newCategorySizes << CategorySize.new(id: 3,size_id: 1, category_id: 103)
+newCategorySizes << CategorySize.new(id: 4,size_id: 1, category_id: 104)
+newCategorySizes << CategorySize.new(id: 5,size_id: 1, category_id: 105)
+newCategorySizes << CategorySize.new(id: 6,size_id: 1, category_id: 107)
+newCategorySizes << CategorySize.new(id: 7,size_id: 1, category_id: 108)
+newCategorySizes << CategorySize.new(id: 8,size_id: 1, category_id: 201)
+newCategorySizes << CategorySize.new(id: 9,size_id: 1, category_id: 202)
+newCategorySizes << CategorySize.new(id: 10,size_id: 1, category_id: 203)
+newCategorySizes << CategorySize.new(id: 11,size_id: 1, category_id: 206)
+# レディース靴のサイズ
+newCategorySizes << CategorySize.new(id: 101,size_id: 2, category_id: 106)
+# メンズ靴のサイズ
+newCategorySizes << CategorySize.new(id: 201,size_id: 3, category_id: 204)
+CategorySize.import newCategorySizes, on_duplicate_key_update: [:id, :size_id, :category_id]
