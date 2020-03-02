@@ -50,7 +50,7 @@
               %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
               .category-box{id: "category1-box"}
-                = f.collection_select(:category_id, @categorys, :id, :name, {prompt: "選択してください"},required: true, class: "select_form")
+                = f.collection_select(:category_id, @category1s, :id, :name, {prompt: "選択してください"},required: true, class: "select_form")
               %p{id:"category-box_invalid"} 入力してください
             #size-box
               .container__sell-main__sell-box__item-container__cleafix__form-box__form-any

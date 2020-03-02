@@ -7,35 +7,19 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @items = Item.order("id DESC").limit(3)
     @item = Item.new
     @item.images.new
     @brand = Brand.new
-    @category1 = Category.new
     @categorys = Category.all.order("id")
-    @brands = Brand.all.order("id")
   end
 
-  def get_category2
-    #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-    @category2s = Category.find("#{params[:category1_id]}").children
+  def edit
+    @item = Item.find(params[:id])
+    # @item.images.new
+    @brand = @item.brand
+    @categorys = Category.all.order("id")
   end
-
- # 子カテゴリーが選択された後に動くアクション
-  def get_category3
-  #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
-    @category3s = Category.find("#{params[:category2_id]}").children
-  end
-
-  # def edit
-  #   @item = Item.find(params[:id])
-  #   @item.images.new
-  #   @brand = @item.brand
-  #   @category1 = @item.category
-  #   @category1s = Category.order("id").limit(13)
-  #   # @category2s = Category2.all.order("id")
-  #   # @category3s = Category3.all.order("id")
-  #   @brands = Brand.all.order("id")
-  # end
 
   def create
     @brand = Brand.new(brand_params)
@@ -48,16 +32,32 @@ class ItemsController < ApplicationController
     else
       @item = Item.new(item_params)
     end
-    
     if @item.save
       Trading.create(item_id: @item.id, user_id: current_user.id)
       redirect_to new_item_path, notice: "出品しました"
     else
       render :new, notice: "出品に失敗しました"
     end
+  end
 
-    
+  def update
+    if @item.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+  
 
+  #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
+  def get_category2
+    @category2s = Category.find("#{params[:category1_id]}").children
+  end
+
+  # 子カテゴリーが選択された後に動くアクション
+  #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
+  def get_category3
+    @category3s = Category.find("#{params[:category2_id]}").children
   end
 
   def search

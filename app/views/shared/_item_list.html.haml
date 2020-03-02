@@ -12,4 +12,6 @@
       .items-box__body__num__like
         %i{class: "far fa-heart"}
         %span 10
+.edit-link
+  = link_to "#{item.name}", edit_item_path(id: item.id)
 
