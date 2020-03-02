@@ -11,7 +11,7 @@
         .container__sell-main__sell-box__item-container
           .container__sell-main__sell-box__item-container__sell-container
             %h3.sell-upload-head
-              %P 出品画像
+              %p 出品画像
               %span 必須
             .container__sell-main__sell-box__item-container__sell-container__inner{id: "item-previews"}
               -# .upload-box-image
@@ -31,14 +31,14 @@
             %p{id:"item_image_invalid"} 画像がありません
           .container__sell-main__sell-box__item-container__sell-content
             %h3.sell-form-title
-              %P 商品名
+              %p 商品名
               %span 必須
             .container__sell-main__sell-box__item-container__sell-content__sell-group
               .container__sell-main__sell-box__item-container__sell-content__sell-group__title-form
                 = f.text_field :name,required: true, placeholder: "30文字まで", class: "item_name_form"
                 %p{id:"item_name_invalid"} 入力してください
             %h3.sell-form-pr
-              %P 商品説明
+              %p 商品説明
               %span 必須
             .container__sell-main__sell-box__item-container__sell-content__sell-group
               .container__sell-main__sell-box__item-container__sell-content__sell-group__title-form
@@ -46,10 +46,10 @@
                 %p{id:"item_explanation_invalid"} 入力してください
           .container__sell-main__sell-box__item-container__cleafix
             %h3.sell-sub-head
-              %P 商品の詳細
+              %p 商品の詳細
             .container__sell-main__sell-box__item-container__cleafix__form-box
               .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
-                %P カテゴリー
+                %p カテゴリー
                 %span 必須
               .container__sell-main__sell-box__item-container__cleafix__form-box__select
                 .category-box{id: "category1-box"}
@@ -57,52 +57,52 @@
                 %p{id:"category-box_invalid"} 入力してください
               #size-box
                 .container__sell-main__sell-box__item-container__cleafix__form-box__form-any
-                  %P サイズ 
+                  %p サイズ 
                   %span 任意
                 .container__sell-main__sell-box__item-container__cleafix__form-box__select
                   = f.select :size , [["XXS以下"], ["XS(SS)"], ["S"], ["M"], ["L"], ["XL(LL)"], ["2XL(3L)"], ["3XL(4L)"], ["4XL(5L)"], ["FREE SIZE"]], {prompt: "サイズ"}, class: "select_form"
               #brand-box
                 .container__sell-main__sell-box__item-container__cleafix__form-box__form-any
-                  %P ブランド 
+                  %p ブランド 
                   %span 任意
                 .container__sell-main__sell-box__item-container__cleafix__form-box__form-brand
                   = fields_for(@brand) do |t|
                     = t.text_field :name, placeholder: "ブランド名", class: "select_form"
               .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
-                %P 商品の状態
+                %p 商品の状態
                 %span 必須
               .container__sell-main__sell-box__item-container__cleafix__form-box__select
                 = f.select :condition, [["新品、未使用",0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["全体的に状態が悪い", 5]], {prompt: "選択してください"},required: true , class: "select_form"
                 %p{id:"item_condition_invalid"} 入力してください
           .container__sell-main__sell-box__item-container__cleafix
             %h3.sell-sub-head
-              %P 配送について
+              %p 配送について
             .container__sell-main__sell-box__item-container__cleafix__form-box
               .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
-                %P 配送料の負担
+                %p 配送料の負担
                 %span 必須
               .container__sell-main__sell-box__item-container__cleafix__form-box__select
                 = f.select :sent_charge, [["送料込み（出品者負担）",0], ["着払い（購入者負担）", 1]], {prompt: "選択してください"},required: true , class: "select_form"
                 %p{id:"item_sent_charge_invalid"} 入力してください
               .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
-                %P 発送元の地域
+                %p 発送元の地域
                 %span 必須
               .container__sell-main__sell-box__item-container__cleafix__form-box__select
                 = f.collection_select(:shipping_area, Prefecture.all, :id, :name, {prompt: "選択してください"},required: true, class: "select_form")
                 %p{id:"item_shipping_area_invalid"} 入力してください
               .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
-                %P 発送までの日数
+                %p 発送までの日数
                 %span 必須
               .container__sell-main__sell-box__item-container__cleafix__form-box__select
                 = f.select :days_to_ship, [["１〜２日で発送",0], ["3〜4日で発送", 1], ["4〜7日で発送", 2]], {prompt: "選択してください"},required: true , class: "select_form"
                 %p{id:"item_days_to_ship_invalid"} 入力してください
           .container__sell-main__sell-box__item-container__cleafix
             %h3.sell-sub-head
-              %P 価格（¥300以上）
+              %p 価格（¥300以上）
             .container__sell-main__sell-box__item-container__cleafix__form-box
               .container__sell-main__sell-box__item-container__cleafix__form-box__form-price
                 .container__sell-main__sell-box__item-container__cleafix__form-box__form-price__price
-                  %P 販売価格
+                  %p 販売価格
                   %span 必須
                 .container__sell-main__sell-box__item-container__cleafix__form-box__form-price__price-box
                   ¥
