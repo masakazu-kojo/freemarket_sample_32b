@@ -87,6 +87,15 @@ $(function(){
   $('.category-box').on('change', '#category3-form',function(){
     var Category3Id = $('#category3-form option:selected').val();  //選択されたカテゴリー3のIDを取得
     if (Category3Id != ""){ //親カテゴリーが初期値でないことを確認
+      console.log(Category3Id);
+      $.ajax({
+        url: '/items/get_size',
+        type: 'GET',
+        data: { category3_id: Category3Id },
+        dataType: 'json'
+      })
+      .done(function(sizes){
+      })
       $('#size-box').css('display','block');
     }else{
       $('#size-box').css('display','none');

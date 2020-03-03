@@ -48,7 +48,6 @@ class ItemsController < ApplicationController
     end
   end
   
-
   #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
   def get_category2
     @category2s = Category.find("#{params[:category1_id]}").children
@@ -58,6 +57,18 @@ class ItemsController < ApplicationController
   #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
   def get_category3
     @category3s = Category.find("#{params[:category2_id]}").children
+  end
+
+  # 孫カテゴリーが選択された後に動くアクション
+  def get_size
+    @category2 = Category.find("#{params[:category3_id]}").parent
+    @sizes = @category2.sizes
+    @sizes.each do |size|
+      @size_id = size.id
+    end
+    binding.pry
+    @size = Size.find(@size_id)
+    @size_children = @size.children
   end
 
   def search
