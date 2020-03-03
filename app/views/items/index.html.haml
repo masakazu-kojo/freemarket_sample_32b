@@ -59,7 +59,8 @@
         ほしかったあの商品に出会えるかもしれません。
       .main__middle-visual__contents__btn
         .main__middle-visual__contents__btn--icon
-          = image_tag 'logo/app-store-badge.svg'
+          = link_to '/purchase' do
+            = image_tag 'logo/app-store-badge.svg'
         .main__middle-visual__contents__btn--icon
           = image_tag 'logo/google-play-badge.svg'
   .main__features
