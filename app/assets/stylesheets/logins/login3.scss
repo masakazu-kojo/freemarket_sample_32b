@@ -4,6 +4,7 @@
     align-items: center;
     display: flex;
     height: 128px;
+    
     &__title{
       width: 185px;
       height: 49px;
@@ -26,36 +27,59 @@
       }  
     }
   }
-  #new_user.new_user{
-    padding: 10px 64px 40px;
-    display: inline-block;
-    .field{
-      width: 300px;
-      #user_email{
-        width: 325px;
-        height: 45px;
+  .form{
+    overflow: scroll;
+    #new_user.new_user{
+      padding: 10px 64px 40px;
+      display: inline-block;
+      .field{
+        width: 300px;
+        #user_nickname{
+          width: 325px;
+          height: 45px;
+        }
+        #user_email{
+          width: 325px;
+          height: 45px;
+        }
+        #user_password{
+          width: 325px;
+          height: 45px;
+        }
+        #user_password_confirmation{
+          width: 325px;
+          height: 45px;
+        }
+        #user_ientities_familyname{
+          width: 325px;
+          height: 45px;
+        }
+        #user_ientities_firstname{
+          width: 325px;
+          height: 45px;
+        }
+        #user_ientities_familyname_kana{
+          width: 325px;
+          height: 45px;
+        }
+        #user_ientities_firstname_kana{
+          width: 325px;
+          height: 45px;
+        }
       }
-      #user_password{
-        width: 325px;
-        height: 45px;
-      }
-      #user_password_confirmation{
-        width: 325px;
-        height: 45px;
-      }
-    }
-    .actions{
-      margin: 24px 0 0;
-      input{
-        width: 330px;
-        height: 45px;
-        background: #3CCACE;
-        border: 1px solid #3CCACE;
-        color: #fff;
+      .actions{
+        margin: 24px 0 0;
+        input{
+          width: 330px;
+          height: 45px;
+          background: #3CCACE;
+          border: 1px solid #3CCACE;
+          color: #fff;
+        }
       }
     }
   }
-}
+
 .signup-footer{
   padding: 20px 0;
   text-align: center;
@@ -73,4 +97,5 @@
     width: 200px;
     margin: 40px auto 0;
   }
+}
 }
