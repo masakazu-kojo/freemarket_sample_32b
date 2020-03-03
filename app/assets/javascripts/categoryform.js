@@ -53,7 +53,7 @@ $(function(){
       .done(function(category2s){
         $('#category2-form').remove(); //親が変更された時、子以下を削除するする
         $('#category3-form').remove();
-        $('#size-box').css('display','none');
+        $('#size-box').remove();
         $('#brand-box').css('display','none');
         let insertHTML = '';
         category2s.forEach(function(category2){
@@ -68,7 +68,7 @@ $(function(){
     }else{
       $('#category2-form').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
       $('#category3-form').remove();
-      $('#size-box').css('display','none');
+      $('#size-box').remove();
       $('#brand-box').css('display','none');
     }
   });
@@ -84,6 +84,7 @@ $(function(){
       })
       .done(function(category3s){
         $('#category3-form').remove(); //親が変更された時、子以下を削除するする
+        $('#size-box').remove();
         $('#brand-box').css('display','none');
         let insertHTML = '';
         category3s.forEach(function(category3){
@@ -97,6 +98,7 @@ $(function(){
       })
     }else{
       $('#category3-form').remove(); //カテゴリー3が初期値になった時、子以下を削除するする
+      $('#size-box').remove();
       $('#brand-box').css('display','none');
     }
   });

@@ -48,16 +48,32 @@
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
               %P カテゴリー
               %span 必須
-            .container__sell-main__sell-box__item-container__cleafix__form-box__select
+            .container__sell-main__sell-box__item-container__cleafix__form-box__select{id: "category-list"}
               .category-box{id: "category1-box"}
-                = f.collection_select(:category_id, @categorys, :id, :name, {prompt: "選択してください"},required: true, class: "select_form")
+                %select{required: "required", class:"select_form", id:"item_category_id"}
+                  %option{selected: "selected",value: "#{@category1.id}"}
+                    #{@category1.name}
+                  %option{value: ""}
+                    選択してください
+                  - @category1s.each do |category1|
+                    %option(value="#{category1.id}")
+                      #{category1.name}
+                %select{required: "required", class:"select_form", id:"category2-form"}
+                  %option{selected: "selected",value: "#{@category2.id}"}
+                    #{@category2.name}
+                  %option{value: ""}
+                    選択してください
+                  - @category2s.each do |category2|
+                    %option(value="#{category2.id}")
+                      #{category2.name}
+                = f.collection_select(:category_id, @category3s, :id, :name, {prompt: "選択してください"},required: true, class: "select_form",id: "category3-form")
               %p{id:"category-box_invalid"} 入力してください
             #size-box
               .container__sell-main__sell-box__item-container__cleafix__form-box__form-any
                 %P サイズ 
                 %span 任意
               .container__sell-main__sell-box__item-container__cleafix__form-box__select
-                = f.select :size , [["XXS以下"], ["XS(SS)"], ["S"], ["M"], ["L"], ["XL(LL)"], ["2XL(3L)"], ["3XL(4L)"], ["4XL(5L)"], ["FREE SIZE"]], {prompt: "サイズ"}, class: "select_form"
+                = f.collection_select(:size_id, @sizes, :id, :size, {prompt: "選択してください"}, class: "select_form")
             #brand-box
               .container__sell-main__sell-box__item-container__cleafix__form-box__form-any
                 %P ブランド 

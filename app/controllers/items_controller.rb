@@ -16,9 +16,15 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    @category3 = Category.find(@item.category_id)
+    @category2 = @category3.parent
+    @category1 = @category3.root
     # @item.images.new
     @brand = @item.brand
-    @categorys = Category.all.order("id")
+    @category1s = @category3.root.siblings
+    @category2s = @category3.parent.siblings
+    @category3s = @category3.siblings
+    @sizes = Size.find(@item.size_id).siblings
   end
 
   def create
