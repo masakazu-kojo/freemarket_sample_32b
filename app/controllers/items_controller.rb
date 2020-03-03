@@ -62,13 +62,7 @@ class ItemsController < ApplicationController
   # 孫カテゴリーが選択された後に動くアクション
   def get_size
     @category2 = Category.find("#{params[:category3_id]}").parent
-    @sizes = @category2.sizes
-    @sizes.each do |size|
-      @size_id = size.id
-    end
-    binding.pry
-    @size = Size.find(@size_id)
-    @size_children = @size.children
+    @sizes = @category2.sizes[0].children
   end
 
   def search
@@ -87,6 +81,6 @@ class ItemsController < ApplicationController
     params.require(:brand).permit(:name)
   end
   def item_params
-    params.require(:item).permit(:name, :category_id, :explanation, :price, :size, :condition, :sent_charge, :shipping_area, :days_to_ship, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id, brand_id: @brand.id)
+    params.require(:item).permit(:name, :category_id, :explanation, :price, :size_id, :condition, :sent_charge, :shipping_area, :days_to_ship, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id, brand_id: @brand.id)
   end
 end

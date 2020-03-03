@@ -4,6 +4,11 @@ $(function(){
     let html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
     return html;
   }
+  // サイズボックスのオプションを作成
+  function appendSizeOption(category){
+    let html = `<option value="${category.id}" data-category="${category.id}">${category.size}</option>`;
+    return html;
+  }
   // カテゴリー2の表示作成
   function appendCategory2Box(insertHTML){
     const html = `<select required="required" class="select_form" id= 'category2-form'>
@@ -18,6 +23,21 @@ $(function(){
                     <option value="">選択してください</option>
                     ${insertHTML}
                   </select>`;
+    return html;
+  }
+  // サイズの表示作成
+  function appendSizeBox(insertHTML){
+    const html = `<div id="size-box">
+                    <div class="container__sell-main__sell-box__item-container__cleafix__form-box__form-any">
+                      <P>サイズ</P><span>任意</span>
+                    </div>
+                    <div class="container__sell-main__sell-box__item-container__cleafix__form-box__select">
+                      <select required="required" class="select_form" name= 'item[size_id]'  id= 'size-box'>
+                      <option value="">選択してください</option>
+                      ${insertHTML}
+                      </select>
+                    </div>
+                  </div>`;
     return html;
   }
   // カテゴリー1選択後のイベント
@@ -64,14 +84,12 @@ $(function(){
       })
       .done(function(category3s){
         $('#category3-form').remove(); //親が変更された時、子以下を削除するする
-        $('#size-box').css('display','none');
         $('#brand-box').css('display','none');
         let insertHTML = '';
         category3s.forEach(function(category3){
           insertHTML += appendOption(category3);
         });
         $('#category1-box').append(appendCategory3Box(insertHTML));
-        // $('#size-box').css('display','block');
         $('#brand-box').css('display','block');
       })
       .fail(function(){
@@ -79,7 +97,6 @@ $(function(){
       })
     }else{
       $('#category3-form').remove(); //カテゴリー3が初期値になった時、子以下を削除するする
-      $('#size-box').css('display','none');
       $('#brand-box').css('display','none');
     }
   });
@@ -87,7 +104,6 @@ $(function(){
   $('.category-box').on('change', '#category3-form',function(){
     var Category3Id = $('#category3-form option:selected').val();  //選択されたカテゴリー3のIDを取得
     if (Category3Id != ""){ //親カテゴリーが初期値でないことを確認
-      console.log(Category3Id);
       $.ajax({
         url: '/items/get_size',
         type: 'GET',
@@ -95,10 +111,15 @@ $(function(){
         dataType: 'json'
       })
       .done(function(sizes){
+        $('#size-box').remove();
+        let insertHTML = '';
+        sizes.forEach(function(size){
+          insertHTML += appendSizeOption(size);
+        });
+        $('#category-list').after(appendSizeBox(insertHTML));
       })
-      $('#size-box').css('display','block');
     }else{
-      $('#size-box').css('display','none');
+      $('#size-box').remove();
     }
   });
 });
