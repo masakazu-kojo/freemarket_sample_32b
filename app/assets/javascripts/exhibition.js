@@ -20,12 +20,25 @@ $(function(){
   }
   // file_fieldのnameに動的なindexをつける為の配列
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-  let image_count = [];
+  // let image_count = [];
   // // 既に使われているindexを除外
-  // lastIndex = $('.js-file_group:last').data('index');
-  // fileIndex.splice(0, lastIndex);
+  lastIndex = $('.js-file_group:last').data('index');
+  fileIndex.splice(0, lastIndex+1);
   // $('.hidden-destroy').hide();
-
+  let image_count = lastIndex + 1
+  console.log(image_count);
+  if (lastIndex >= 0 && lastIndex <= 3) {
+    let boxWidth = (100 - (lastIndex+1)*20) + "%";
+    $('#upload-box').css('width', boxWidth);
+  } else if (lastIndex == 4) {
+    let boxWidth = 100 + "%";
+    $('#upload-box').css('width', boxWidth);
+  } else if (lastIndex >= 5 && lastIndex <= 8) {
+    let boxWidth = (100 - (lastIndex-4)*20) + "%";
+    $('#upload-box').css('width', boxWidth);
+  } else {
+    $('#upload-box').css('display','none');
+  };
   $('#upload-box').on('change', '.file_upload', function(e) {
     const targetIndex = $(this).parent().data('index');
     // ファイルのブラウザ上でのURLを取得する
@@ -38,12 +51,14 @@ $(function(){
       $('#item-previews').prepend(buildImg(targetIndex, blobUrl));
       // fileIndexの先頭の数字を使ってinputを作る
       $('#upload-box').prepend(buildFileField(fileIndex[0]));
-      image_count.push(fileIndex[0]);
-      if (image_count.length >= 1 && image_count.length <= 4) {
+      // image_count.push(fileIndex[0]);
+      image_count++;
+      console.log(image_count);
+      if (image_count >= 1 && image_count <= 4) {
         $('#upload-box').css('width','-=20%');
-      } else if (image_count.length == 5) {
+      } else if (image_count == 5) {
         $('#upload-box').css('width','+=80%');
-      } else if (image_count.length >= 6 && image_count.length <= 9) {
+      } else if (image_count >= 6 && image_count <= 9) {
         $('#upload-box').css('width','-=20%');
       } else {
         $('#upload-box').css('display','none');
@@ -65,12 +80,12 @@ $(function(){
     // if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
     $(`img[data-index="${targetIndex}"]`).remove();
     $(`.js-file_group[data-index="${targetIndex}"]`).remove();
-    image_count.shift();
-    if (image_count.length == 9) {
+    image_count--;
+    if (image_count == 9) {
       $('#upload-box').css('display','inline-block');
-    } else if (image_count.length >= 5 && image_count.length <= 8) {
+    } else if (image_count >= 5 && image_count <= 8) {
       $('#upload-box').css('width','+=20%');
-    } else if (image_count.length == 4) {
+    } else if (image_count == 4) {
       $('#upload-box').css('width','-=80%');
     } else {
       $('#upload-box').css('width','+=20%');

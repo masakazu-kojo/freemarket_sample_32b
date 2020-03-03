@@ -11,12 +11,17 @@
             %P 出品画像
             %span 必須
           .container__sell-main__sell-box__item-container__sell-container__inner{id: "item-previews"}
-            -# .upload-box-image
-            -#   .upload-box-image__photo
-            -#     -# = image_tag item_image.image.url, data: { index: i }, width: "100", height: '100'
-            -#   .upload-box-image__remove
-            -#     削除
+            - if @item.persisted?
+              - @item.images.each_with_index do |item, i|
+                .upload-box-image{data: { index: i}}
+                  .upload-box-image__photo
+                    = image_tag item.image.url, data: { index: i }, width: "100", height: '100'
+                  .upload-box-image__remove{data: { index: i}}
+                    削除
             %label{id: "upload-box"}
+              - if @item.persisted?
+                .js-file_group{data:{index: @item.images.count}}
+                  %input{class: "file_upload", type: "file", name: "item[images_attributes][#{@item.images.count}][image]", id: "item_images_attributes_#{@item.images.count}_image"}/
               = f.fields_for :images do |i|
                 .js-file_group{data:{index: "#{i.index}"}}
                   = i.file_field :image,required: true , class: "file_upload"
