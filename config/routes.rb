@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'purchase/index'
-  get 'purchase/pay'
   devise_for :users
   root to: 'items#index'
 
