@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   resources :items do
     collection do
+      get 'get_category2', defaults: { format: 'json' }
+      get 'get_category3', defaults: { format: 'json' }
       get 'search'
     end
   end

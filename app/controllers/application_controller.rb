@@ -13,4 +13,84 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
+
+  # itemsからbrandを引き出し重複をなくすメソッド
+  def category_brands(items)
+    brands = []
+    items.each do |item|
+      if item[:brand_id].present?
+        brands << {id: item[:brand_id], name: Brand.find(item[:brand_id]).name}
+      end
+    end
+    brands.uniq!(&:first)
+    return brands
+  end
+  # itemsからbrandの頭文字を取得し重複を削除
+  def initial_index(items)
+    initials = []
+    items.each do |item|
+      if item[:brand_id].present?
+        initials << {initial: Brand.find(item[:brand_id]).name.slice(0),id: item[:brand_id] }
+      end
+    end
+    initials.uniq!(&:first)
+    return initials
+  end
+  # itemsから所属するcategorysの配列を取得、重複は削除
+  def items_category(items)
+    categorys = []
+    items.each do |item|
+      categorys << {id: item[:category_id], name: Category.find(item[:category_id]).name}
+    end
+    categorys.uniq!(&:first)
+    return categorys
+  end
+  # category3sのitems配列を作成
+  def category3_items_index(category3_ids)
+    items = []
+    category3_ids.each do |category3_id|
+      @category3_brand_items = Item.where(category_id: category3_id)
+      @category3_brand_items.each do |item|
+        items << item
+      end
+    end
+    return items
+  end
+  # category3sとbrandのitems配列を作成
+  def category3_items_show(category3_ids, brand_id)
+    items = []
+    category3_ids.each do |category3_id|
+      @category3_brand_items = Item.where(category_id: category3_id,brand_id: brand_id)
+      @category3_brand_items.each do |item|
+        items << item
+      end
+    end
+    return items
+  end
+
+  # categoryによって１、２、３の分類分けをしてitems配列作成
+  def selected_category_items(category)
+    selected_items = []
+    if category.id <= 13
+      category3s = category.indirects
+      category3s.each do |category|
+        items = Item.where(category_id: category.id)
+        items.each do |item|
+          selected_items << item
+        end
+      end
+    elsif category.id >= 100 && category.id < 10000
+      category3s = category.children
+      category3s.each do |category|
+        items = Item.where(category_id: category.id)
+        items.each do |item|
+          selected_items << item
+        end
+      end
+    else
+      items = Item.where(category_id: category.id)
+      selected_items = items
+    end
+    return selected_items
+  end
 end
