@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
     @item.images.new
     @brand = Brand.new
     @categorys = Category.all.order("id")
+    gon.image_count = @item.images.count
   end
 
   def edit
@@ -28,6 +29,7 @@ class ItemsController < ApplicationController
       @sizes = Size.find(@item.size_id).siblings
     else
     end
+    gon.image_count = @item.images.count
   end
 
   def create

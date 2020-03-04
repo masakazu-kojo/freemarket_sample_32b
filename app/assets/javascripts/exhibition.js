@@ -24,17 +24,17 @@ $(function(){
   lastIndex = $('.js-file_group:last').data('index');
   fileIndex.splice(0, lastIndex);
   // $('.hidden-destroy').hide();
-  let image_count = lastIndex + 1
-  console.log(lastIndex);
+  let image_count = gon.image_count
+  console.log(image_count);
   console.log(fileIndex);
-  if (lastIndex >= 0 && lastIndex <= 3) {
-    let boxWidth = (100 - (lastIndex+1)*20) + "%";
+  if (image_count >= 0 && image_count <= 4) {
+    let boxWidth = (100 - (image_count)*20) + "%";
     $('#upload-box').css('width', boxWidth);
-  } else if (lastIndex == 4) {
+  } else if (image_count == 5) {
     let boxWidth = 100 + "%";
     $('#upload-box').css('width', boxWidth);
-  } else if (lastIndex >= 5 && lastIndex <= 8) {
-    let boxWidth = (100 - (lastIndex-4)*20) + "%";
+  } else if (image_count >= 6 && image_count <= 9) {
+    let boxWidth = (100 - (image_count-5)*20) + "%";
     $('#upload-box').css('width', boxWidth);
   } else {
     $('#upload-box').css('display','none');

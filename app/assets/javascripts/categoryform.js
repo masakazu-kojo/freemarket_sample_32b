@@ -40,7 +40,18 @@ $(function(){
                   </div>`;
     return html;
   }
-  
+  // ブランドの表示作成
+  function appendBrandBox(){
+    const html = `<div id="brand-box">
+                    <div class="container__sell-main__sell-box__item-container__cleafix__form-box__form-any">
+                      <p>ブランド</p><span>任意</span>
+                    </div>
+                    <div class="container__sell-main__sell-box__item-container__cleafix__form-box__form-brand">
+                      <input placeholder="ブランド名" class="select_form" type="text" value="" name="brand[name]" id="brand_name">
+                    </div>
+                  </div>`;
+    return html;
+  }
   // カテゴリー1選択後のイベント
   $('#item_category_id').on('change', function(){
     var Category1Id = $('#category1-box option:selected').val();  //選択されたカテゴリー1のIDを取得
@@ -55,7 +66,7 @@ $(function(){
         $('#category2-form').remove(); //親が変更された時、子以下を削除するする
         $('#category3-form').remove();
         $('#size-box').remove();
-        $('#brand-box').css('display','none');
+        $('#brand-box').remove();
         let insertHTML = '';
         category2s.forEach(function(category2){
           insertHTML += appendOption(category2);
@@ -70,7 +81,7 @@ $(function(){
       $('#category2-form').remove(); //親カテゴリーが初期値になった時、子以下を削除するする
       $('#category3-form').remove();
       $('#size-box').remove();
-      $('#brand-box').css('display','none');
+      $('#brand-box').remove();
     }
   });
   // カテゴリー2選択後のイベント
@@ -86,13 +97,13 @@ $(function(){
       .done(function(category3s){
         $('#category3-form').remove(); //親が変更された時、子以下を削除するする
         $('#size-box').remove();
-        $('#brand-box').css('display','none');
+        $('#brand-box').remove();
         let insertHTML = '';
         category3s.forEach(function(category3){
           insertHTML += appendOption(category3);
         });
         $('#category1-box').append(appendCategory3Box(insertHTML));
-        $('#brand-box').css('display','block');
+        $('#after_brand').before(appendBrandBox());
       })
       .fail(function(){
         alert('カテゴリー取得に失敗しました');
@@ -100,7 +111,7 @@ $(function(){
     }else{
       $('#category3-form').remove(); //カテゴリー3が初期値になった時、子以下を削除するする
       $('#size-box').remove();
-      $('#brand-box').css('display','none');
+      $('#brand-box').remove();
     }
   });
   // カテゴリー3選択後のイベント

@@ -98,7 +98,7 @@ body {
               border: 2px dashed #c0c0c0;
               background-color: #f5f5f5;
               .file_upload {
-                // display: none;
+                display: none;
               }
               .upload-box__icon {
                 height: 40px;
@@ -225,9 +225,6 @@ body {
             width: 400px;
             margin: 0;
             margin: 20px;
-            #brand-box {
-              display: none;
-            }
             &__form-name{
               margin: 0px;
               padding: 0px;
