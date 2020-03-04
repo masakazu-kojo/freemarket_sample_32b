@@ -24,7 +24,9 @@
                   %input{class: "file_upload", type: "file", name: "item[images_attributes][#{@item.images.count}][image]", id: "item_images_attributes_#{@item.images.count}_image"}/
               = f.fields_for :images do |i|
                 .js-file_group{data:{index: "#{i.index}"}}
-                  = i.file_field :image,required: true , class: "file_upload"
+                  = i.file_field :image, class: "file_upload"
+                - if @item.persisted?
+                  = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy'
               .upload-box__icon
                 %i{class:"fas fa-camera fa-lg photo-black"}
                 %p クリックして
@@ -73,12 +75,13 @@
                       #{category2.name}
                 = f.collection_select(:category_id, @category3s, :id, :name, {prompt: "選択してください"},required: true, class: "select_form",id: "category3-form")
               %p{id:"category-box_invalid"} 入力してください
-            #size-box
-              .container__sell-main__sell-box__item-container__cleafix__form-box__form-any
-                %P サイズ 
-                %span 任意
-              .container__sell-main__sell-box__item-container__cleafix__form-box__select
-                = f.collection_select(:size_id, @sizes, :id, :size, {prompt: "選択してください"}, class: "select_form")
+            - if @item.size_id.present?
+              #size-box
+                .container__sell-main__sell-box__item-container__cleafix__form-box__form-any
+                  %P サイズ 
+                  %span 任意
+                .container__sell-main__sell-box__item-container__cleafix__form-box__select
+                  = f.collection_select(:size_id, @sizes, :id, :size, {prompt: "選択してください"}, class: "select_form")
             #brand-box
               .container__sell-main__sell-box__item-container__cleafix__form-box__form-any
                 %P ブランド 

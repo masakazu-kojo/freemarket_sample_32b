@@ -19,14 +19,14 @@ $(function(){
     return html;
   }
   // file_fieldのnameに動的なindexをつける為の配列
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-  // let image_count = [];
+  let fileIndex = [2,3,4,5,6,7,8,9,10,11];
   // // 既に使われているindexを除外
   lastIndex = $('.js-file_group:last').data('index');
-  fileIndex.splice(0, lastIndex+1);
+  fileIndex.splice(0, lastIndex);
   // $('.hidden-destroy').hide();
   let image_count = lastIndex + 1
-  console.log(image_count);
+  console.log(lastIndex);
+  console.log(fileIndex);
   if (lastIndex >= 0 && lastIndex <= 3) {
     let boxWidth = (100 - (lastIndex+1)*20) + "%";
     $('#upload-box').css('width', boxWidth);
@@ -39,6 +39,11 @@ $(function(){
   } else {
     $('#upload-box').css('display','none');
   };
+
+  // edit画面初期時ブランド表示
+  if (lastIndex) {
+    $('#brand-box').css('display','block');};
+
   $('#upload-box').on('change', '.file_upload', function(e) {
     const targetIndex = $(this).parent().data('index');
     // ファイルのブラウザ上でのURLを取得する
@@ -53,7 +58,6 @@ $(function(){
       $('#upload-box').prepend(buildFileField(fileIndex[0]));
       // image_count.push(fileIndex[0]);
       image_count++;
-      console.log(image_count);
       if (image_count >= 1 && image_count <= 4) {
         $('#upload-box').css('width','-=20%');
       } else if (image_count == 5) {
@@ -76,8 +80,6 @@ $(function(){
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parent().remove();
-    // 画像入力欄が0個にならないようにしておく
-    // if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
     $(`img[data-index="${targetIndex}"]`).remove();
     $(`.js-file_group[data-index="${targetIndex}"]`).remove();
     image_count--;

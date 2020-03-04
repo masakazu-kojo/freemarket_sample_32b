@@ -16,28 +16,29 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    # @item.images.new
     @category3 = Category.find(@item.category_id)
     @category2 = @category3.parent
     @category1 = @category3.root
-    # @item.images.new
     @brand = @item.brand
     @category1s = @category3.root.siblings
     @category2s = @category3.parent.siblings
     @category3s = @category3.siblings
-    @sizes = Size.find(@item.size_id).siblings
+    if @item.size_id.present?
+      @sizes = Size.find(@item.size_id).siblings
+    else
+    end
   end
 
   def create
     @brand = Brand.new(brand_params)
     if @brand.save
-      @item = Item.new(item_params)
     elsif @brand.name.present?
-      b_id = Brand.find_by(name: @brand.name).id
-      @item = Item.new(item_params)
-      @item["brand_id"] = b_id
+      @brand = Brand.find_by(name: @brand.name)
     else
-      @item = Item.new(item_params)
+    # ブランド空欄の時の処理
     end
+    @item = Item.new(item_params)
     if @item.save
       Trading.create(item_id: @item.id, user_id: current_user.id)
       redirect_to new_item_path, notice: "出品しました"
@@ -47,10 +48,18 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(product_params)
-      redirect_to root_path
+    @brand = Brand.new(brand_params)
+    @item = Item.find(params[:id])
+    if @brand.save
+    elsif @brand.name.present?
+      @brand = Brand.find_by(name: @brand.name)
     else
-      render :edit
+    # ブランド空欄の時の処理
+    end
+    if @item.update(item_params)
+      redirect_to new_item_path, notice: "編集しました"
+    else
+      render :edit, notice: "編集に失敗しました"
     end
   end
   

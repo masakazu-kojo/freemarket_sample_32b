@@ -32,7 +32,7 @@ $(function(){
                       <P>サイズ</P><span>任意</span>
                     </div>
                     <div class="container__sell-main__sell-box__item-container__cleafix__form-box__select">
-                      <select required="required" class="select_form" name= 'item[size_id]'  id= 'size-box'>
+                      <select class="select_form" name= 'item[size_id]'  id= 'size-box'>
                       <option value="">選択してください</option>
                       ${insertHTML}
                       </select>
@@ -40,6 +40,7 @@ $(function(){
                   </div>`;
     return html;
   }
+  
   // カテゴリー1選択後のイベント
   $('#item_category_id').on('change', function(){
     var Category1Id = $('#category1-box option:selected').val();  //選択されたカテゴリー1のIDを取得
