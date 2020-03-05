@@ -25,8 +25,6 @@ $(function(){
   fileIndex.splice(0, lastIndex);
   // $('.hidden-destroy').hide();
   let image_count = gon.image_count
-  console.log(image_count);
-  console.log(fileIndex);
   if (image_count >= 0 && image_count <= 4) {
     let boxWidth = (100 - (image_count)*20) + "%";
     $('#upload-box').css('width', boxWidth);
@@ -39,10 +37,6 @@ $(function(){
   } else {
     $('#upload-box').css('display','none');
   };
-
-  // edit画面初期時ブランド表示
-  if (lastIndex) {
-    $('#brand-box').css('display','block');};
 
   $('#upload-box').on('change', '.file_upload', function(e) {
     const targetIndex = $(this).parent().data('index');
@@ -94,6 +88,7 @@ $(function(){
     }
   });
   // バリデーション
+  
   $('#item_submit').on('click', function(){
     let item_name = $('#item_name').val();
     let item_explanation = $('#item_explanation').val();
@@ -104,8 +99,9 @@ $(function(){
     let item_days_to_ship = $('#item_days_to_ship').val();
     let item_price = $('#item_price').val();
     // 画像
-    if (image_count.length == 0){
+    if (image_count == 0){
       $('#item_image_invalid').css('display','block');
+      return false;
     }else{
       $('#item_image_invalid').css('display','none');
     }
@@ -173,7 +169,5 @@ $(function(){
       $('#item_price_invalid').css('display','none');
       $('#item_price').css('border','1px solid #ccc');
     }
-
-
   });
 });

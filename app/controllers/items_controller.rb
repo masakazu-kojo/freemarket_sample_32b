@@ -7,17 +7,14 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @items = Item.order("id DESC").limit(3)
     @item = Item.new
     @item.images.new
     @brand = Brand.new
-    @categorys = Category.all.order("id")
     gon.image_count = @item.images.count
   end
 
   def edit
     @item = Item.find(params[:id])
-    # @item.images.new
     @category3 = Category.find(@item.category_id)
     @category2 = @category3.parent
     @category1 = @category3.root
