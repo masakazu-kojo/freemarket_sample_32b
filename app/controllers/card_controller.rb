@@ -1,11 +1,12 @@
 class CardController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_card, except: :create
+  before_action :set_card, except: [:new, :create]
 
   require 'payjp'
 
   def new
-    redirect_to root_path if @card.exists?
+    @card = Card.where(user_id: current_user.id)
+    redirect_to action: "show" if @card.exists?
   end
 
   def create

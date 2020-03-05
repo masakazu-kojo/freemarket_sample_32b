@@ -338,7 +338,6 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
-  fog-aws
   dotenv-rails
   fog-aws
   font-awesome-sass

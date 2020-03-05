@@ -21,6 +21,11 @@ Rails.application.routes.draw do
       get 'get_category3', defaults: { format: 'json' }
       get 'search'
     end
+    resources :purchase, only: [:index] do
+      collection do
+        post 'pay'
+      end
+    end
   end
   
   resources :brands, only: [:index,:create,:edit,:update] do
@@ -38,12 +43,6 @@ Rails.application.routes.draw do
       post 'create', to: 'card#create'
       post 'delete', to: 'card#delete'
       post 'show', to: 'card#show'
-    end
-  end
-
-  resources :purchase, only: [:index] do
-    collection do
-      post 'pay'
     end
   end
   

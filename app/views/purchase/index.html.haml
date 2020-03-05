@@ -1,9 +1,11 @@
 = render 'shared/header'
 
 %h1 テスト
-%h2 10,000円支払います
+%h2<
+  = @item.price
+  円支払います。
 
-= form_tag(pay_purchase_index_path, method: :post)  do
+= form_tag(pay_item_purchase_index_path(@item), method: :post)  do
   = submit_tag "確定"
 
 = render 'shared/footer'
