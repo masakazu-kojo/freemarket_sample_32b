@@ -1,0 +1,9 @@
+= render 'shared/header'
+
+%h1 テスト
+%h2 10,000円支払います
+
+= form_tag(pay_purchase_index_path, method: :post)  do
+  = submit_tag "確定"
+
+= render 'shared/footer'
