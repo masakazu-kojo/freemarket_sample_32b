@@ -24,18 +24,16 @@ class ItemsController < ApplicationController
     @category3s = @category3.siblings
     if @item.size_id.present?
       @sizes = Size.find(@item.size_id).siblings
-    else
     end
     gon.image_count = @item.images.count
   end
 
   def create
     @brand = Brand.new(brand_params)
-    if @brand.save
-    elsif @brand.name.present?
-      @brand = Brand.find_by(name: @brand.name)
-    else
-    # ブランド空欄の時の処理
+    unless @brand.save
+      if @brand.name.present?
+        @brand = Brand.find_by(name: @brand.name)
+      end
     end
     @item = Item.new(item_params)
     if @item.save
@@ -49,11 +47,10 @@ class ItemsController < ApplicationController
   def update
     @brand = Brand.new(brand_params)
     @item = Item.find(params[:id])
-    if @brand.save
-    elsif @brand.name.present?
-      @brand = Brand.find_by(name: @brand.name)
-    else
-    # ブランド空欄の時の処理
+    unless @brand.save
+      if @brand.name.present?
+        @brand = Brand.find_by(name: @brand.name)
+      end
     end
     if @item.update(item_params)
       redirect_to new_item_path, notice: "編集しました"
@@ -64,18 +61,18 @@ class ItemsController < ApplicationController
   
   #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
   def get_category2
-    @category2s = Category.find("#{params[:category1_id]}").children
+    @category2s = Category.find(params[:category1_id]).children
   end
 
   # 子カテゴリーが選択された後に動くアクション
   #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
   def get_category3
-    @category3s = Category.find("#{params[:category2_id]}").children
+    @category3s = Category.find(params[:category2_id]).children
   end
 
   # 孫カテゴリーが選択された後に動くアクション
   def get_size
-    @category2 = Category.find("#{params[:category3_id]}").parent
+    @category2 = Category.find(params[:category3_id]).parent
     @sizes = @category2.sizes[0].children
   end
 
@@ -84,6 +81,12 @@ class ItemsController < ApplicationController
   end
 
   def show
+  end
+  
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to root_path
   end
 
   private
