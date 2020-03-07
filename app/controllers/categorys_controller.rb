@@ -4,7 +4,7 @@ class CategorysController < ApplicationController
 
   def index
     @categorys = Category.order("id ASC")
-    @category1s = @categorys.limit(13)
+    @categorys_root = @categorys.limit(13)
     
   end
   

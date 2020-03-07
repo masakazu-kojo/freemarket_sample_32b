@@ -56,26 +56,26 @@
               %p カテゴリー
               %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select{id: "category-list"}
-              .category-box{id: "category1-box"}
+              .category-box{id: "category_root-box"}
                 %select{required: "required", class:"select_form", id:"item_category_id"}
                   - if @item.persisted?
-                    %option{selected: "selected",value: "#{@category1.id}"}
-                      #{@category1.name}
+                    %option{selected: "selected",value: "#{@category_root.id}"}
+                      #{@category_root.name}
                   %option{value: ""}
                     選択してください
-                  - @category1s.each do |category1|
-                    %option(value="#{category1.id}")
-                      #{category1.name}
+                  - @categorys_root.each do |category_root|
+                    %option(value="#{category_root.id}")
+                      #{category_root.name}
                 - if @item.persisted?
-                  %select{required: "required", class:"select_form", id:"category2-form"}
-                    %option{selected: "selected",value: "#{@category2.id}"}
-                      #{@category2.name}
+                  %select{required: "required", class:"select_form", id:"category_parent-form"}
+                    %option{selected: "selected",value: "#{@category_parent.id}"}
+                      #{@category_parent.name}
                     %option{value: ""}
                       選択してください
-                    - @category2s.each do |category2|
-                      %option(value="#{category2.id}")
-                        #{category2.name}
-                  = f.collection_select(:category_id, @category3s, :id, :name, {prompt: "選択してください"},required: true, class: "select_form",id: "category3-form")
+                    - @categorys_parent.each do |category_parent|
+                      %option(value="#{category_parent.id}")
+                        #{category_parent.name}
+                  = f.collection_select(:category_id, @categorys, :id, :name, {prompt: "選択してください"},required: true, class: "select_form",id: "category-form")
               %p{id:"category-box_invalid"} 入力してください
             - if @item.size_id.present?
               #size-box

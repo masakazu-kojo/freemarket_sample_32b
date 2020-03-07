@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_category, only: [:new, :create]
+  before_action :set_item, only: [:edit, :update]
 
   def index
     @itemsPickCategory = Item.order("id DESC").limit(3)
@@ -10,18 +10,18 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     @brand = Brand.new
+    @categorys_root = Category.order("id").limit(13)
     gon.image_count = @item.images.count
   end
 
   def edit
-    @item = Item.find(params[:id])
-    @category3 = Category.find(@item.category_id)
-    @category2 = @category3.parent
-    @category1 = @category3.root
+    @category = Category.find(@item.category_id)
+    @category_parent = @category.parent
+    @category_root = @category.root
     @brand = @item.brand
-    @category1s = @category3.root.siblings
-    @category2s = @category3.parent.siblings
-    @category3s = @category3.siblings
+    @categorys_root = @category.root.siblings
+    @categorys_parent = @category.parent.siblings
+    @categorys = @category.siblings
     if @item.size_id.present?
       @sizes = Size.find(@item.size_id).siblings
     end
@@ -46,7 +46,6 @@ class ItemsController < ApplicationController
 
   def update
     @brand = Brand.new(brand_params)
-    @item = Item.find(params[:id])
     unless @brand.save
       if @brand.name.present?
         @brand = Brand.find_by(name: @brand.name)
@@ -60,20 +59,20 @@ class ItemsController < ApplicationController
   end
   
   #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
-  def get_category2
-    @category2s = Category.find(params[:category1_id]).children
+  def get_category_parent
+    @categorys_parent = Category.find(params[:category_root_id]).children
   end
 
   # 子カテゴリーが選択された後に動くアクション
   #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
-  def get_category3
-    @category3s = Category.find(params[:category2_id]).children
+  def get_category
+    @categorys = Category.find(params[:category_parent_id]).children
   end
 
   # 孫カテゴリーが選択された後に動くアクション
   def get_size
-    @category2 = Category.find(params[:category3_id]).parent
-    @sizes = @category2.sizes[0].children
+    @category_parent = Category.find(params[:category_id]).parent
+    @sizes = @category_parent.sizes[0].children
   end
 
   def search
@@ -91,10 +90,11 @@ class ItemsController < ApplicationController
   # end
 
   private
-
-  def set_category
-    @category1s = Category.order("id").limit(13)
+  
+  def set_item
+    @item = Item.find(params[:id])
   end
+
   def brand_params
     params.require(:brand).permit(:name)
   end
