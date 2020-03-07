@@ -63,7 +63,7 @@
                       #{@category_root.name}
                   %option{value: ""}
                     選択してください
-                  - @categorys_root.each do |category_root|
+                  - @categories_root.each do |category_root|
                     %option(value="#{category_root.id}")
                       #{category_root.name}
                 - if @item.persisted?
@@ -72,10 +72,10 @@
                       #{@category_parent.name}
                     %option{value: ""}
                       選択してください
-                    - @categorys_parent.each do |category_parent|
+                    - @categories_parent.each do |category_parent|
                       %option(value="#{category_parent.id}")
                         #{category_parent.name}
-                  = f.collection_select(:category_id, @categorys, :id, :name, {prompt: "選択してください"},required: true, class: "select_form",id: "category-form")
+                  = f.collection_select(:category_id, @categories, :id, :name, {prompt: "選択してください"},required: true, class: "select_form",id: "category-form")
               %p{id:"category-box_invalid"} 入力してください
             - if @item.size_id.present?
               #size-box

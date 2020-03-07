@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.new
     @brand = Brand.new
-    @categorys_root = Category.order("id").limit(13)
+    @categories_root = Category.order("id").limit(13)
     gon.image_count = @item.images.count
   end
 
@@ -19,9 +19,9 @@ class ItemsController < ApplicationController
     @category_parent = @category.parent
     @category_root = @category.root
     @brand = @item.brand
-    @categorys_root = @category.root.siblings
-    @categorys_parent = @category.parent.siblings
-    @categorys = @category.siblings
+    @categories_root = @category.root.siblings
+    @categories_parent = @category.parent.siblings
+    @categories = @category.siblings
     if @item.size_id.present?
       @sizes = Size.find(@item.size_id).siblings
     end
@@ -38,7 +38,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       Trading.create(item_id: @item.id, user_id: current_user.id)
-      redirect_to new_item_path, notice: "出品しました"
+      redirect_to root_path, notice: "出品しました"
     else
       render :new, notice: "出品に失敗しました"
     end
@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
       end
     end
     if @item.update(item_params)
-      redirect_to new_item_path, notice: "編集しました"
+      redirect_to root_path, notice: "編集しました"
     else
       render :edit, notice: "編集に失敗しました"
     end
@@ -60,13 +60,13 @@ class ItemsController < ApplicationController
   
   #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
   def get_category_parent
-    @categorys_parent = Category.find(params[:category_root_id]).children
+    @categories_parent = Category.find(params[:category_root_id]).children
   end
 
   # 子カテゴリーが選択された後に動くアクション
   #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
   def get_category
-    @categorys = Category.find(params[:category_parent_id]).children
+    @categories = Category.find(params[:category_parent_id]).children
   end
 
   # 孫カテゴリーが選択された後に動くアクション
@@ -90,7 +90,7 @@ class ItemsController < ApplicationController
   # end
 
   private
-  
+
   def set_item
     @item = Item.find(params[:id])
   end

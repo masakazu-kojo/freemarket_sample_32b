@@ -62,14 +62,14 @@ $(function(){
         data: { category_root_id: CategoryRootId },
         dataType: 'json'
       })
-      .done(function(categorys_parent){
+      .done(function(categories_parent){
         $('#category_parent-form').remove(); //親が変更された時、子以下を削除するする
         $('#category-form').remove();
         $('#size-box').remove();
         $('#brand-box').remove();
         let insertHTML = '';
-        categorys_parent.forEach(function(categorys_parent){
-          insertHTML += appendOption(categorys_parent);
+        categories_parent.forEach(function(categories_parent){
+          insertHTML += appendOption(categories_parent);
         });
         $('#category_root-box').append(appendCategoryParentBox(insertHTML));
 
@@ -94,12 +94,12 @@ $(function(){
         data: { category_parent_id: CategoryParentId },
         dataType: 'json'
       })
-      .done(function(categorys){
+      .done(function(categories){
         $('#category-form').remove(); //親が変更された時、子以下を削除するする
         $('#size-box').remove();
         $('#brand-box').remove();
         let insertHTML = '';
-        categorys.forEach(function(category){
+        categories.forEach(function(category){
           insertHTML += appendOption(category);
         });
         $('#category_root-box').append(appendCategoryBox(insertHTML));

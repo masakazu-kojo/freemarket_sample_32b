@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :categorys, only: [:index, :show]
+  resources :categories, only: [:index, :show]
 
   resources :card, only: [:new, :show] do
     collection do

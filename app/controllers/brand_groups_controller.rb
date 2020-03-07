@@ -2,7 +2,7 @@ class BrandGroupsController < ApplicationController
   
 
   def index
-    @categorys_root = Category.order("id").limit(13)
+    @categories_root = Category.order("id").limit(13)
     @category_root = Category.find(params[:brand_id])
     @category_ids = @category_root.indirect_ids
     @items = category_items_index(@category_ids)
