@@ -1,8 +1,8 @@
 = link_to item_path(id: item.id), class: "items-box" do
-  %figure{class: "items-box__photo"}
+  %figure
   - item.images.each_with_index do |item_image,i|
     -if i == 0
-      = image_tag item_image.image.url
+      = image_tag item_image.image.url, width: "188", height: '160'
   .items-box__body
     %h3{class: "items-box__name"}
       ="#{item.name}"
@@ -13,7 +13,6 @@
         %i{class: "far fa-heart"}
         %span 10
 
-
-    -# = link_to "#{item.name}",edit_item_path(item.id)
-    -# = link_to "削除",item_path(item.id), method: :delete
-    -# テスト用の仮リンク
+  -# = link_to "#{item.name}",edit_item_path(item.id)
+  -# = link_to "削除",item_path(item.id), method: :delete
+  -# テスト用の仮リンク
