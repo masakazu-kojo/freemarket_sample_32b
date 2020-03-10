@@ -62,12 +62,19 @@
                   z-index: 2;
                   border-radius: 0 16px 16px 0;
                 }
+                // お気に入り機能アイコン
                 &__like {
                   position: absolute;
                   right: 12px;
                   bottom: 10px;
                   padding-left: 32px;
                   background: linear-gradient(to right, rgba(255,255,255,0), #fff 24px);
+                  .hidden-favorite_on {
+                    display: none;
+                  }
+                  .hidden-favorite_off {
+                    display: none;
+                  }
                 }
               }
             }

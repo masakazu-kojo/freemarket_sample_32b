@@ -75,6 +75,12 @@ class ItemsController < ApplicationController
     @sizes = @category_parent.sizes[0].children
   end
 
+  # 孫カテゴリーが選択された後に動くアクション
+  def get_favorite
+    @category_parent = Category.find(params[:category_id]).parent
+    @sizes = @category_parent.sizes[0].children
+  end
+
   def search
     @items = Item.all.order("id DESC")
   end

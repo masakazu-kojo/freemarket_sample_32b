@@ -48,4 +48,6 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :favorites, only: [:index, :create, :destroy]
+
 end
