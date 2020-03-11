@@ -7,6 +7,8 @@
         %li.searchPickupArea__list
           = link_to item_path(item.id) do
             .searchPickupArea__list--image
+              - if item.images.present?
+                = image_tag @itemImage[:"#{item.id}"].image.url
             .searchPickupArea__list__index
               .searchPickupArea__list__index--name
                 = item.name
@@ -25,6 +27,8 @@
             .searchPickupArea__list--image
               .item__soldout--text
                 %span SOLD
+              - if item.images.present?
+                = image_tag @itemImage[:"#{item.id}"].image.url
             .searchPickupArea__list__index
               .searchPickupArea__list__index--name
                 = item.name
