@@ -6,17 +6,17 @@
   .cardInfo__detail
     .cardInfo__detail--name
       クレジットカードブランド：
-    .cardInfo__detail--content
+    .cardInfo__detail__content
       = @default_card.brand
   .cardInfo__detail
     .cardInfo__detail--name
       クレジットカード番号：
-    .cardInfo__detail--content
+    .cardInfo__detail__content
       = "**** **** **** " + @default_card.last4
   .cardInfo__detail
     .cardInfo__detail--name
       有効期限：
-    .cardInfo__detail--content
+    .cardInfo__detail__content
       = @exp_month + "月 / " + @exp_year + "年"
   = form_tag(delete_card_index_path, method: :post, id: 'deleteCardForm',  name: "deleteCard") do
     %button クレジットカード情報を削除して新たに登録する

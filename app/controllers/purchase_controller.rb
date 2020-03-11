@@ -17,7 +17,7 @@ class PurchaseController < ApplicationController
   def pay
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     charge = Payjp::Charge.create(
-    amount: 10000,
+    amount: @item.price,
     customer: @card.customer_id,
     currency: 'jpy',
     )
