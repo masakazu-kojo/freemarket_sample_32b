@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(version: 2020_03_05_145841) do
     t.index ["name"], name: "index_categories_on_name"
   end
 
+  create_table "category_sizes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "size_id"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_category_sizes_on_category_id"
+    t.index ["size_id"], name: "index_category_sizes_on_size_id"
+  end
+
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "comment", null: false
     t.bigint "item_id", null: false
@@ -53,7 +60,6 @@ ActiveRecord::Schema.define(version: 2020_03_05_145841) do
     t.string "name", null: false
     t.text "explanation", null: false
     t.integer "price", null: false
-    t.string "size"
     t.string "condition", null: false
     t.string "sent_charge", null: false
     t.string "shipping_area", null: false
@@ -63,9 +69,11 @@ ActiveRecord::Schema.define(version: 2020_03_05_145841) do
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "size_id"
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["name"], name: "index_items_on_name"
+    t.index ["size_id"], name: "index_items_on_size_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -76,6 +84,13 @@ ActiveRecord::Schema.define(version: 2020_03_05_145841) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_purchases_on_item_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
+  create_table "sizes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "size"
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_sizes_on_ancestry"
+    t.index ["size"], name: "index_sizes_on_size"
   end
 
   create_table "tradings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -102,10 +117,13 @@ ActiveRecord::Schema.define(version: 2020_03_05_145841) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "category_sizes", "categories"
+  add_foreign_key "category_sizes", "sizes"
   add_foreign_key "comments", "items"
   add_foreign_key "images", "items"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
+  add_foreign_key "items", "sizes"
   add_foreign_key "items", "users"
   add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
