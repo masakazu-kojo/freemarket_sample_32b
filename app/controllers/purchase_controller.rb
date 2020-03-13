@@ -20,6 +20,9 @@ class PurchaseController < ApplicationController
   end
 
   def pay
+    if @item.sent_charge == "1"
+      @item.price = @item.price + 550
+    end
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     charge = Payjp::Charge.create(
     amount: @item.price,
