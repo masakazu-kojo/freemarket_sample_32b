@@ -1,9 +1,11 @@
-
 = render 'shared/header'
 
-%h1 テスト
-%h2 支払いが完了しました
-
-= button_to 'TOPへ戻る', root_path, method: :get
+.payInfo
+  .payInfo__title
+    %h1 購入完了
+  .payInfo__purchase
+    %h2= "支払金額：¥" + "#{@item.price}"
+  .payInfo__btn
+    = button_to 'TOPへ戻る', root_path, method: :get
 
 = render 'shared/footer'
