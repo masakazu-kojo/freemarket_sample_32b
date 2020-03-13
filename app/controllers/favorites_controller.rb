@@ -1,6 +1,7 @@
 class FavoritesController < ApplicationController
 
   def create
+    @like_total = Favorite.where(item_id: favorite_params[:item_id]).length
     @favorite = Favorite.new(favorite_params)
     @favorite.save
     respond_to do |format|
@@ -9,8 +10,12 @@ class FavoritesController < ApplicationController
   end
   
   def destroy
+    @like_total = Favorite.where(item_id: favorite_params[:item_id]).length
     @favorite = Favorite.where(favorite_params)[0]
     @favorite.delete
+    respond_to do |format|
+      format.json
+    end
   end
 
   private

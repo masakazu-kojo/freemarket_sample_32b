@@ -1,4 +1,4 @@
-.default-container-brand-groups {
+.default-container-gray {
   width: 100%;
   height: 100%;
   background-color: #F5F5F5;
@@ -69,11 +69,16 @@
                   bottom: 10px;
                   padding-left: 32px;
                   background: linear-gradient(to right, rgba(255,255,255,0), #fff 24px);
-                  .hidden-favorite_on {
-                    display: none;
-                  }
-                  .hidden-favorite_off {
-                    display: none;
+                  display: flex;
+                  // .hidden-favorite_on {
+                  //   display: none;
+                  // }
+                  // .hidden-favorite_off {
+                  //   display: none;
+                  // }
+                  .like_total {
+                    margin-left: 3px;
+                    font-size: 16px;
                   }
                 }
               }
