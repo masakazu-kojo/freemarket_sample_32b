@@ -19,12 +19,24 @@ $(function(){
     return html;
   }
   // file_fieldのnameに動的なindexをつける為の配列
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-  let image_count = [];
+  let fileIndex = [2,3,4,5,6,7,8,9,10,11];
   // // 既に使われているindexを除外
-  // lastIndex = $('.js-file_group:last').data('index');
-  // fileIndex.splice(0, lastIndex);
+  lastIndex = $('.js-file_group:last').data('index');
+  fileIndex.splice(0, lastIndex);
   // $('.hidden-destroy').hide();
+  let image_count = gon.image_count
+  if (image_count >= 0 && image_count <= 4) {
+    let boxWidth = (100 - (image_count)*20) + "%";
+    $('#upload-box').css('width', boxWidth);
+  } else if (image_count == 5) {
+    let boxWidth = 100 + "%";
+    $('#upload-box').css('width', boxWidth);
+  } else if (image_count >= 6 && image_count <= 9) {
+    let boxWidth = (100 - (image_count-5)*20) + "%";
+    $('#upload-box').css('width', boxWidth);
+  } else {
+    $('#upload-box').css('display','none');
+  };
 
   $('#upload-box').on('change', '.file_upload', function(e) {
     const targetIndex = $(this).parent().data('index');
@@ -38,12 +50,13 @@ $(function(){
       $('#item-previews').prepend(buildImg(targetIndex, blobUrl));
       // fileIndexの先頭の数字を使ってinputを作る
       $('#upload-box').prepend(buildFileField(fileIndex[0]));
-      image_count.push(fileIndex[0]);
-      if (image_count.length >= 1 && image_count.length <= 4) {
+      // image_count.push(fileIndex[0]);
+      image_count++;
+      if (image_count >= 1 && image_count <= 4) {
         $('#upload-box').css('width','-=20%');
-      } else if (image_count.length == 5) {
+      } else if (image_count == 5) {
         $('#upload-box').css('width','+=80%');
-      } else if (image_count.length >= 6 && image_count.length <= 9) {
+      } else if (image_count >= 6 && image_count <= 9) {
         $('#upload-box').css('width','-=20%');
       } else {
         $('#upload-box').css('display','none');
@@ -61,22 +74,21 @@ $(function(){
     // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parent().remove();
-    // 画像入力欄が0個にならないようにしておく
-    // if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
     $(`img[data-index="${targetIndex}"]`).remove();
     $(`.js-file_group[data-index="${targetIndex}"]`).remove();
-    image_count.shift();
-    if (image_count.length == 9) {
+    image_count--;
+    if (image_count == 9) {
       $('#upload-box').css('display','inline-block');
-    } else if (image_count.length >= 5 && image_count.length <= 8) {
+    } else if (image_count >= 5 && image_count <= 8) {
       $('#upload-box').css('width','+=20%');
-    } else if (image_count.length == 4) {
+    } else if (image_count == 4) {
       $('#upload-box').css('width','-=80%');
     } else {
       $('#upload-box').css('width','+=20%');
     }
   });
   // バリデーション
+  
   $('#item_submit').on('click', function(){
     let item_name = $('#item_name').val();
     let item_explanation = $('#item_explanation').val();
@@ -87,8 +99,9 @@ $(function(){
     let item_days_to_ship = $('#item_days_to_ship').val();
     let item_price = $('#item_price').val();
     // 画像
-    if (image_count.length == 0){
+    if (image_count == 0){
       $('#item_image_invalid').css('display','block');
+      return false;
     }else{
       $('#item_image_invalid').css('display','none');
     }
@@ -156,7 +169,5 @@ $(function(){
       $('#item_price_invalid').css('display','none');
       $('#item_price').css('border','1px solid #ccc');
     }
-
-
   });
 });

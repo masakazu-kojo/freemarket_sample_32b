@@ -1,10 +1,10 @@
-class CategorysController < ApplicationController
+class CategoriesController < ApplicationController
 
   before_action :set_category, only: [:show]
 
   def index
-    @categorys = Category.order("id ASC")
-    @category1s = @categorys.limit(13)
+    @categories = Category.order("id ASC")
+    @categories_root = @categories.limit(13)
     
   end
   

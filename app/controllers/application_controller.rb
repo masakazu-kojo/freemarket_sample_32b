@@ -45,23 +45,23 @@ class ApplicationController < ActionController::Base
     categorys.uniq!(&:first)
     return categorys
   end
-  # category3sのitems配列を作成
-  def category3_items_index(category3_ids)
+  # categorysのitems配列を作成
+  def category_items_index(category_ids)
     items = []
-    category3_ids.each do |category3_id|
-      @category3_brand_items = Item.where(category_id: category3_id)
-      @category3_brand_items.each do |item|
+    category_ids.each do |category_id|
+      @category_brand_items = Item.where(category_id: category_id)
+      @category_brand_items.each do |item|
         items << item
       end
     end
     return items
   end
-  # category3sとbrandのitems配列を作成
-  def category3_items_show(category3_ids, brand_id)
+  # categorysとbrandのitems配列を作成
+  def category_items_show(category_ids, brand_id)
     items = []
-    category3_ids.each do |category3_id|
-      @category3_brand_items = Item.where(category_id: category3_id,brand_id: brand_id)
-      @category3_brand_items.each do |item|
+    category_ids.each do |category_id|
+      @category_brand_items = Item.where(category_id: category_id,brand_id: brand_id)
+      @category_brand_items.each do |item|
         items << item
       end
     end
@@ -72,16 +72,16 @@ class ApplicationController < ActionController::Base
   def selected_category_items(category)
     selected_items = []
     if category.id <= 13
-      category3s = category.indirects
-      category3s.each do |category|
+      categorys = category.indirects
+      categorys.each do |category|
         items = Item.where(category_id: category.id)
         items.each do |item|
           selected_items << item
         end
       end
     elsif category.id >= 100 && category.id < 10000
-      category3s = category.children
-      category3s.each do |category|
+      categorys = category.children
+      categorys.each do |category|
         items = Item.where(category_id: category.id)
         items.each do |item|
           selected_items << item

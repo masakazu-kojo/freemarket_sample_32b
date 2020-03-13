@@ -5,12 +5,12 @@
     .l-content
       %section{class: "items-box-container"}
         %h1{class: "items-box-container__head"}
-          = "#{@brand.name} #{@category3.name}の商品一覧"
+          = "#{@brand.name} #{@category.name}の商品一覧"
         .items-box-container__content
           = render partial: "shared/item_list", collection: @items, as: :item
       .spacial-description
         .spacial-description__title
           %h3{class: "font-white"}
-            ="#{@brand.name} #{@category3.name}"
+            ="#{@brand.name} #{@category.name}"
         .spacial-description__text
           %p

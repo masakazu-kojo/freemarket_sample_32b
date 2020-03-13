@@ -6,7 +6,7 @@
       %ul{class: "parts-nav"}
         %li
           - @items_category.each do |category|
-            = link_to "#{category[:name]}",brand_category3_brand_brand_group_path(@brand, id: "#{category[:id]}"), class: "parts-nav__list"
+            = link_to "#{category[:name]}",brand_category_brand_brand_group_path(@brand, id: "#{category[:id]}"), class: "parts-nav__list"
       %section{class: "items-box-container"}
         %h1{class: "items-box-container__head"}
           = "#{@brand.name}の商品一覧"
@@ -18,3 +18,4 @@
             ="#{@brand.name}"
         .spacial-description__text
           %p
+      

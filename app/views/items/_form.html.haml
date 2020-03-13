@@ -1,0 +1,141 @@
+.container
+= form_for([@item], html: {class: "item-out"}) do |f|
+  .container__header
+    %h1.list
+      = link_to image_tag(src= "logo/logo.png", class: "マイページ"), root_path
+  .container__sell-main
+    .container__sell-main__sell-box
+      .container__sell-main__sell-box__item-container
+        .container__sell-main__sell-box__item-container__sell-container
+          %h3.sell-upload-head
+            %p 出品画像
+            %span 必須
+          .container__sell-main__sell-box__item-container__sell-container__inner{id: "item-previews"}
+            - if @item.persisted?
+              - @item.images.each_with_index do |item, i|
+                .upload-box-image{data: { index: i}}
+                  .upload-box-image__photo
+                    = image_tag item.image.url, data: { index: i }, width: "100", height: '100'
+                  .upload-box-image__remove{data: { index: i}}
+                    削除
+            %label{id: "upload-box"}
+              - if @item.persisted?
+                .js-file_group{data:{index: @item.images.count}}
+                  %input{class: "file_upload", type: "file", name: "item[images_attributes][#{@item.images.count}][image]", id: "item_images_attributes_#{@item.images.count}_image"}/
+              = f.fields_for :images do |i|
+                .js-file_group{data:{index: "#{i.index}"}}
+                  = i.file_field :image, class: "file_upload"
+                - if @item.persisted?
+                  = i.check_box :_destroy, data:{ index: i.index }, class: 'hidden-destroy file_upload'
+              .upload-box__icon
+                %i{class:"fas fa-camera fa-lg photo-black"}
+                %p クリックして
+                %p ファイルを
+                %p アップロード
+          %p{id:"item_image_invalid"} 画像がありません
+        .container__sell-main__sell-box__item-container__sell-content
+          %h3.sell-form-title
+            %p 商品名
+            %span 必須
+          .container__sell-main__sell-box__item-container__sell-content__sell-group
+            .container__sell-main__sell-box__item-container__sell-content__sell-group__title-form
+              = f.text_field :name,required: true, placeholder: "30文字まで", class: "item_name_form"
+              %p{id:"item_name_invalid"} 入力してください
+          %h3.sell-form-pr
+            %p 商品説明
+            %span 必須
+          .container__sell-main__sell-box__item-container__sell-content__sell-group
+            .container__sell-main__sell-box__item-container__sell-content__sell-group__title-form
+              = f.text_area :explanation,required: true, placeholder: "商品の説明(色、重さ、定価、注意点など)"
+              %p{id:"item_explanation_invalid"} 入力してください
+        .container__sell-main__sell-box__item-container__cleafix
+          %h3.sell-sub-head
+            %p 商品の詳細
+          .container__sell-main__sell-box__item-container__cleafix__form-box
+            .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
+              %p カテゴリー
+              %span 必須
+            .container__sell-main__sell-box__item-container__cleafix__form-box__select{id: "category-list"}
+              .category-box{id: "category_root-box"}
+                %select{required: "required", class:"select_form", id:"item_category_id"}
+                  - if @item.persisted?
+                    %option{selected: "selected",value: "#{@category_root.id}"}
+                      #{@category_root.name}
+                  %option{value: ""}
+                    選択してください
+                  - @categories_root.each do |category_root|
+                    %option(value="#{category_root.id}")
+                      #{category_root.name}
+                - if @item.persisted?
+                  %select{required: "required", class:"select_form", id:"category_parent-form"}
+                    %option{selected: "selected",value: "#{@category_parent.id}"}
+                      #{@category_parent.name}
+                    %option{value: ""}
+                      選択してください
+                    - @categories_parent.each do |category_parent|
+                      %option(value="#{category_parent.id}")
+                        #{category_parent.name}
+                  = f.collection_select(:category_id, @categories, :id, :name, {prompt: "選択してください"},required: true, class: "select_form",id: "category-form")
+              %p{id:"category-box_invalid"} 入力してください
+            - if @item.size_id.present?
+              #size-box
+                .container__sell-main__sell-box__item-container__cleafix__form-box__form-any
+                  %p サイズ 
+                  %span 任意
+                .container__sell-main__sell-box__item-container__cleafix__form-box__select
+                  = f.collection_select(:size_id, @sizes, :id, :size, {prompt: "選択してください"}, class: "select_form")
+            - if @item.brand_id.present?
+              #brand-box
+                .container__sell-main__sell-box__item-container__cleafix__form-box__form-any
+                  %p ブランド 
+                  %span 任意
+                .container__sell-main__sell-box__item-container__cleafix__form-box__form-brand
+                  = fields_for(@brand) do |t|
+                    = t.text_field :name, placeholder: "ブランド名", class: "select_form"
+            .container__sell-main__sell-box__item-container__cleafix__form-box__form-name{id: "after_brand"}
+              %p 商品の状態
+              %span 必須
+            .container__sell-main__sell-box__item-container__cleafix__form-box__select
+              = f.select :condition, [["新品、未使用",0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["全体的に状態が悪い", 5]], {prompt: "選択してください"},required: true , class: "select_form"
+              %p{id:"item_condition_invalid"} 入力してください
+        .container__sell-main__sell-box__item-container__cleafix
+          %h3.sell-sub-head
+            %p 配送について
+          .container__sell-main__sell-box__item-container__cleafix__form-box
+            .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
+              %p 配送料の負担
+              %span 必須
+            .container__sell-main__sell-box__item-container__cleafix__form-box__select
+              = f.select :sent_charge, [["送料込み（出品者負担）",0], ["着払い（購入者負担）", 1]], {prompt: "選択してください"},required: true , class: "select_form"
+              %p{id:"item_sent_charge_invalid"} 入力してください
+            .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
+              %p 発送元の地域
+              %span 必須
+            .container__sell-main__sell-box__item-container__cleafix__form-box__select
+              = f.collection_select(:shipping_area, Prefecture.all, :id, :name, {prompt: "選択してください"},required: true, class: "select_form")
+              %p{id:"item_shipping_area_invalid"} 入力してください
+            .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
+              %P 発送までの日数
+              %span 必須
+            .container__sell-main__sell-box__item-container__cleafix__form-box__select
+              = f.select :days_to_ship, [["１〜２日で発送",0], ["3〜4日で発送", 1], ["4〜7日で発送", 2]], {prompt: "選択してください"},required: true , class: "select_form"
+              %p{id:"item_days_to_ship_invalid"} 入力してください
+        .container__sell-main__sell-box__item-container__cleafix
+          %h3.sell-sub-head
+            %p 価格（¥300以上）
+          .container__sell-main__sell-box__item-container__cleafix__form-box
+            .container__sell-main__sell-box__item-container__cleafix__form-box__form-price
+              .container__sell-main__sell-box__item-container__cleafix__form-box__form-price__price
+                %P 販売価格
+                %span 必須
+              .container__sell-main__sell-box__item-container__cleafix__form-box__form-price__price-box
+                ¥
+                = f.number_field :price, placeholder: "0",required: true , min: 300, max: 999999
+                %p{id:"item_price_invalid"} 入力してください
+            .container__sell-main__sell-box__item-container__cleafix__form-box__sell-btn-box
+              .container__sell-main__sell-box__item-container__cleafix__form-box__sell-btn-box__red-btn
+                = f.submit "出品する", id: "item_submit"
+              .container__sell-main__sell-box__item-container__cleafix__form-box__sell-btn-box__gray-btn
+                = link_to "戻る",users_path ,class: 'btn btn-default'
+    
+    .container__footer
