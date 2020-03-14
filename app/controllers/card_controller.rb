@@ -1,11 +1,12 @@
 class CardController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_card, except: :create
+  before_action :set_card, except: [:new, :create]
 
   require 'payjp'
 
   def new
-    redirect_to root_path if @card.exists?
+    @card = Card.where(user_id: current_user.id)
+    redirect_to action: "show" if @card.exists?
   end
 
   def create
@@ -42,6 +43,8 @@ class CardController < ApplicationController
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @default_card = customer.cards.retrieve(@card.card_id)
+      @exp_month = @default_card.exp_month.to_s
+      @exp_year = @default_card.exp_year.to_s.slice(2,3)
     end
   end
 

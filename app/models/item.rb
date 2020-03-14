@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   
   extend ActiveHash::Associations::ActiveRecordExtensions
   has_one :trading, dependent: :destroy
+  has_one :purchase, dependent: :destroy
   belongs_to :user
   belongs_to :brand, optional: true
   belongs_to :category
