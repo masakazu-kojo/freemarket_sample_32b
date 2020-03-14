@@ -37,14 +37,11 @@ $(function(){
       // オンアイコン貼り付け
       thisparent.append(appendFavoriteOn(item_id, like_total));
     })
-    .fail(function() {
-      console.log("on失敗");
-    });
   });
 
   // お気に入り取り消しのイベント
   $('.items-box__body__num__like').on('click', '.favorite_btn_on',function(){
-    let itemId = $(this).data('index')
+    let itemId = $(this).data('index');
     let thisparent = $(this).parent();
     $.ajax({
       url: `/favorites/${itemId}`,
@@ -65,10 +62,5 @@ $(function(){
         thisparent.append(appendFavoriteOff(item_id, like_total));
       }
     })
-    .fail(function() {
-      console.log("off失敗");
-    });
   });
-
-
 });
