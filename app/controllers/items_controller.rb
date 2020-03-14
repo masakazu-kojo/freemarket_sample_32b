@@ -3,7 +3,16 @@ class ItemsController < ApplicationController
 
   def index
     @itemsPickCategory = Item.order("id DESC").limit(3)
+    @imagePickCategory = {}
+    @itemsPickCategory.each do |item|
+      @imagePickCategory[:"#{item.id}"] = item.images.first
+    end
+
     @itemsPickBrand = Item.order("id DESC").limit(3)
+    @imagePickBrand = {}
+    @itemsPickBrand.each do |item|
+      @imagePickBrand[:"#{item.id}"] = item.images.first
+    end
   end
 
   def new
@@ -77,9 +86,14 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.all.order("id DESC")
+    @itemImage = {}
+    @items.each do |item|
+      @itemImage[:"#{item.id}"] = item.images.first
+    end
   end
 
   def show
+    @item = Item.find(params[:id])
   end
   
   # 仮で削除アクション設置

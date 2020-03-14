@@ -100,6 +100,7 @@
           %li.main__pickupArea__list
             = link_to item_path(item.id) do
               .main__pickupArea__list--image
+                = image_tag @imagePickCategory[:"#{item.id}"].image.url
               .main__pickupArea__list__index
                 .main__pickupArea__list__index--name
                   = item.name
@@ -118,6 +119,7 @@
               .main__pickupArea__list--image
                 .item__soldout--text
                   %span SOLD
+                = image_tag @imagePickCategory[:"#{item.id}"].image.url
               .main__pickupArea__list__index
                 .main__pickupArea__list__index--name
                   = item.name
@@ -142,6 +144,7 @@
           %li.main__pickupArea__list
             = link_to item_path(item.id) do
               .main__pickupArea__list--image
+                = image_tag @imagePickBrand[:"#{item.id}"].image.url
               .main__pickupArea__list__index
                 .main__pickupArea__list__index--name
                   = item.name
@@ -160,6 +163,7 @@
               .main__pickupArea__list--image
                 .item__soldout--text
                   %span SOLD
+                = image_tag @imagePickBrand[:"#{item.id}"].image.url
               .main__pickupArea__list__index
                 .main__pickupArea__list__index--name
                   = item.name

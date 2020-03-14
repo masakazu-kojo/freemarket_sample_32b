@@ -41,4 +41,11 @@
 @import "brand_groups";
 
 // マイページ用
-@import "users"
+@import "users";
+
+// クレジットカード用
+@import "modules/card";
+
+// 購入用
+@import "modules/purchase";
+@import "modules/pay";

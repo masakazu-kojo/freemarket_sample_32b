@@ -19,6 +19,9 @@
             .main__showmain__content__topcontent__itembox__price--pricedetail
               %span1 (税込)
               %spam1 送料込み
+            - if @item.trading.status == true
+              .main__showmain__content__topcontent__itembox__price--purchaseBtn
+                = button_to '購入画面に進む', item_purchase_index_path(@item), class: "purchaseBtn", method: :get
           .main__showmain__content__topcontent__itembox--detail
             商品詳細
           .main__showmain__content__topcontent__itembox__table
