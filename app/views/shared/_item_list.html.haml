@@ -1,6 +1,10 @@
 .items-box
-  = link_to item_path(id: item.id) do
-    = image_tag item.images[0].image.url, width: "188", height: '160'
+  = link_to item_path(id: item.id), class:"item_path_link" do
+    -if item.images[0].present?
+      = image_tag item.images[0].image.url, width: "188", height: '160'
+    -else 
+      .blank-box
+        NO IMAGE
   .items-box__body
     %h3{class: "items-box__name"}
       ="#{item.name}"
@@ -11,14 +15,16 @@
         -if Favorite.includes(:user).where(user_id: current_user.id).find_by(item_id: item.id).present?
           .favorite_btn_on{data: { index: item.id}}
             %i{class: "fas fa-heart", style:"color: red;"}
+          .like_total{style:"color: red;"}
+            ="#{Favorite.where(item_id: item.id).length}"
         -else
           .favorite_btn_off{data: { index: item.id}}
             %i{class: "far fa-heart"}
-        -if Favorite.where(item_id: item.id).present?
-          .like_total{style:"color: red;"}
-            ="#{Favorite.where(item_id: item.id).length}"
+          .like_total
+            -if Favorite.where(item_id: item.id).length > 0
+              ="#{Favorite.where(item_id: item.id).length}"
 
+    -# テスト用の仮リンク
+    = link_to "編集",edit_item_path(item.id)
+    = link_to "削除",item_path(item.id), method: :delete
 
-  -# = link_to "#{item.name}",edit_item_path(item.id)
-  -# = link_to "削除",item_path(item.id), method: :delete
-  -# テスト用の仮リンク

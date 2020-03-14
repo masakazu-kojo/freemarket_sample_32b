@@ -32,15 +32,10 @@ $(function(){
     .done(function(f_data){
       let like_total = f_data.like_total+1;
       let item_id = f_data.item_id;
-      console.log(like_total);
-      // console.log(like_total);
-      console.log("on成功");
       // オフアイコン削除
       thisparent.empty();
-      
       // オンアイコン貼り付け
       thisparent.append(appendFavoriteOn(item_id, like_total));
-
     })
     .fail(function() {
       console.log("on失敗");
@@ -60,13 +55,15 @@ $(function(){
     .done(function(f_data){
       let like_total = f_data.like_total-1;
       let item_id = f_data.item_id;
-      console.log(like_total);
-      // console.log(like_total);
-      console.log("off成功");
       // オンアイコン削除
       thisparent.empty();
-      // オフアイコン貼り付け
-      thisparent.append(appendFavoriteOff(item_id, like_total));
+      // オフアイコン貼り付け(0の時は数値を非表示)
+      if (like_total > 0) {
+        thisparent.append(appendFavoriteOff(item_id, like_total));
+      }else {
+        like_total = "";
+        thisparent.append(appendFavoriteOff(item_id, like_total));
+      }
     })
     .fail(function() {
       console.log("off失敗");
