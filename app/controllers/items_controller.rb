@@ -75,12 +75,6 @@ class ItemsController < ApplicationController
     @sizes = @category_parent.sizes[0].children
   end
 
-  # 孫カテゴリーが選択された後に動くアクション
-  def get_favorite
-    @category_parent = Category.find(params[:category_id]).parent
-    @sizes = @category_parent.sizes[0].children
-  end
-
   def search
     @items = Item.all.order("id DESC")
   end
@@ -89,11 +83,11 @@ class ItemsController < ApplicationController
   end
   
   # 仮で削除アクション設置
-  # def destroy
-  #   @item = Item.find(params[:id])
-  #   @item.destroy
-  #   redirect_to root_path
-  # end
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to root_path
+  end
 
   private
 
