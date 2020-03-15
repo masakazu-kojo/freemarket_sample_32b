@@ -21,13 +21,38 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items
-  
-  resources :brands, only: [:index,:create,:edit,:update] do
-    resources :brand_groups, only: [:index,:show] do
+  resources :items do
+    collection do
+      get 'get_category_parent', defaults: { format: 'json' }
+      get 'get_category', defaults: { format: 'json' }
+      get 'get_size', defaults: { format: 'json' }
+      get 'search'
+    end
+    resources :purchase, only: [:index] do
+      collection do
+        post 'pay'
+      end
     end
   end
   
-  resources :categorys, only: [:index, :show]
+  resources :brands, only: [:index,:create,:edit,:update] do
+    resources :brand_groups, only: [:index,:show] do
+      member do
+        get 'brand_category'
+      end
+    end
+  end
+  
+  resources :categories, only: [:index, :show]
+
+  resources :card, only: [:new, :show] do
+    collection do
+      post 'create', to: 'card#create'
+      post 'delete', to: 'card#delete'
+      post 'show', to: 'card#show'
+    end
+  end
+  
+  resources :favorites, only: [:index, :create, :destroy]
 
 end

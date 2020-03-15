@@ -33,14 +33,14 @@
           background-color: #ffffff;
           display: inline-block;
           border-radius: 5px;
-          .category1-name {
+          .category_root-name {
             text-decoration: none;
             color: #333333
           }
         }
         &__list:hover {
           background-color: #EA352D;
-          .category1-name {
+          .category_root-name {
             text-decoration: none;
             color: #ffffff;
           }
@@ -61,7 +61,7 @@
           &__inner-box {
             padding: 24px 30px 10px;
             background-color: #ffffff;
-            .category1-all {
+            .category_root-all {
               margin: 8px 0;
               font-size: 16px;
               display: inline-block;
@@ -126,13 +126,6 @@
           }
         }
       }
-    }
-    
+    } 
   }
-
-
-
-
-
-
 }

@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable
   
   #ニックネームが必須
   validates :nickname, presence: true
@@ -19,6 +19,10 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :identity
   # accepts_nested_attributes_for :address
 
-  has_many :items
   has_many :credit_cards
+  has_many :items
+  has_many :tradings
+  has_many :favorites, dependent: :destroy
+  has_many :purchase
+
 end

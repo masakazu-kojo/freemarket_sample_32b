@@ -5,17 +5,24 @@
         = link_to root_path do
           = image_tag 'logo/logo.png'
       .header__main__form
-        = form_with(mode: @items, local: true) do |f|
+        = form_tag(search_items_path, method: :get) do
           .header__main__form__search
-            = f.text_field :"item_name",class: '.header__main__form__search--box', placeholder: 'キーワードから探す'
-            = f.submit '', class: '.header__main__form__search--btn', id: "icon__serch"
-            = f.label :icon__serch do
+            = text_field_tag :key, params[:key], class: '.header__main__form__search--box', placeholder: 'キーワードから探す'
+            = submit_tag '', class: '.header__main__form__search--btn', id: "icon__search"
+            = label_tag :icon__search do
               .header__main__form__search--icon
                 = image_tag 'icon/icon-search 1.png'
+        -# = form_with(model: @items, url: search_items_path, local: true) do |f|
+        -#   .header__main__form__search
+        -#     = f.text_field :name, class: '.header__main__form__search--box', placeholder: 'キーワードから探す'
+        -#     = f.submit '', class: '.header__main__form__search--btn', id: "icon__search"
+        -#     = f.label :icon__search do
+        -#       .header__main__form__search--icon
+        -#         = image_tag 'icon/icon-search 1.png'
     .header__nav
       %ul.header__nav__left
         %li.header__nav__left--category
-          = link_to categorys_path, class:"header__nav--textBtn" do
+          = link_to categories_path, class:"header__nav--textBtn" do
             カテゴリー
         %li.header__nav__left--brand
           = link_to brands_path, class:"header__nav--textBtn" do

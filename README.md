@@ -17,7 +17,7 @@
 - has_many :tradings
 - has_many :purchaseds
 - has_many :comments
-- has_many :favorites
+- has_many :favorites, dependent: :destroy
 - has_one :identitys, dependent: :destroy
 - has_one :addresss, dependent: :destroy
 - has_one :profiles, dependent: :destroy
@@ -126,7 +126,7 @@
 |t.string |:name,|null: false, index: true|     #商品名
 |t.text |:explanation,|null: false|    #説明
 |t.integer |:price,null|: false|        #価格
-|t.string |:size||                      #サイズ
+|t.references |:size|foreign_key: true|   #サイズ
 |t.string |:condition|,null: false|     #状態（選択式）
 |t.string |:sent_charge|,null: false|  #配送料の負担
 |t.string |:shipping_area|,null: false|  #発送元の地域（選択式）
@@ -139,6 +139,7 @@
 - belongs_to :user
 - belongs_to :brand, optional: true
 - belongs_to :category
+- belongs_to :size, optional: true
 - has_many :images, dependent: :destroy
 - has_many :favorites, dependent: :destroy
 - has_many :tradings
@@ -174,7 +175,29 @@
 |t.string: |ancestry, |index: true|
 ### Association
 - has_many :items
+- has_many :category_sizes
+- has_many :sizes, through: :category_sizes
 - has_ancestry
+
+## Sizes
+|Type|Colume|Options|
+|------|----|-------|
+|t.string: |size|index: true|
+|t.string: |ancestry|index: true|
+### Association
+- has_many :items
+- has_many :category_sizes
+- has_many :categorys, through: :category_sizes
+- has_ancestry
+
+## Category_sizes
+|Type|Colume|Options|
+|------|----|-------|
+|t.references| :size| foreign_key: true|
+|t.references| :category| foreign_key: true|
+### Association
+- belongs_to :size
+- belongs_to :category
 
 ## Brands
 |Type|Colume|Options|
@@ -182,5 +205,6 @@
 |t.string :|name,|null: false, unique: true, index: true|
 ### Association
 - has_many :items
+
 
 [![Image from Gyazo](https://i.gyazo.com/4c32a92ee8f817fe5257571b287d39c4.png)](https://gyazo.com/4c32a92ee8f817fe5257571b287d39c4)

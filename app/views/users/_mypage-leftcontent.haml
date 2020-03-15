@@ -1,0 +1,40 @@
+.maincontainer__leftcontent
+  .maincontainer__leftcontent__navi
+    .maincontainer__leftcontent__navi__title
+      %p2 マイページメニュー
+    .maincontainer__leftcontent__navi__tablist
+      = link_to like_users_path do
+        %input{type:"button", value:"いいね！一覧"}
+    .maincontainer__leftcontent__navi__tablist
+      = link_to notification_users_path do
+        %input{type:"button", value:"お知らせ"}
+    .maincontainer__leftcontent__navi__tablist
+      = link_to todo_users_path do
+        %input{type:"button", value:"やることリスト"}
+    .maincontainer__leftcontent__navi__tablist
+      = link_to listings_listing_users_path do
+        %input{type:"button", value:"出品した商品ー出品中"}
+    .maincontainer__leftcontent__navi__tablist
+      = link_to listings_in_progress_users_path do
+        %input{type:"button", value:"出品した商品ー取引中"}
+    .maincontainer__leftcontent__navi__tablist
+      = link_to listings_purchased_users_path do
+        %input{type:"button", value:"出品した商品ー売却済み"}
+    .maincontainer__leftcontent__navi__tablist
+      = link_to purchase_users_path do
+        %input{type:"button", value:"購入した商品-取引中"}
+    .maincontainer__leftcontent__navi__tablist
+      = link_to purchased_users_path do
+        %input{type:"button", value:"購入した商品-過去の取引"}
+  .maincontainer__leftcontent__navi
+    .maincontainer__leftcontent__navi__title
+      %p2 設定
+    .maincontainer__leftcontent__navi__tablist
+      = link_to like_users_path do
+        %input{type:"button", value:"クレジットカード登録"}
+    .maincontainer__leftcontent__navi__tablist
+      = link_to notification_users_path do
+        %input{type:"button", value:"クレジットカード変更"}
+    .maincontainer__leftcontent__navi__tablist
+      = link_to notification_users_path do
+        %input{type:"button", value:"ログアウト"}

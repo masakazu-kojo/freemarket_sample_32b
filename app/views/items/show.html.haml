@@ -1,23 +1,108 @@
+= render 'shared/header'
+
 .main
   .main__showmain
     .main__showmain__content
-      .main__showmain__content__topcontent
+      .main__showmain__content__topcontent      
         .main__showmain__content__topcontent__itembox
-          %h2.itembox__name
+          %h2.itembox--name タイトル
           .main__showmain__content__topcontent__itembox__body
-            写真
+            .main__showmain__content__topcontent__itembox__body__imagebox
+              .main__showmain__content__topcontent__itembox__body__imagebox__image
+                .main__showmain__content__topcontent__itembox__body__imagebox__image__upimage
+                .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage
+                  .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage--imagephoto
+                  .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage--imagephoto
+                  .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage--imagephoto
           .main__showmain__content__topcontent__itembox__price
-            値段
-            .main__showmain__content__topcontent__itembox__price__detail
-              税込
-              送料込み
-          .main__showmain__content__topcontent__itembox__detail
+            %span ¥300
+            .main__showmain__content__topcontent__itembox__price--pricedetail
+              %span1 (税込)
+              %spam1 送料込み
+            - if @item.trading.status == true
+              .main__showmain__content__topcontent__itembox__price--purchaseBtn
+                = button_to '購入画面に進む', item_purchase_index_path(@item), class: "purchaseBtn", method: :get
+          .main__showmain__content__topcontent__itembox--detail
             商品詳細
           .main__showmain__content__topcontent__itembox__table
-            table
-          .main__showmain__content__topcontent__itembox__option
-      .main__showmain__content__topcontent__commentbox
-        .main__showmain__content__topcontent__coomentbox__content
-          %p.hoge 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          = f.text_field :content, class: 'texterea-default', placeholder: 'コメントがあればどうぞ'
-          = f.submit 'Send', class: 'message-submit btn-default btn-gray'
+            .main__showmain__content__topcontent__itembox__table__tablerecord
+              .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--lname            
+                    %span2 出品者
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--rname
+                    %span2 hoge
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--lname            
+                    %span2 カテゴリー
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--rname
+                    %span3 
+                      ベビーキッズ
+                      %br
+                      ベビー服(男女兼用)〜95cm
+                      %br
+                      アウター
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--lname            
+                    %span2 ブランド
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--rname
+                    %span2
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--lname              
+                    %span2 商品のサイズ
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--rname
+                    %span2
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--lname             
+                    %span2 商品の状態
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--rname
+                    %span2 未使用に近い
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--lname            
+                    %span2 配送料の負担
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--rname
+                    %span2 送料込み(出品者負担)
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--lname            
+                    %span2 発送元の地域
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--rname
+                    %span2 北海道
+                .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--lname            
+                    %span2 発送日の目安
+                  .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--rname
+                    %span2 4-7日で発送
+          .main__showmain__content__topcontent__itembox--option
+            %ul
+              %li
+                = icon('fas', 'star', class: 'icon')
+                %text お気に入り 0
+            %ul.option
+              %li2
+                = icon('fas', 'flag', class: 'icon')
+                %text 不適切な商品の通報               
+          .main__showmain__content__topcontent__itembox__commentbox
+            .main__showmain__content__topcontent__itembox__commentbox__contents
+              .main__showmain__content__topcontent__itembox__commentbox__contents__commentform
+                .main__showmain__content__topcontent__itembox__commentbox__contents__commentform--format
+                .main__showmain__content__topcontent__itembox__commentbox__contents__commentform--textform
+                  %p.text 
+                    相手のことを考え丁寧なコメントを心がけましょう。
+                    %br
+                    不快な言葉遣いなどは利用制限や退会処分となることがあります。
+                .main__showmain__content__topcontent__itembox__commentbox__contents__commentform--commentbotton
+                  = icon('fas', 'comment', class: 'icon') 
+                  コメントする
+          %ul
+            %li
+              = icon('fas', 'angle-left', class: 'icon')
+              %text 前の商品
+            %li2
+              %text 後ろの商品
+              = icon('fas', 'angle-right', class: 'icon')
+        .main__showmain__content__topcontent--relateditem 
+          %p ベビー・キッズをもっとみる
+
+= render 'shared/footer'
+
+= render 'shared/newItemBtn'
