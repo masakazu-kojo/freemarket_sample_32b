@@ -1,13 +1,32 @@
-.main__showmain__content__topcontent__itembox__commentbox
-  .users-comment-box
-  .main__showmain__content__topcontent__itembox__commentbox__contents
-    .main__showmain__content__topcontent__itembox__commentbox__contents__commentform
-      .main__showmain__content__topcontent__itembox__commentbox__contents__commentform--format
-      .main__showmain__content__topcontent__itembox__commentbox__contents__commentform--textform
+.item-message-content
+  %ul{class: "message-items"}
+    - @comments.each do |comment|
+      %li{class: "message-list"}
+        .message-user
+          .message-user__name
+            = comment.user.id
+          - if comment.user_id == @item.user_id
+            .message-user__is-seller
+              出品者
+        .message-body
+          .message-body-text
+            = comment.comment
+          .message-icons
+            .message-icon-left
+            .message-icon-right
+            %i{class: "icon-baloon"}
+
+.item-comment-box
+  .item-comment-box__contents
+    .item-comment-box__contents__commentform
+      %textarea{class:"item-comment-box__contents__commentform__format", id:"comment-form"}
+      .comment-error
+        入力してください
+      .item-comment-box__contents__commentform__textform
         %p.text 
           相手のことを考え丁寧なコメントを心がけましょう。
           %br
           不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      .main__showmain__content__topcontent__itembox__commentbox__contents__commentform--commentbotton
+      .comment-button{id: 'comment-button', data:{index: @item.id, current: current_user.id, item: @item.user_id}}
         = icon('fas', 'comment', class: 'icon') 
         コメントする
