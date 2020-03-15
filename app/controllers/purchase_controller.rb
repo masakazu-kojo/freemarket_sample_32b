@@ -10,7 +10,7 @@ class PurchaseController < ApplicationController
         redirect_to root_path
 
       elsif @card.blank?
-        redirect_to new_card_path, notice: "クレジットカードを登録してください"
+        redirect_to new_card_path, alert: "クレジットカードを登録してください"
 
       else
         Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
@@ -30,6 +30,7 @@ class PurchaseController < ApplicationController
     customer: @card.customer_id,
     currency: 'jpy',
     )
+    Purchase.create(item_id: @item.id, user_id: current_user.id)
     @trading = @item.trading
     @trading.status = false
     @trading.save
