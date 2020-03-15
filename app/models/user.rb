@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :items
   has_many :tradings
   has_many :favorites, dependent: :destroy
-  has_many :purchase
+  has_many :purchases
 
 end
