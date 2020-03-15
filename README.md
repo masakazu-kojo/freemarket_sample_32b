@@ -17,7 +17,7 @@
 - has_many :tradings
 - has_many :purchaseds
 - has_many :comments
-- has_many :favorites
+- has_many :favorites, dependent: :destroy
 - has_one :identitys, dependent: :destroy
 - has_one :addresss, dependent: :destroy
 - has_one :profiles, dependent: :destroy
@@ -197,13 +197,12 @@
 - belongs_to :size
 - belongs_to :category
 
-
-
 ## Brands
 |Type|Colume|Options|
 |------|----|-------|
 |t.string :|name,|null: false, unique: true, index: true|
 ### Association
 - has_many :items
+
 
 [![Image from Gyazo](https://i.gyazo.com/4c32a92ee8f817fe5257571b287d39c4.png)](https://gyazo.com/4c32a92ee8f817fe5257571b287d39c4)

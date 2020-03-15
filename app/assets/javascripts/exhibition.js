@@ -1,4 +1,4 @@
-$(function(){
+$(function(){if (typeof gon != "undefined") {
   // 画像用のinputを生成する関数
   function buildFileField(index){
     const html = `<div data-index="${index}" class="js-file_group">
@@ -170,4 +170,4 @@ $(function(){
       $('#item_price').css('border','1px solid #ccc');
     }
   });
-});
+}});
