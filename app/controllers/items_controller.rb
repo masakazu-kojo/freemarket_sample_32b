@@ -99,8 +99,9 @@ class ItemsController < ApplicationController
   # 仮で削除アクション設置
   def destroy
     @item = Item.find(params[:id])
-    @item.destroy
-    redirect_to root_path
+    if @item.destroy
+      redirect_to root_path
+    end
   end
 
   private
