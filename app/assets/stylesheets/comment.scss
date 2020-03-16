@@ -26,6 +26,17 @@
         background-color: #eef0f4;
         width: 570px;
         border-radius: 10px;
+        .message-icons {
+          height: 17px;
+          margin: 8px 0 0;
+          color: #AAAAAA;
+          .message-icon-left {
+            display: inline-block;
+            .fa-clock {
+              font-size: 16px;
+            }
+          }
+        }
       }
     }
     

@@ -13,9 +13,9 @@
             = comment.comment
           .message-icons
             .message-icon-left
-            .message-icon-right
-            %i{class: "icon-baloon"}
-
+              %i{ class: "far fa-clock"}
+              %time{datetime:"#{comment.created_at}"}
+                = "#{time_ago_in_words(comment.created_at)}前"
 .item-comment-box
   .item-comment-box__contents
     .item-comment-box__contents__commentform
