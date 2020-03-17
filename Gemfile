@@ -78,6 +78,8 @@ gem 'gon'
 gem 'fog-aws'
 gem 'payjp'
 gem 'dotenv-rails'
+gem 'bootstrap', '~> 4.1.1'
+gem 'data-confirm-modal'
 
 group :production do
   gem 'unicorn', '5.4.1'
