@@ -85,7 +85,12 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.all.order("id DESC")
+    @items = Item.none
+    @keywords = params[:key].split(/[[:blank:]]+/).select(&:present?)
+    @keywords.each do |keyword|
+      @items = @items.or(Item.where("name LIKE ?", "%#{keyword}%"))
+    end
+    @items = @items.order("id DESC")
     @itemImage = {}
     @items.each do |item|
       @itemImage[:"#{item.id}"] = item.images.first
