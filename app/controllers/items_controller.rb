@@ -2,8 +2,8 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update]
 
   def index
-    @itemsPickCategory = Item.order("id DESC").limit(3)
     @itemsPickBrand = Item.order("id DESC").limit(3)
+    @itemsPickCategory = Item.order("id DESC").limit(3)
   end
 
   def new
@@ -80,6 +80,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
+    @image = Image.find(params[:id])
+    @itemsPickCategory = Item.order("id DESC").limit(3)
   end
   
   # 仮で削除アクション設置

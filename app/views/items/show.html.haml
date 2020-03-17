@@ -1,26 +1,52 @@
 = render 'shared/header'
 
+.subheader
+  %ul
+    %li.toplink
+      = link_to "FURIMA", root_path
+    %li
+      %i{class:"fas fa-angle-right"}
+    %li.toplink
+      = link_to "FURIMA", root_path
+    %li
+      %i{class:"fas fa-angle-right"}
+    %li.toplink
+      = link_to "FURIMA", root_path
+    %li
+      %i{class:"fas fa-angle-right"}
+    %li.toplink
+      = link_to "FURIMA", root_path
+    %li
+      %i{class:"fas fa-angle-right"}
+
 .main
   .main__showmain
     .main__showmain__content
       .main__showmain__content__topcontent      
         .main__showmain__content__topcontent__itembox
-          %h2.itembox--name タイトル
+          %h2.itembox--name
+            = @item.name
+            %li.searchPickupArea__list
           .main__showmain__content__topcontent__itembox__body
             .main__showmain__content__topcontent__itembox__body__imagebox
               .main__showmain__content__topcontent__itembox__body__imagebox__image
-                .main__showmain__content__topcontent__itembox__body__imagebox__image__upimage
+                .main__showmain__content__topcontent__itembox__body__imagebox__image--upimage
+                  = image_tag @item.images[0].image.url, size: "100x346"
                 .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage
                   .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage--imagephoto
+                    = image_tag @item.images[1].image.url
                   .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage--imagephoto
+                    = image_tag @item.images[2].image.url
                   .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage--imagephoto
+
           .main__showmain__content__topcontent__itembox__price
-            %span ¥300
+            %span
+              = @item.price
             .main__showmain__content__topcontent__itembox__price--pricedetail
               %span1 (税込)
               %spam1 送料込み
           .main__showmain__content__topcontent__itembox--detail
-            商品詳細
+            = @item.explanation
           .main__showmain__content__topcontent__itembox__table
             .main__showmain__content__topcontent__itembox__table__tablerecord
               .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody
@@ -34,7 +60,7 @@
                     %span2 カテゴリー
                   .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--rname
                     %span3 
-                      ベビーキッズ
+                      ベビー服
                       %br
                       ベビー服(男女兼用)〜95cm
                       %br
@@ -53,7 +79,7 @@
                   .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--lname             
                     %span2 商品の状態
                   .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--rname
-                    %span2 未使用に近い
+                    新品・未使用
                 .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record
                   .main__showmain__content__topcontent__itembox__table__tablerecord__tablebody__record--lname            
                     %span2 配送料の負担
