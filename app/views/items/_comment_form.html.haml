@@ -4,7 +4,7 @@
       %li{class: "message-list"}
         .message-user
           .message-user__name
-            = comment.user.id
+            = comment.user.nickname
           - if comment.user_id == @item.user_id
             .message-user__is-seller
               出品者
