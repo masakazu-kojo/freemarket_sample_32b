@@ -3,6 +3,7 @@
   .message-items {
     .message-list {
       margin-bottom: 20px;
+      position: relative;
       .message-user {
         font-size: 14px;
         font-weight: 600;
@@ -37,6 +38,16 @@
             }
           }
         }
+      }
+      .icon-balloon {
+        display: inline-block;
+        position: absolute;
+        top: 30px; 
+        left: 30px;
+        border: 8px solid transparent;
+        border-right: 18px solid #eef0f4;
+        -webkit-transform: rotate(35deg);
+        transform: rotate(35deg);
       }
     }
     

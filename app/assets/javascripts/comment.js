@@ -18,7 +18,9 @@ $(function(){
                         </time>
                       </div>
                     </div>
-                  </div></li>`;
+                  </div>
+                  <i class="icon-balloon"></i>
+                </li>`;
     return html;
   }
   // 出品者のコメント貼り付け用
@@ -43,7 +45,9 @@ $(function(){
                         </time>
                       </div>
                     </div>
-                  </div></li>`;
+                  </div>
+                  <i class="icon-balloon"></i>
+                </li>`;
     return html;
   }
   $('#comment-button').on('click', function(){
