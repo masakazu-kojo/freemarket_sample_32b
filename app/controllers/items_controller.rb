@@ -85,8 +85,11 @@ class ItemsController < ApplicationController
   end
 
   def search
+    # 空のItemモデルを作成
     @items = Item.none
+    # 検索キーワードをスペースで分割してインスタンス化
     @keywords = params[:key].split(/[[:blank:]]+/).select(&:present?)
+    # 分割したキーワード毎にItemDBを検索してインスタンスにセット
     @keywords.each do |keyword|
       @items = @items.or(Item.where("name LIKE ?", "%#{keyword}%"))
     end

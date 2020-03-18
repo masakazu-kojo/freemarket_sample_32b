@@ -1,6 +1,11 @@
 = render 'shared/header'
 
 .searchPickupArea
+  %ul.parts-nav
+    %li
+      - @keywords.each do |keyword|
+        = keyword + " "
+      の検索結果
   %ul.searchPickupArea__lists
     - @items.each do |item|
       - if item.trading.status == true
