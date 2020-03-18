@@ -12,6 +12,23 @@
 
 ActiveRecord::Schema.define(version: 2020_03_15_044346) do
 
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "send_familyname", null: false
+    t.string "send_firstname", null: false
+    t.string "send_familyname_kana", null: false
+    t.string "send_firstname_kana", null: false
+    t.integer "postal_code", null: false
+    t.string "prefecture", null: false
+    t.string "municipality", null: false
+    t.string "house_number", null: false
+    t.string "building_name"
+    t.integer "phone_number"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.index ["name"], name: "index_brands_on_name"
@@ -56,6 +73,24 @@ ActiveRecord::Schema.define(version: 2020_03_15_044346) do
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_favorites_on_item_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "identities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "familyname", null: false
+    t.string "firstname", null: false
+    t.string "familyname_kana", null: false
+    t.string "firstname_kana", null: false
+    t.date "birthday", null: false
+    t.integer "postal_code"
+    t.string "prefecture"
+    t.string "municipality"
+    t.string "house_number"
+    t.string "building_name"
+    t.string "identity_image"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -124,16 +159,19 @@ ActiveRecord::Schema.define(version: 2020_03_15_044346) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nickname", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "category_sizes", "categories"
   add_foreign_key "category_sizes", "sizes"
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "items"
   add_foreign_key "favorites", "users"
+  add_foreign_key "identities", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"

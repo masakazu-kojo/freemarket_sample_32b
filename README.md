@@ -22,12 +22,14 @@
 - has_one :addresss, dependent: :destroy
 - has_one :profiles, dependent: :destroy
 
-## Identitys(本人確認情報)
+## Identities(本人確認情報)
 |Type|Colume|Options|
 |------|----|-------|
-|t.string| :name|,null: false|
-|t.string| :name_kana|,null: false|
-|t.integer| :birthday|,null: false|
+|t.string| :familyname|,null: false|
+|t.string| :firstname|,null: false|
+|t.string| :familyname_kana|,null: false|
+|t.string| :firstname_kana|,null: false|
+|t.date| :birthday|,null: false|
 |t.string| :prefecture||      #都道府県
 |t.string| :house_number||      #番地
 |t.string| :building_name||      #建物名
@@ -36,7 +38,7 @@
 ### Association
 - belongs_to :user
 
-## Addresss(発送元・お届け先住所変更)
+## Addresses(発送元・お届け先住所変更)
 |Type|Colume|Options|
 |------|----|-------|
 |t.string| :familyname|,null: false|
