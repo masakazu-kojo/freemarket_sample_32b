@@ -2,9 +2,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.save
-    respond_to do |format|
-      format.json
+    if @comment.save
+      respond_to do |format|
+        format.json
+      end
+    else
+      flash.now[:alert] = '投稿に失敗しました'
     end
   end
 
