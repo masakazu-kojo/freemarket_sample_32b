@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :update]
+  before_action :set_item, only: [:edit, :update, :destroy]
 
   def index
     @itemsPickCategory = Item.order("id DESC").limit(3)
@@ -94,13 +94,14 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @comments = @item.comments
   end
   
-  # 仮で削除アクション設置
   def destroy
-    @item = Item.find(params[:id])
     if @item.destroy
       redirect_to root_path
+    else
+      render :new, notice: "削除に失敗しました"
     end
   end
 
