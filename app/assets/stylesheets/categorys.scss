@@ -25,6 +25,7 @@
           background-color: #ffffff;
           display: inline-block;
           border-radius: 5px;
+          cursor: pointer;
           .category_root-name {
             text-decoration: none;
             color: #333333
@@ -36,6 +37,17 @@
             text-decoration: none;
             color: #ffffff;
           }
+        }
+      }
+      .initial-index {
+        padding: 10px 0 35px;
+        .brand-index {
+          cursor: pointer;
+          color: #0099E8;
+          margin-left: 1px;
+        }
+        .brand-index:hover {
+          text-decoration: underline;
         }
       }
       .category-index__box {
