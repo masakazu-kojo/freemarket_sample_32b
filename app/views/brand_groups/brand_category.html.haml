@@ -1,8 +1,7 @@
 .default-container-gray
   = render "shared/header"
-  .nav
-    - breadcrumb :brand_groups_brand_category, @brand, @category
-    = render "layouts/breadcrumbs"
+  - breadcrumb :brand_groups_brand_category, @brand, @category
+  = render "layouts/breadcrumbs"
   = render "shared/newItemBtn"
   %main{class: "l-container"}
     .l-content
