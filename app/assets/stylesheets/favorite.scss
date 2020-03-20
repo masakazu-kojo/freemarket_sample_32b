@@ -1,7 +1,9 @@
 .favorite-main {
-  margin: 40px auto 0;
-  width: 1020px;
+  padding: 40px 165px;
+  width: 100%;
   min-height: 100vh;
+  background-color: #F5F5F5;
+  display: flex;
   .favorite-content {
     float: right;
     width: 700px;

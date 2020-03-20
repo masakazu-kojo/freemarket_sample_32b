@@ -1,7 +1,8 @@
 .default-container
   = render "shared/header"
+  - breadcrumb :brand_groups_index, @category_root
+  = render "layouts/breadcrumbs"
   = render "shared/newItemBtn"
-  .nav
   .category-index
     .visible-pc
       .category-index__title
