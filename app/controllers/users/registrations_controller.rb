@@ -10,8 +10,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # 後ほど使用
     # @user.build_identity
     # @user.adresses.build
-    @user.save
-    redirect_to users_path #とりあえずマイページへ
+    if @user.save
+      sign_in @user
+      redirect_to root_path
+    end
   end
 
   protected
