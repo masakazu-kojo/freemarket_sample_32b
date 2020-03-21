@@ -11,18 +11,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, identity_attributes:[:id, :familyname, :firstname, :familyname_kana, :firstname_kana, :birthday]])
   end
 
-
-  # private
-
-  # def production?
-  #   Rails.env.production?
-  # end
-
-  # def basic_auth
-  #   authenticate_or_request_with_http_basic do |username, password|
-  #   username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
-  # end
-  
   # itemsからbrandを引き出し重複をなくすメソッド
   def category_brands(items)
     brands = []

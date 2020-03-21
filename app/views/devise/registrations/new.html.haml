@@ -60,38 +60,6 @@
               = i.date_select(:birthday,start_year:Time.now.year,prompt:"--",use_month_numbers:true, end_year:1900)
               - if @user.errors[:lastname_kana].any?
                 %p.errorsmessage 生年月日を入力してください
-          -#  後ほど使用
-          -# = f.fields_for :address, Address.new do |a|
-          -#   .field
-          -#     = a.label :郵便番号
-          -#     %span.form-require 必須
-          -#     %br/
-          -#     = a.text_field :postal_code, placeholder: "例) 151-0001"
-          -#   .field
-          -#     = a.label :都道府県
-          -#     %span.form-require 必須
-          -#     %br/
-          -#     = a.text_field :prefecture, placeholder: "例) 東京都"
-          -#   .field
-          -#     = a.label :市区町村
-          -#     %span.form-require 必須
-          -#     %br/
-          -#     = a.text_field :municipality, placeholder: "例) 渋谷区"
-          -#   .field
-          -#     = a.label :番地
-          -#     %span.form-require 必須
-          -#     %br/
-          -#     = a.text_field :house_number, placeholder: "例) 渋谷1-1-1"
-          -#   .field
-          -#     = a.label :建物名
-          -#     %span.form-require 任意
-          -#     %br/
-          -#     = a.text_field :building_name, placeholder: "例) プラザ２３階"
-          -#   .field
-          -#     = a.label :電話番号
-          -#     %span.form-require 任意
-          -#     %br/
-          -#     = a.text_field :phone_number, placeholder: "例) 12345678900"
           .text_3
             %p.info-text
             ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。

@@ -1,0 +1,61 @@
+-# = render 'shared/header'
+
+-# .add-container
+-#   .add-content
+-#     %h2 発送元・お届け先住所登録
+-#     .form
+-#       = form_for @address, url: send_address_users_path, method: :post do |f|
+-#         .texts
+-#           .texts-field
+-#             %h3 名前（全角）
+-#             %span.form-require 必須
+-#           .texts-field-space
+-#             = f.text_field :send_familyname, placeholder: "例) 山田"
+-#             = f.text_field :send_firstname, placeholder: "例) 太郎"
+-#         .texts
+-#           .texts-field
+-#             %h3 名前カナ（全角）
+-#             %span.form-require 必須
+-#           .texts-field-space
+-#             = f.text_field :send_familyname_kana, placeholder: "例) ヤマダ"
+-#             = f.text_field :send_firstname_kana, placeholder: "例) タロウ"
+-#         .texts
+-#           .texts-field
+-#             %h3 郵便番号
+-#             %span.form-require 必須
+-#           .texts-field-space
+-#             = f.text_field :postal_code, placeholder: "例) 151-0001"
+-#         .texts
+-#           .texts-field
+-#             %h3 都道府県
+-#             %span.form-require 必須
+-#           .texts-field-space
+-#             = f.text_field :prefecture, placeholder: "例) 東京都"
+-#         .texts
+-#           .texts-field
+-#             %h3 市区町村
+-#             %span.form-require 必須
+-#           .texts-field-space
+-#             = f.text_field :municipality, placeholder: "例) 渋谷区"
+-#         .texts
+-#           .texts-field
+-#             %h3 番地
+-#             %span.form-require 必須
+-#           .texts-field-space
+-#             = f.text_field :house_number, placeholder: "例) 渋谷1-1-1"
+-#         .texts
+-#           .texts-field
+-#             %h3 建物名
+-#             %span.form-require 任意
+-#           .texts-field-space
+-#             = f.text_field :building_name, placeholder: "例) プラザ２３階"
+-#         .texts
+-#           .texts-field
+-#             %h3 電話番号
+-#             %span.form-require 任意
+-#           .texts-field-space
+-#             = f.text_field :phone_number, placeholder: "例) 12345678900"
+-#         .actions
+-#           = f.submit "登録完了"
+
+-# = render 'shared/footer'
