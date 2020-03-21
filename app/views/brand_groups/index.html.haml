@@ -3,21 +3,25 @@
   - breadcrumb :brand_groups_index, @category_root
   = render "layouts/breadcrumbs"
   = render "shared/newItemBtn"
+  = render "shared/scroll-top"
   .category-index
     .visible-pc
       .category-index__title
         %h2 ブランド一覧
       = render 'brands/category-nav'
       .initial-index
-        - @initials_index.each do |initial|
-          ="#{initial[:initial]}|"
+        - @initials_index.each_with_index do |initial,i|
+          %span{class:"brand-index", data: { index: i}}
+            ="#{initial[:initial]}"
+          %span
+            |
       .category-index__box
         .category-index__box__list
           .category-index__box__list__name
             ="#{@category_root.name}"
-          - @initials_index.each do |initial|
+          - @initials_index.each_with_index do |initial,i|
             .category-index__box__list__initial-box
-              .category-index__box__list__initial-box__title
+              .category-index__box__list__initial-box__title{name: "brand-index-#{i}"}
                 ="#{initial[:initial]}"
               .category-index__box__list__initial-box__brand-list
                 - @category_brands.each do |category_brand|

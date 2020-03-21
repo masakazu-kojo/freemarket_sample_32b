@@ -2,10 +2,6 @@
   width: 100%;
   height: 100%;
   overflow-y: scroll;
-  .header {
-    width: 100%;
-    height: 100px;
-  }
   .category-index {
     width: 100%;
     height: calc(100% - 149px);
@@ -29,6 +25,7 @@
           background-color: #ffffff;
           display: inline-block;
           border-radius: 5px;
+          cursor: pointer;
           .category_root-name {
             text-decoration: none;
             color: #333333
@@ -40,6 +37,17 @@
             text-decoration: none;
             color: #ffffff;
           }
+        }
+      }
+      .initial-index {
+        padding: 10px 0 35px;
+        .brand-index {
+          cursor: pointer;
+          color: #0099E8;
+          margin-left: 1px;
+        }
+        .brand-index:hover {
+          text-decoration: underline;
         }
       }
       .category-index__box {
