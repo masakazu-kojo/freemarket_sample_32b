@@ -10,12 +10,12 @@ class User < ApplicationRecord
   #メールアドレスは一意である
   validates :email, uniqueness: true
   #パスワードが必須 #パスワードは7文字以上
-  validates :password, presence: true, length: { minimum: 7 }
+  validates :password, confirmation: true, length: { minimum: 7 }
   #パスワードは確認用を含めて2回入力する
   validates :password_confirmation, presence: true
   
   has_one :identity, dependent: :destroy
-  # has_one :address
+  has_one :address
   accepts_nested_attributes_for :identity
   # accepts_nested_attributes_for :address
 
