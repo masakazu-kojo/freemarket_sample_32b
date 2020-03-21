@@ -90,12 +90,24 @@ class ItemsController < ApplicationController
     # 検索キーワードをスペースで分割してインスタンス化
     @keywords = params[:key].split(/[[:blank:]]+/).select(&:present?)
     # 検索キーワードが空の場合はリダイレクト
-    redirect_to root_path, alert: "検索キーワードが空白です" if @keywords.blank?
+    # redirect_to root_path, alert: "検索キーワードが空白です" if @keywords.blank?
+    @items = Item.all if @keywords.blank?
     # 分割したキーワード毎にItemDBを検索してインスタンスにセット
     @keywords.each do |keyword|
       @items = @items.or(Item.where("name LIKE ?", "%#{keyword}%"))
     end
     @items = @items.order("id DESC")
+    @itemImage = {}
+    @items.each do |item|
+      @itemImage[:"#{item.id}"] = item.images.first
+    end
+    @q = @items.ransack(params[:q])
+    @itemsDetail = @q.result.includes(:category, :brand, :size)
+  end
+
+  def detail
+    @q = Item.search(searchDatail_params)
+    @items = @q.result.includes(:category, :brand, :size)
     @itemImage = {}
     @items.each do |item|
       @itemImage[:"#{item.id}"] = item.images.first
@@ -128,4 +140,9 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :category_id, :explanation, :price, :size_id, :condition, :sent_charge, :shipping_area, :days_to_ship, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id, brand_id: @brand.id)
   end
+
+  def searchDatail_params
+    params.require(:q).permit(:name_cont)
+  end
+
 end

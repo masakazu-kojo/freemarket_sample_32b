@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       get 'get_category', defaults: { format: 'json' }
       get 'get_size', defaults: { format: 'json' }
       get 'search'
+      get 'detail'
     end
     resources :purchase, only: [:index] do
       collection do
