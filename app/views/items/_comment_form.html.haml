@@ -21,13 +21,14 @@
   .item-comment-box__contents
     .item-comment-box__contents__commentform
       %textarea{class:"item-comment-box__contents__commentform__format", id:"comment-form"}
-      .comment-error
-        入力してください
-      .item-comment-box__contents__commentform__textform
-        %p.text 
-          相手のことを考え丁寧なコメントを心がけましょう。
-          %br
-          不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      .comment-button{id: 'comment-button', data:{index: @item.id, current: current_user.id, item: @item.user_id}}
-        = icon('fas', 'comment', class: 'icon') 
-        コメントする
+      -if user_signed_in?
+        .comment-error
+          入力してください
+        .item-comment-box__contents__commentform__textform
+          %p.text 
+            相手のことを考え丁寧なコメントを心がけましょう。
+            %br
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        .comment-button{id: 'comment-button', data:{index: @item.id, current: current_user.id, item: @item.user_id}}
+          = icon('fas', 'comment', class: 'icon') 
+          コメントする
