@@ -85,7 +85,17 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.all.order("id DESC")
+    # 空のItemモデルを作成
+    @items = Item.none
+    # 検索キーワードをスペースで分割してインスタンス化
+    @keywords = params[:key].split(/[[:blank:]]+/).select(&:present?)
+    # 検索キーワードが空の場合はリダイレクト
+    redirect_to root_path, alert: "検索キーワードが空白です" if @keywords.blank?
+    # 分割したキーワード毎にItemDBを検索してインスタンスにセット
+    @keywords.each do |keyword|
+      @items = @items.or(Item.where("name LIKE ?", "%#{keyword}%"))
+    end
+    @items = @items.order("id DESC")
     @itemImage = {}
     @items.each do |item|
       @itemImage[:"#{item.id}"] = item.images.first
