@@ -11,8 +11,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update, :new] do
     collection do
       get 'like'
-      get 'notification'
-      get 'todo'
       get 'listings_listing'
       get 'listings_in-progress'
       get 'listings_purchased'

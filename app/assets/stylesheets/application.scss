@@ -30,11 +30,13 @@
 @import "modules/search";
 
 // マイページ用
-@import "users";
+@import "mypage";
 @import "favorite";
 
 // カテゴリー一覧用
 @import "categorys";
+// アイテムリスト
+@import "modules/item-list";
 
 // 新規出品
 @import "new";
@@ -44,9 +46,6 @@
 @import "comment";
 
 @import "brand_groups";
-
-// マイページ用
-@import "users";
 
 // クレジットカード用
 @import "modules/card";

@@ -102,5 +102,37 @@ class ApplicationController < ActionController::Base
     end
     return selected_items
   end
+  # userコントローラーで使用
+  def listing_items(tradings)
+    listings = []
+    tradings.each do |trading|
+      listings << trading.item
+    end
+    return listings
+  end
+  
+  def purchased_listing_items(items)
+    purchased_items = []
+    items.each do |item|
+      if item.purchase.present?
+        purchased_items << item
+      end
+    end
+    return purchased_items
+  end
+  
+  def listing_purchased_items(purchases)
+    purchased_items = []
+    items = []
+    purchases.each do |purchase|
+      purchased_items << purchase.item
+    end
+    purchased_items.each do |item|
+      if item.trading.status == false
+        items << item
+      end
+    end
+    return items
+  end
 
 end
