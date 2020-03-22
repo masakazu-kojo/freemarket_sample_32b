@@ -7,9 +7,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   def create
     @user = User.new(identity_params)
-    # 後ほど使用
-    # @user.build_identity
-    # @user.adresses.build
     if @user.save
       sign_in @user
       redirect_to root_path
