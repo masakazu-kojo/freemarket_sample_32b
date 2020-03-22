@@ -12,7 +12,7 @@
       .items-box__body__num__price
         ="¥#{item.price}"
       .items-box__body__num__like
-        -if Favorite.includes(:user).where(user_id: current_user.id).find_by(item_id: item.id).present?
+        -if user_signed_in? && Favorite.includes(:user).where(user_id: current_user.id).find_by(item_id: item.id).present?
           .favorite_btn_on{data: { index: item.id}}
             %i{class: "fas fa-heart", style:"color: red;"}
           .like_total{style:"color: red;"}

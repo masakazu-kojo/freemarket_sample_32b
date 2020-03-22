@@ -1,5 +1,5 @@
 .show_favorite_box
-  -if Favorite.includes(:user).where(user_id: current_user.id).find_by(item_id: @item.id).present?
+  -if user_signed_in? && Favorite.includes(:user).where(user_id: current_user.id).find_by(item_id: @item.id).present?
     .show_favorite_btn{data: { index: @item.id}, id:"show_favorite_btn_on"}
       %i{class: "fas fa-heart", style:"color: red;"}
       %text 
