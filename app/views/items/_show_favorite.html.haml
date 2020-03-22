@@ -1,0 +1,11 @@
+.show_favorite_box
+  -if user_signed_in? && Favorite.includes(:user).where(user_id: current_user.id).find_by(item_id: @item.id).present?
+    .show_favorite_btn{data: { index: @item.id}, id:"show_favorite_btn_on"}
+      %i{class: "fas fa-heart", style:"color: red;"}
+      %text 
+        = "いいね！ #{Favorite.where(item_id: @item.id).count}"
+  -else
+    .show_favorite_btn{data: { index: @item.id}, id:"show_favorite_btn_off"}
+      %i{class: "far fa-heart"}
+      %text 
+        = "いいね！ #{Favorite.where(item_id: @item.id).count}"

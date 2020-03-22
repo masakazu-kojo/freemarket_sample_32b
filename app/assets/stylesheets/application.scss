@@ -14,7 +14,10 @@
 @import "modules/footer";
 // 出品ボタン用
 @import "modules/newItemBtn";
-
+//パンくず
+@import "modules/breadcrumbs";
+//スクロールトップボタン
+@import "modules/scroll-top";
 
 //ログイン用
 @import "logins/login1";
@@ -39,8 +42,10 @@
 // 新規出品
 @import "new";
 
+
 // 商品詳細
 @import "show";
+@import "comment";
 
 @import "brand_groups";
 

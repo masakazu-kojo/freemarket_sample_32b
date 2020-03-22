@@ -1,0 +1,18 @@
+.breadcrumbs {
+  background: #ffffff;
+  height: 49px;
+  width: 100%;
+  padding: 16px 0;
+  border: 1px solid #eee;
+  .breadcrumbs-list {
+    width: 700px;
+    margin:0 auto;
+  }
+  .breadcrumbs-list a{
+    color: #0099E8;
+    text-decoration: none;
+  }
+  .breadcrumbs-list a:hover{
+    text-decoration: underline;
+  }
+}

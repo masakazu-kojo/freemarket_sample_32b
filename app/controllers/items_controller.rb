@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :update]
+  before_action :set_item, only: [:edit, :update, :destroy]
 
   def index
     @itemsPickCategory = Item.order("id DESC").limit(3)
@@ -85,7 +85,17 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.all.order("id DESC")
+    # 空のItemモデルを作成
+    @items = Item.none
+    # 検索キーワードをスペースで分割してインスタンス化
+    @keywords = params[:key].split(/[[:blank:]]+/).select(&:present?)
+    # 検索キーワードが空の場合はリダイレクト
+    redirect_to root_path, alert: "検索キーワードが空白です" if @keywords.blank?
+    # 分割したキーワード毎にItemDBを検索してインスタンスにセット
+    @keywords.each do |keyword|
+      @items = @items.or(Item.where("name LIKE ?", "%#{keyword}%"))
+    end
+    @items = @items.order("id DESC")
     @itemImage = {}
     @items.each do |item|
       @itemImage[:"#{item.id}"] = item.images.first
@@ -94,13 +104,15 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @comments = @item.comments
+    @category = @item.category
   end
   
-  # 仮で削除アクション設置
   def destroy
-    @item = Item.find(params[:id])
     if @item.destroy
       redirect_to root_path
+    else
+      render :new, notice: "削除に失敗しました"
     end
   end
 

@@ -78,6 +78,7 @@ gem 'gon'
 gem 'fog-aws'
 gem 'payjp'
 gem 'dotenv-rails'
+gem "gretel"
 
 group :production do
   gem 'unicorn', '5.4.1'

@@ -1,25 +1,24 @@
-.default-container-gray
-  = render 'shared/header'
-
-  .favorite-main
-    .favorite-content
-      %h2{class: "chapter-head"}
-        いいね！一覧
-      %ul{class: "mypage-item-list"}
-        - @favorites.each do |favorite|
-          %li
-            = link_to item_path(id: favorite.item.id), class:"favorite_item_link" do
-              -if favorite.item.images[0].present?
-                .favorite-image-box
-                  = image_tag favorite.item.images[0].image.url, width: "48", height: '48'
-              -else
-                .favorite-blank-box
-                  NO 
-                  IMAGE
-            .favorite-item-body
-              .favorite-item-text
-                = favorite.item.name
-              .favorite-item-text
-                ="¥#{favorite.item.price.to_s(:delimited)}"
-
-    = render 'users/mypage-leftcontent'
+= render 'shared/header'
+- breadcrumb :users_like
+= render "layouts/breadcrumbs"
+.favorite-main{class: "clearfix"}
+  = render 'users/mypage-leftcontent'
+  .favorite-content
+    %h2{class: "chapter-head"}
+      いいね！一覧
+    %ul{class: "mypage-item-list"}
+      - @favorites.each do |favorite|
+        %li
+          = link_to item_path(id: favorite.item.id), class:"favorite_item_link" do
+            -if favorite.item.images[0].present?
+              .favorite-image-box
+                = image_tag favorite.item.images[0].image.url, width: "48", height: '48'
+            -else
+              .favorite-blank-box
+                NO 
+                IMAGE
+          .favorite-item-body
+            .favorite-item-text
+              = favorite.item.name
+            .favorite-item-text
+              ="¥#{favorite.item.price.to_s(:delimited)}"

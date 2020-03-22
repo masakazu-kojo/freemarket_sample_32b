@@ -1,0 +1,8 @@
+- if user_signed_in? && @item.trading.status == true
+  - if current_user.id == @item.user_id
+    .main__showmain__content__topcontent__itembox__price--purchaseBtn
+      = button_to '商品を編集', edit_item_path(@item), class: "purchaseBtn", method: :get
+      = button_to '商品を削除', item_path(@item), class: "purchaseBtn", method: :delete, data: { confirm: '本当に削除して良いですか?'}
+  - else
+    .main__showmain__content__topcontent__itembox__price--purchaseBtn
+      = button_to '購入画面に進む', item_purchase_index_path(@item), class: "purchaseBtn", method: :get
