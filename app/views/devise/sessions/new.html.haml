@@ -10,14 +10,15 @@
           %i.fab.fa-facebook-square
             = link_to "Facebookでログイン"
         #google-login
-          = link_to "Googleでログイン"
+          %i.fab.fa-google
+            = link_to "Googleでログイン"
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .field
           %br/
-          = f.email_field :email, autofocus: true, autocomplete: "email"
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: " メールアドレス"
         .field
           %br/
-          = f.password_field :password, autocomplete: "current-password"
+          = f.password_field :password, autocomplete: "current-password", placeholder: " パスワード"
         .actions
           = f.submit "Log in"
 = render partial: 'shared/login-footer'

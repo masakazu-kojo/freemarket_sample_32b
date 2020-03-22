@@ -33,13 +33,17 @@
 @import "users";
 @import "favorite";
 
+// 送付先住所用
+@import "send_address";
+
 // カテゴリー一覧用
 @import "categorys";
 
 // 新規出品
 @import "new";
 
-//商品詳細
+
+// 商品詳細
 @import "show";
 @import "comment";
 
