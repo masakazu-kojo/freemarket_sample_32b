@@ -3,16 +3,16 @@
   - breadcrumb :brand_groups_brand_category, @brand, @category
   = render "layouts/breadcrumbs"
   = render "shared/newItemBtn"
-  %main{class: "l-container"}
+  %main.l-container
     .l-content
-      %section{class: "items-box-container"}
-        %h1{class: "items-box-container__head"}
+      %section.items-box-container
+        %h1.items-box-container__head
           = "#{@brand.name} #{@category.name}の商品一覧"
         .items-box-container__content
           = render partial: "shared/item_list", collection: @items, as: :item
       .spacial-description
         .spacial-description__title
-          %h3{class: "font-white"}
+          %h3.font-white
             ="#{@brand.name} #{@category.name}"
         .spacial-description__text
           %p

@@ -5,15 +5,15 @@
   .maincontainer
     = render 'users/mypage-leftcontent'
     .listing-lightcontent
-      %h2{class:"listing-lightcontent__head"}
+      %h2.listing-lightcontent__head
         %p 出品した商品
-      %ul{class:"listing-lightcontent__tabs"}
-        %li{class:"active"}
+      %ul.listing-lightcontent__tabs
+        %li.active
           出品中
         = link_to listings_in_progress_users_path do
-          %li{class:""}
+          %li
             取引中
         = link_to listings_purchased_users_path do
-          %li{class:""}
+          %li
             売却済み
       = render partial: 'users/listing_content', locals: { items: @items }

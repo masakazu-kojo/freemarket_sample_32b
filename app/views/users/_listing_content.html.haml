@@ -3,7 +3,7 @@
     = render partial: "shared/item_list", collection: items, as: :item
 -else
   .listing-lightcontent__content
-    %p{class:"listing-item-not-found"}
+    %p.listing-item-not-found
       商品がありません
     .listing-image
       = image_tag 'logo/logo-gray.png'

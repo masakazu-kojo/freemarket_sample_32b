@@ -5,12 +5,12 @@
   .maincontainer
     = render 'users/mypage-leftcontent'
     .listing-lightcontent
-      %h2{class:"listing-lightcontent__head"}
+      %h2.listing-lightcontent__head
         %p 購入した商品
-      %ul{class:"purchase-lightcontent__tabs"}
-        %li{class:"active"}
+      %ul.purchase-lightcontent__tabs
+        %li.active
           取引中
         = link_to purchased_users_path do
-          %li{class:""}
+          %li
             過去の取引
       = render partial: 'users/listing_content', locals: { items: @items }

@@ -60,21 +60,21 @@
                 %select{required: "required", class:"select_form", id:"item_category_id"}
                   - if @item.persisted?
                     %option{selected: "selected",value: "#{@category_root.id}"}
-                      #{@category_root.name}
+                      = @category_root.name
                   %option{value: ""}
                     選択してください
                   - @categories_root.each do |category_root|
                     %option(value="#{category_root.id}")
-                      #{category_root.name}
+                      = category_root.name
                 - if @item.persisted?
                   %select{required: "required", class:"select_form", id:"category_parent-form"}
                     %option{selected: "selected",value: "#{@category_parent.id}"}
-                      #{@category_parent.name}
+                      = @category_parent.name
                     %option{value: ""}
                       選択してください
                     - @categories_parent.each do |category_parent|
                       %option(value="#{category_parent.id}")
-                        #{category_parent.name}
+                        = category_parent.name
                   = f.collection_select(:category_id, @categories, :id, :name, {prompt: "選択してください"},required: true, class: "select_form",id: "category-form")
               %p{id:"category-box_invalid"} 入力してください
             - if @item.size_id.present?

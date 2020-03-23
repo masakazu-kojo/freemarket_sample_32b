@@ -2,12 +2,12 @@
 - breadcrumb :users_like
 = render "layouts/breadcrumbs"
 .default-container-gray
-  .favorite-main{class: "clearfix"}
+  .favorite-main
     = render 'users/mypage-leftcontent'
     .favorite-content
-      %h2{class: "chapter-head"}
+      %h2.chapter-head
         いいね！一覧
-      %ul{class: "mypage-item-list"}
+      %ul.mypage-item-list
         - @favorites.each do |favorite|
           %li
             = link_to item_path(id: favorite.item.id), class:"favorite_item_link" do
