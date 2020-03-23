@@ -1,36 +1,39 @@
 class UsersController < ApplicationController
   before_action :set_items, only: [:index, :listings_purchased]
-  before_action :set_trading, only: [:listings_listing, :listings_in_progress]
-  before_action :set_purchase, only: [:purchase, :purchased]
+  before_action :set_purchase, only: [:index, :purchase, :purchased]
   
   def index
-    @purchases = Purchase.where(user_id: current_user.id)
-    @items = listing_items(@purchases)
+    @items = @purchases.map {|purchase| purchase.item }
   end
   
   def like
     @favorites = Favorite.where(user_id: current_user.id)
   end
-  
+
+  #出品した商品-出品中
   def listings_listing
-    @items = listing_items(@tradings)
+    @tradings = Trading.where(status: true, user_id: current_user.id)
+    @items = @tradings.map {|trading| trading.item }
   end
 
+  #出品した商品-取引中
   def listings_in_progress
-    @items = listing_items(@tradings)
+    @tradings = Trading.where(status: false, user_id: current_user.id)
+    @items = @tradings.map {|trading| trading.item }
   end
 
+  #出品した商品-売却済み
   def listings_purchased
-    @items = purchased_listing_items(@current_user_items)
+    @items = @current_user_items.map {|item| item.purchase }
   end
 
-  def purchase
-    @items = listing_purchased_items(@purchases)
-  end
+  #購入した商品-取引中(現状過去の取引と同じ、今後実装次第で変更するので仮置き)
+  # def purchase
+  # end
 
-  def purchased
-    @items = listing_items(@purchases)
-  end
+  #購入した商品-過去の取引(今後実装次第で変更するので仮置き)
+  # def purchased
+  # end
   
   private
 
@@ -38,11 +41,8 @@ class UsersController < ApplicationController
     @current_user_items = Item.where(user_id: current_user.id)
   end
 
-  def set_trading
-    @tradings = Trading.where(status: true, user_id: current_user.id)
-  end
-
   def set_purchase
     @purchases = Purchase.where(user_id: current_user.id)
+    @items = @purchases.map {|purchase| purchase.item }
   end
 end
