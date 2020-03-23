@@ -29,9 +29,10 @@
     .maincontainer__leftcontent__navi__tablist
       = link_to new_card_path do
         %input{type:"button", value:"クレジットカード登録・編集"}
-    .maincontainer__leftcontent__navi__tablist
-      = link_to new_card_path do
-        %input{type:"button", value:"発送元・お届け先住所登録"}
+    -# リンク先が出来次第コメントアウト外す
+    -# .maincontainer__leftcontent__navi__tablist
+    -#   = link_to new_address_path  do
+    -#     %input{type:"button", value:"発送元・お届け先住所登録"}
     .maincontainer__leftcontent__navi__tablist
       = link_to destroy_user_session_path do
         %input{type:"button", value:"ログアウト"}

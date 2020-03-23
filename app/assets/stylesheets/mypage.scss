@@ -29,6 +29,7 @@
       min-height: 250px;
     }
    }
+  // 左の索引リスト
   &__leftcontent{
     width: 280px;
     margin: 0 40px 0 0;
@@ -53,6 +54,7 @@
             width: 100%;
             border: 1px solid #e5e5e5;
             background-color: #fff;
+            cursor: pointer;
           }
           input:hover {
             background: #eee;
