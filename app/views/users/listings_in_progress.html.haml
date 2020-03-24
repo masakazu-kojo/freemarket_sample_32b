@@ -1,1 +1,19 @@
-出品ー取引中
+= render 'shared/header'
+- breadcrumb :users_like
+= render "layouts/breadcrumbs"
+.default-container-gray
+  .maincontainer
+    = render 'users/mypage-leftcontent'
+    .listing-lightcontent
+      %h2.listing-lightcontent__head
+        %p 出品した商品
+      %ul.listing-lightcontent__tabs
+        = link_to listings_listing_users_path do
+          %li
+            出品中
+        %li.active
+          取引中
+        = link_to listings_purchased_users_path do
+          %li
+            売却済み
+      = render partial: 'users/listing_content', locals: { items: @items }

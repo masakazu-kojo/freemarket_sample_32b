@@ -6,11 +6,8 @@
       = link_to like_users_path do
         %input{type:"button", value:"いいね！一覧"}
     .maincontainer__leftcontent__navi__tablist
-      = link_to notification_users_path do
-        %input{type:"button", value:"お知らせ"}
-    .maincontainer__leftcontent__navi__tablist
-      = link_to todo_users_path do
-        %input{type:"button", value:"やることリスト"}
+      = link_to new_item_path do
+        %input{type:"button", value:"出品する"}
     .maincontainer__leftcontent__navi__tablist
       = link_to listings_listing_users_path do
         %input{type:"button", value:"出品した商品ー出品中"}
@@ -31,10 +28,11 @@
       %p2 設定
     .maincontainer__leftcontent__navi__tablist
       = link_to new_card_path do
-        %input{type:"button", value:"クレジットカード登録"}
+        %input{type:"button", value:"クレジットカード登録・編集"}
+    -# リンク先が出来次第コメントアウト外す
+    -# .maincontainer__leftcontent__navi__tablist
+    -#   = link_to new_address_path  do
+    -#     %input{type:"button", value:"発送元・お届け先住所登録"}
     .maincontainer__leftcontent__navi__tablist
-      = link_to notification_users_path do
-        %input{type:"button", value:"クレジットカード変更"}
-    .maincontainer__leftcontent__navi__tablist
-      = link_to notification_users_path do
+      = link_to destroy_user_session_path do
         %input{type:"button", value:"ログアウト"}

@@ -4,7 +4,8 @@
   background-color: #F5F5F5;
   padding-bottom: 40px;
   .l-content {
-    width: 100%;
+    width: 73%;
+    margin: 0 auto;
     .parts-nav {
       &__list {
         margin: 16px 16px 0 0;
@@ -25,80 +26,6 @@
         font-weight: bold;
         color: #333333;
       }
-      &__content {
-        // アイテム一覧
-        .items-box {
-          width: 188px;
-          height: 218px;
-          margin: 0 16px 20px 0;
-          text-decoration: none;
-          color: #333333;
-          display: inline-block;
-          overflow: hidden;
-          .item_path_link {
-            text-decoration: none;
-          }
-          .blank-box {
-            width: 188px;
-            height: 160px;
-            font-size: 20px;
-            text-align: center;
-            padding: 65px 0;
-            background-color: gray;
-            color: white;
-          }
-          &__body {
-            position: relative;
-            height: 58px;
-            padding: 8px 12px;
-            background-color: #ffffff;
-            &__name {
-              width: 136px;
-              height: 42px;
-              font-size: 16px;
-            }
-            &__num {
-              position: absolute;
-              bottom: 0;
-              position: relative;
-              &__price {
-                position: absolute;
-                left: 0;
-                bottom: 65px;
-                height: 24px;
-                background-color: rgba(0, 0, 0, 0.3);
-                padding: 4px 12px 4px 8px;
-                color: #ffffff;
-                display: inline-block;
-                font-size: 17px;
-                font-weight: 600;
-                z-index: 2;
-                border-radius: 0 16px 16px 0;
-              }
-              // お気に入り機能アイコン
-              &__like {
-                position: absolute;
-                right: 12px;
-                bottom: 10px;
-                padding-left: 32px;
-                background: linear-gradient(to right, rgba(255,255,255,0), #fff 24px);
-                display: flex;
-                .favorite_btn_on {
-                  cursor: pointer;
-                }
-                .favorite_btn_off {
-                  cursor: pointer;
-                }
-                .like_total {
-                  margin-left: 3px;
-                  font-size: 16px;
-                }
-              }
-            }
-          }
-        }
-      }
-      
     }
     .spacial-description {
       margin-top: 30px;
@@ -121,3 +48,4 @@
     }
   }
 }
+

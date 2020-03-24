@@ -11,21 +11,21 @@
       = render 'brands/category-nav'
       .initial-index
         - @initials_index.each_with_index do |initial,i|
-          %span{class:"brand-index", data: { index: i}}
-            ="#{initial[:initial]}"
+          %span.brand-index{data: { index: i}}
+            = initial[:initial]
           %span
             |
       .category-index__box
         .category-index__box__list
           .category-index__box__list__name
-            ="#{@category_root.name}"
+            = @category_root.name
           - @initials_index.each_with_index do |initial,i|
             .category-index__box__list__initial-box
               .category-index__box__list__initial-box__title{name: "brand-index-#{i}"}
-                ="#{initial[:initial]}"
+                = initial[:initial]
               .category-index__box__list__initial-box__brand-list
                 - @category_brands.each do |category_brand|
-                  -if "#{initial[:initial]}" == "#{category_brand[:name]}".slice(0)
+                  -if initial[:initial] == category_brand[:name].slice(0)
                     .category-index__box__list__initial-box__brand-list__name
                       = link_to "#{category_brand[:name]}",brand_brand_group_path(@category_root.id,category_brand[:id]), class: "category23-all"
                     
