@@ -1,5 +1,8 @@
 .items-box
   = link_to item_path(id: item.id), class:"item_path_link" do
+    -if item.trading.status == false
+      .item__soldout--text
+        %span SOLD
     -if item.images[0].present?
       = image_tag item.images[0].image.url, width: "188", height: '160'
     -else 
