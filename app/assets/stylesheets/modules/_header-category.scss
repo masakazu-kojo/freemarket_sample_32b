@@ -1,0 +1,128 @@
+.header__nav__left--category {
+  position: relative;
+  .category-list {
+    position: absolute;
+    top: 0px;
+    left: -10px;
+    z-index: 3;
+    display: none;
+    width: 100px;
+    background:#ffffff;
+    &__nav {
+      height: 42px;
+      padding-left: 10px;
+      &--textBtn {
+        text-decoration: none;
+        line-height: 32px;
+        color: #333;
+        &:hover {
+          color: #ffb340;
+        }
+      }
+    }
+    &__box {
+      display: flex;
+      width: 600px;
+      &__select {
+        border: 1px solid gainsboro;
+        border-top: none;
+        background: #ffffff;
+        width: 200px;
+        &__contents {
+          & > a {
+            text-decoration: none;
+            color: #333;
+            width: 200px;
+            display:  table-cell;
+            vertical-align:  middle;
+            padding-left: 10px;
+            &:hover {
+              background: #3CCACE;
+              color: #ffffff;
+            }
+          }
+        }
+      }
+      .category-js-root {
+        &__contents{
+          & > a {
+            height: 45px;
+          }
+        }
+      }
+      .category-js-parent {
+        display: none;
+        &__contents{
+          & > a {
+            height: 30px;
+            &:hover {
+              background: #eee;
+              color: black;
+            }
+          }
+        }
+      }
+      .category-js {
+        display: none;
+        &__contents{
+          & > a {
+            height: 30px;
+            &:hover {
+              background: #eee;
+              color: black;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.header__nav__left--brand {
+  position: relative;
+  .brand-list {
+    position: absolute;
+    top: 0px;
+    left: 6px;
+    z-index: 3;
+    display: none;
+    width: 100px;
+    background:#ffffff;
+    &__nav {
+      height: 42px;
+      padding-left: 10px;
+      &--textBtn {
+        text-decoration: none;
+        line-height: 32px;
+        color: #333;
+        &:hover {
+          color: #ffb340;
+        }
+      }
+    }
+    &__box {
+      display: flex;
+      width: 600px;
+      &__select {
+        border: 1px solid gainsboro;
+        border-top: none;
+        background: #ffffff;
+        width: 200px;
+        &__contents {
+          & > a {
+            text-decoration: none;
+            color: #333;
+            height: 45px;
+            width: 200px;
+            display:  table-cell;
+            vertical-align:  middle;
+            padding-left: 10px;
+            &:hover {
+              background: #3CCACE;
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
+}

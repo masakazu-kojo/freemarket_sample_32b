@@ -1,0 +1,13 @@
+.category-list
+  .category-list__nav
+    = link_to categories_path, class:"category-list__nav--textBtn" do
+      カテゴリー
+  .category-list__box
+    .category-list__box__select.category-js-root
+      - Category.order("id").limit(13).each do |category|
+        .category-list__box__select__contents.category-js-root__contents{data: { index: category.id}}
+          = link_to category_path(category.id) do
+            = category.name
+    .category-list__box__select.category-js-parent
+    .category-list__box__select.category-js
+
