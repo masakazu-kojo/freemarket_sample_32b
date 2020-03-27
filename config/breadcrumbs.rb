@@ -23,14 +23,19 @@ crumb :brands_index do
   parent :root
 end
 
+crumb :brands_show do |brand|
+  link "#{brand.name}", brand_path(brand)
+  parent :root
+end
+
 crumb :brand_groups_index do |category|
   link "#{category.name}", brand_brand_groups_path(category)
   parent :brands_index
 end
 
-crumb :brand_groups_show do |brand|
+crumb :brand_groups_show do |brand, category|
   link "#{brand.name}", brand_brand_group_path(brand)
-  parent :brands_index
+  parent :brand_groups_index, category
 end
 
 crumb :brand_groups_brand_category do |brand, category|

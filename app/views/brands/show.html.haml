@@ -1,13 +1,9 @@
 = render "shared/header"
-- breadcrumb :brand_groups_show, @brand, @category_root
+- breadcrumb :brands_show, @brand
 = render "layouts/breadcrumbs"
 = render "shared/newItemBtn"
 .default-container-gray
   .l-content
-    %ul.parts-nav
-      %li
-        - @items_category.each do |category|
-          = link_to "#{category[:name]}",brand_category_brand_brand_group_path(@brand, id: "#{category[:id]}"), class: "parts-nav__list"
     %section.items-box-container
       %h1.items-box-container__head
         = "#{@brand.name}の商品一覧"
