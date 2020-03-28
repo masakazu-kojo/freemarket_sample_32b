@@ -32,6 +32,18 @@
     #new_user.new_user{
       padding: 10px 64px 40px;
       display: inline-block;
+      #error_explanation{
+        h2{
+          font-size: 14px;
+          color: purple;
+          font-weight: bold;
+        }
+        ul{
+          text-align: left;
+          display: inline-block;
+          color: purple;
+        }
+      }
       .field{
         padding: 10px 120px;
         text-align: left;

@@ -14,43 +14,60 @@
     }
     .form{
       padding: 24px 16px 40px;
-      .texts-field{
-        padding: 10px 175px;
-        text-align: left;
-        display: flex;
-        h3{
-          padding: 2px 5px;
+      #error_explanation{
+        h2{
           font-weight: bold;
+          font-size: 18px;
+          color: purple;
         }
-        span{
-          width: 35px;
-          height: 18px;
-          background: $main_color;
-          border: 1px solid $main_color;
-          color: #fff;
-          font-size: 12px;
-          padding: 2px;
-          text-align: center;
+        ul{
+          color: purple;
+          text-align: left;
+          padding: 10px 180px;
         }
       }
-      .texts-field-space{
-        padding: 10px 175px;
-        text-align: left;
-        display: flex;
-        #address_send_familyname,#address_send_firstname,#address_send_familyname_kana,#address_send_firstname_kana{
-          height: 45px;
-          padding: 5px;
-          margin: 1px;
-          border-radius: 5px;
+      .texts
+        .texts-field{
+          padding: 10px 175px;
+          text-align: left;
+          display: flex;
+          h3{
+            padding: 2px 5px;
+            font-weight: bold;
+          }
+          span{
+            width: 35px;
+            height: 18px;
+            background: $main_color;
+            border: 1px solid $main_color;
+            color: #fff;
+            font-size: 12px;
+            padding: 2px;
+            text-align: center;
+          }
         }
-        input{
-          width: 325px;
-          height: 50px;
-          padding: 5px;
-          border-radius: 5px;
+        .texts-field-space{
+          padding: 10px 175px;
+          text-align: left;
+          display: flex;
+          #address_send_familyname,#address_send_firstname,#address_send_familyname_kana,#address_send_firstname_kana{
+            height: 45px;
+            padding: 5px;
+            margin: 1px;
+            border-radius: 5px;
+          }
+          input{
+            width: 325px;
+            height: 50px;
+            padding: 5px;
+            border-radius: 5px;
+          }
+          .field_with_errors{
+            #address_send_familyname,#address_send_firstname,#address_send_familyname_kana,#address_send_firstname_kana{
+              width: 160px;
+            }
+          }
         }
-
-      }
       .actions{
         padding: 30px 175px 10px;
         input{
