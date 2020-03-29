@@ -23,5 +23,12 @@ describe User do
       expect(user.errors[:password]).to include("は7文字以上で入力してください")
     end
 
+    it "is invalid without a nickname" do
+      user = build(:user, nickname: nil)
+      user.valid?
+      expect(user.errors[:nickname]).to include("を入力してください")
+    end
+
+
   end
 end

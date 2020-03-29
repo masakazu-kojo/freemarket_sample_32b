@@ -15,7 +15,7 @@ describe Address do
       expect(address.errors[:send_familyname]).to include("を入力してください")
     end
 
-    it "is invalid without a fsend_amilyname_kana" do
+    it "is invalid without a send_familyname_kana" do
       address = build(:address, send_familyname_kana: nil)
       address.valid?
       expect(address.errors[:send_familyname_kana]).to include("を入力してください")
