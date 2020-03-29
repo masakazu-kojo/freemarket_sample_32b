@@ -5,6 +5,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  has_one :identity, dependent: :destroy
+  has_one :address, dependent: :destroy
+  accepts_nested_attributes_for :identity
+  # accepts_nested_attributes_for :address
   #ニックネームが必須
   validates :nickname, presence: true
   #メールアドレスは一意である
@@ -14,10 +18,6 @@ class User < ApplicationRecord
   #パスワードは確認用を含めて2回入力する
   validates :password_confirmation, presence: true
   
-  has_one :identity, dependent: :destroy
-  has_one :address
-  # accepts_nested_attributes_for :identity
-  # accepts_nested_attributes_for :address
 
   has_many :credit_cards
   has_many :items

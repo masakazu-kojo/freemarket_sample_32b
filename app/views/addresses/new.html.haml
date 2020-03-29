@@ -5,6 +5,7 @@
     %h2 発送元・お届け先住所登録
     .form
       = form_for @address, url: addresses_path, method: :post do |f|
+        = render "devise/shared/error_messages", resource: @address
         .texts
           .texts-field
             %h3 名前（全角）

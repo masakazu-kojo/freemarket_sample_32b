@@ -7,8 +7,11 @@ class AddressesController < ApplicationController
   
   def create
     @address = Address.new(address_params)
-    @address.save
+    if @address.save
       redirect_to users_path #とりあえずマイページへ
+    else
+      render :new
+    end
   end
 
   def show

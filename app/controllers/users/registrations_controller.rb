@@ -10,6 +10,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.save
       sign_in @user
       redirect_to root_path
+    else
+      render :new
     end
   end
 

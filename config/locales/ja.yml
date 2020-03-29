@@ -7,6 +7,18 @@
           restrict_dependent_destroy:
             has_one: "%{record}が存在しているので削除できません"
             has_many: "%{record}が存在しているので削除できません"
+      models:
+        address: データ
+      attributes:
+        address:
+          send_familyname: 名字
+          send_firstname: 名前
+          send_familyname_kana: 名字カナ
+          send_firstname_kana: 名前カナ
+          postal_code: 郵便番号
+          prefecture: 都道府県
+          municipality: 市町村
+          house_number: 番地
     date:
       abbr_day_names:
       - 日
@@ -205,4 +217,3 @@
         long: "%Y/%m/%d %H:%M"
         short: "%m/%d %H:%M"
       pm: 午後
-  
