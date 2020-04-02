@@ -55,6 +55,6 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:create, :destroy]
 
-  resources :addresses, only: [:new, :create, :show]
+  resources :addresses, only: [:index, :new, :create, :edit, :update]
 
 end
