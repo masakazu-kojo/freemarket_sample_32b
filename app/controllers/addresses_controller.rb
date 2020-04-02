@@ -19,7 +19,6 @@ class AddressesController < ApplicationController
   end
 
   def edit
-    # binding pry
     @address = User.find(params[:id]).address
   end
 
