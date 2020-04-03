@@ -16,4 +16,13 @@ class Item < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :purchaseds
   belongs_to_active_hash :prefecture
+
+  def previous
+    Item.where("id < ?", self.id).order("id DESC").first
+  end
+
+  def next
+    Item.where("id > ?", self.id).order("id ASC").first
+  end
+  
 end
