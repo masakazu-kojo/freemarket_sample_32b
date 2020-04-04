@@ -11,13 +11,16 @@
           .main__showmain__content__topcontent__itembox__body
             .main__showmain__content__topcontent__itembox__body__imagebox
               .main__showmain__content__topcontent__itembox__body__imagebox__image
-                .main__showmain__content__topcontent__itembox__body__imagebox__image__upimage
-                  = image_tag @item.images[0].image.url, width: "100%", height: '346'
-                .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage
-                  %li
-                    - @item.images.each_with_index do |image, url|
-                      = image_tag "#{image.image.url}"
-
+                -if @item.images[0].present?
+                  .main__showmain__content__topcontent__itembox__body__imagebox__image__upimage
+                    = image_tag @item.images[0].image.url, width: "100%", height: '346'
+                  .main__showmain__content__topcontent__itembox__body__imagebox__image__downimage
+                    %li
+                      - @item.images.each_with_index do |image, url|
+                        = image_tag "#{image.image.url}"
+                -else
+                  .main__showmain__content__topcontent__itembox__body__imagebox__image__noimage
+                    NO IMAGE
           .main__showmain__content__topcontent__itembox__price
             %span
               = @item.price

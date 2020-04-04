@@ -1,7 +1,7 @@
 $(function(){
   // コメント貼り付け用
   function appendComment(userName,comment,createdAt,timeAgo){
-    let html = `<li class="message-list"><div class="message-user">
+    let html = `<div class="message-list"><div class="message-user">
                     <div class="message-user__name">
                       ${userName}
                     </div>
@@ -20,12 +20,12 @@ $(function(){
                     </div>
                   </div>
                   <i class="icon-balloon"></i>
-                </li>`;
+                </div>`;
     return html;
   }
   // 出品者のコメント貼り付け用
   function appendSellerComment(userName,comment,createdAt,timeAgo){
-    let html = `<li class="message-list"><div class="message-user">
+    let html = `<div class="message-list"><div class="message-user">
                     <div class="message-user__name">
                       ${userName}
                     </div>
@@ -47,7 +47,7 @@ $(function(){
                     </div>
                   </div>
                   <i class="icon-balloon"></i>
-                </li>`;
+                </div>`;
     return html;
   }
   $('#comment-button').on('click', function(){
