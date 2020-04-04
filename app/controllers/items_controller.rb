@@ -102,11 +102,15 @@ class ItemsController < ApplicationController
       @itemImage[:"#{item.id}"] = item.images.first
     end
     @q = @items.ransack(params[:q])
+    @condition = @items.group(:condition)
+    @sent_charge = @items.group(:sent_charge)
+    @category = Category.all
+    @categories_root = Category.order("id").limit(13)
     @itemsDetail = @q.result.includes(:category, :brand, :size)
   end
 
   def detail
-    @q = Item.search(searchDatail_params)
+    @q = Item.ransack(params[:q])
     @items = @q.result.includes(:category, :brand, :size)
     @itemImage = {}
     @items.each do |item|
@@ -139,10 +143,6 @@ class ItemsController < ApplicationController
   end
   def item_params
     params.require(:item).permit(:name, :category_id, :explanation, :price, :size_id, :condition, :sent_charge, :shipping_area, :days_to_ship, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id, brand_id: @brand.id)
-  end
-
-  def searchDatail_params
-    params.require(:q).permit(:name_cont)
   end
 
 end

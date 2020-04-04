@@ -1,58 +1,107 @@
 = render 'shared/header'
 
-.searchSidebar
-  = search_form_for(@q, url:detail_items_path) do |f|
-    = f.label :name_cont, '名前'
-    = f.search_field :name_cont
-    = f.submit
-  - @itemsDetail.each do |item|
-    = item.brand.name
-.searchPickupArea
-  %ul.parts-nav
-    %li
-      - @keywords.each do |keyword|
-        = keyword + " "
-      の検索結果
-  %ul.searchPickupArea__lists
-    - @items.each do |item|
-      - if item.trading.status == true
-        %li.searchPickupArea__list
-          = link_to item_path(item.id) do
-            .searchPickupArea__list--image
-              - if item.images.present?
-                = image_tag @itemImage[:"#{item.id}"].image.url
-            .searchPickupArea__list__index
-              .searchPickupArea__list__index--name
-                = item.name
-              .searchPickupArea__list__index__details
-                %ul
-                  %li<
-                    = "#{item.price}円"
-                  %li
-                    .searchPickupArea__list__index__details--icon
-                      = icon('fas', 'star')
-                      0
-                %p (税込)
-      - else
-        %li.searchPickupArea__list
-          = link_to item_path(item.id) do
-            .searchPickupArea__list--image
-              .item__soldout--text
-                %span SOLD
-              - if item.images.present?
-                = image_tag @itemImage[:"#{item.id}"].image.url
-            .searchPickupArea__list__index
-              .searchPickupArea__list__index--name
-                = item.name
-              .searchPickupArea__list__index__details
-                %ul
-                  %li<
-                    = "#{item.price}円"
-                  %li
-                    .searchPickupArea__list__index__details--icon
-                      = icon('fas', 'star')
-                      0
-                %p (税込)
+.searchWrapper
+  .searchSidebar
+    = icon('fas', 'asterisk')
+    %label 詳細検索
+    = search_form_for(@q, url:detail_items_path) do |f|
+      .searchSidebar__type
+        = icon('fas', 'search-plus')
+        = f.label :name_cont, 'キーワードを変更する'
+        %br
+        = f.search_field :name_cont, value: "#{params[:key]}", class: "searchSidebar__type--textbox"
+      #searchCategory.searchSidebar__type
+        = icon('fas', 'list-alt')
+        = f.label :category_id_eq, 'カテゴリー'
+        %br
+        %select{required: "required", id:"search_rootcategory"}
+          %option{value: ""}
+            選択してください
+            - @categories_root.each do |category_root|
+              %option(value="#{category_root.id}")
+                #{category_root.name}
+      .searchSidebar__type
+        = icon('fas', 'tags')
+        = f.label :brand_name_cont, 'ブランド'
+        %br
+        = f.search_field :brand_name_cont, class: "searchSidebar__type--textbox"
+      .searchSidebar__type
+        = icon('fas', 'thumbs-up')
+        %label 商品の状態
+        %br
+        .searchSidebar__type__checkfield
+          = f.collection_check_boxes :condition_in, Itemcondition.all, :id, :name, include_hidden: false do |b|
+            .searchSidebar__type__checkfield__label
+              .searchSidebar__type__checkfield__label--check
+                = b.check_box
+              .searchSidebar__type__checkfield__label--name
+                = b.label {b.text}
+      .searchSidebar__type
+        = icon('fas', 'dollar-sign')
+        = f.label :price, '価格'
+        .searchSidebar__type__numberfield
+          = f.number_field :price_gteq, class: "searchSidebar__type__numberfield--box", min: 300, max:99999999
+          %p 〜
+          = f.number_field :price_lteq, class: "searchSidebar__type__numberfield--box", min: 300, max:99999999
+      .searchSidebar__type
+        = icon('fas', 'truck-moving')
+        = f.label :sent_charge, '配送料'
+        %br
+        .searchSidebar__type__checkfield
+          = f.collection_check_boxes :sent_charge_in, Itemsentcharge.all, :id, :name, include_hidden: false do |b|
+            .searchSidebar__type__checkfield__label
+              .searchSidebar__type__checkfield__label--check
+                = b.check_box
+              .searchSidebar__type__checkfield__label--name
+                = b.label {b.text}
+      .searchSidebar__type
+        = f.submit
+  .searchPickupArea
+    %ul.parts-nav
+      %li
+        - @keywords.each do |keyword|
+          = keyword + " "
+        の検索結果
+    %ul.searchPickupArea__lists
+      - @items.each do |item|
+        - if item.trading.status == true
+          %li.searchPickupArea__list
+            = link_to item_path(item.id) do
+              .searchPickupArea__list--image
+                - if item.images.present?
+                  = image_tag @itemImage[:"#{item.id}"].image.url
+              .searchPickupArea__list__index
+                .searchPickupArea__list__index--name
+                  = item.name
+                .searchPickupArea__list__index__details
+                  %ul
+                    %li<
+                      = "#{item.price}円"
+                    %li
+                      .searchPickupArea__list__index__details--icon
+                        = icon('fas', 'star')
+                        0
+                  %p (税込)
+        - else
+          %li.searchPickupArea__list
+            = link_to item_path(item.id) do
+              .searchPickupArea__list--image
+                .item__soldout--text
+                  %span SOLD
+                - if item.images.present?
+                  = image_tag @itemImage[:"#{item.id}"].image.url
+              .searchPickupArea__list__index
+                .searchPickupArea__list__index--name
+                  = item.name
+                .searchPickupArea__list__index__details
+                  %ul
+                    %li<
+                      = "#{item.price}円"
+                    %li
+                      .searchPickupArea__list__index__details--icon
+                        = icon('fas', 'star')
+                        0
+                  %p (税込)
 
 = render 'shared/footer'
 
