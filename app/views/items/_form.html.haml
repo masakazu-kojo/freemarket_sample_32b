@@ -96,7 +96,7 @@
               %p 商品の状態
               %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
-              = f.select :condition, [["新品、未使用",0], ["未使用に近い", 1], ["目立った傷や汚れなし", 2], ["やや傷や汚れあり", 3], ["傷や汚れあり", 4], ["全体的に状態が悪い", 5]], {prompt: "選択してください"},required: true , class: "select_form"
+              = f.select :condition, [["新品、未使用"], ["未使用に近い"], ["目立った傷や汚れなし"], ["やや傷や汚れあり"], ["傷や汚れあり"], ["全体的に状態が悪い"]], {prompt: "選択してください"},required: true , class: "select_form"
               %p{id:"item_condition_invalid"} 入力してください
         .container__sell-main__sell-box__item-container__cleafix
           %h3.sell-sub-head
@@ -106,7 +106,7 @@
               %p 配送料の負担
               %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
-              = f.select :sent_charge, [["送料込み（出品者負担）",0], ["着払い（購入者負担）", 1]], {prompt: "選択してください"},required: true , class: "select_form"
+              = f.select :sent_charge, [["送料込み（出品者負担）"], ["着払い（購入者負担）"]], {prompt: "選択してください"},required: true , class: "select_form"
               %p{id:"item_sent_charge_invalid"} 入力してください
             .container__sell-main__sell-box__item-container__cleafix__form-box__form-name
               %p 発送元の地域
@@ -118,7 +118,7 @@
               %P 発送までの日数
               %span 必須
             .container__sell-main__sell-box__item-container__cleafix__form-box__select
-              = f.select :days_to_ship, [["１〜２日で発送",0], ["3〜4日で発送", 1], ["4〜7日で発送", 2]], {prompt: "選択してください"},required: true , class: "select_form"
+              = f.select :days_to_ship, [["１〜２日で発送"], ["3〜4日で発送"], ["4〜7日で発送"]], {prompt: "選択してください"},required: true , class: "select_form"
               %p{id:"item_days_to_ship_invalid"} 入力してください
         .container__sell-main__sell-box__item-container__cleafix
           %h3.sell-sub-head
