@@ -1,7 +1,7 @@
 .item-message-content
-  %ul.message-items
+  .message-items
     - @comments.each do |comment|
-      %li.message-list
+      .message-list
         .message-user
           .message-user__name
             = comment.user.nickname
@@ -17,11 +17,11 @@
               %time{datetime:"#{comment.created_at}"}
                 = "#{time_ago_in_words(comment.created_at)}前"
         %i.icon-balloon
-.item-comment-box
-  .item-comment-box__contents
-    .item-comment-box__contents__commentform
-      %textarea.item-comment-box__contents__commentform__format{id:"comment-form"}
-      -if user_signed_in?
+-if user_signed_in?
+  .item-comment-box
+    .item-comment-box__contents
+      .item-comment-box__contents__commentform
+        %textarea.item-comment-box__contents__commentform__format{id:"comment-form"}
         .comment-error
           入力してください
         .item-comment-box__contents__commentform__textform

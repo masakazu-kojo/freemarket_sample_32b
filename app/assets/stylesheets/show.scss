@@ -47,6 +47,18 @@
                   vertical-align: bottom;
                 }
 
+                &__noimage{
+                  object-fit: cover;
+                  height: 346px;
+                  width: 100%;
+                  vertical-align: bottom;
+                  font-size: 60px;
+                  text-align: center;
+                  color: white;
+                  background: gray;
+                  padding: 140px 0;
+                }
+
                 &__downimage{
                   display: flex;
                   width: 100%;
