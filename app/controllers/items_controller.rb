@@ -90,8 +90,7 @@ class ItemsController < ApplicationController
     # 検索キーワードをスペースで分割してインスタンス化
     @keywords = params[:key].split(/[[:blank:]]+/).select(&:present?)
     # 検索キーワードが空の場合はリダイレクト
-    # redirect_to root_path, alert: "検索キーワードが空白です" if @keywords.blank?
-    @items = Item.all if @keywords.blank?
+    redirect_to root_path, alert: "検索キーワードが空白です" if @keywords.blank?
     # 分割したキーワード毎にItemDBを検索してインスタンスにセット
     @keywords.each do |keyword|
       @items = @items.or(Item.where("name LIKE ?", "%#{keyword}%"))
@@ -111,7 +110,13 @@ class ItemsController < ApplicationController
 
   def detail
     @q = Item.ransack(params[:q])
+    @keywords = params.require(:q).permit(:name_cont)
+    @keyword = @keywords[:name_cont]
     @items = @q.result.includes(:category, :brand, :size)
+    @condition = @items.group(:condition)
+    @sent_charge = @items.group(:sent_charge)
+    @category = Category.all
+    @categories_root = Category.order("id").limit(13)
     @itemImage = {}
     @items.each do |item|
       @itemImage[:"#{item.id}"] = item.images.first

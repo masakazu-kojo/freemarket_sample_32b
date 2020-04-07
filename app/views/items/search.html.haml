@@ -14,7 +14,7 @@
         = icon('fas', 'list-alt')
         = f.label :category_id_eq, 'カテゴリー'
         %br
-        %select{required: "required", id:"search_rootcategory"}
+        %select#search_rootcategory.searchSidebar__type--textbox  
           %option{value: ""}
             選択してください
             - @categories_root.each do |category_root|
@@ -24,7 +24,7 @@
         = icon('fas', 'tags')
         = f.label :brand_name_cont, 'ブランド'
         %br
-        = f.search_field :brand_name_cont, class: "searchSidebar__type--textbox"
+        = f.search_field :brand_name_cont, class: "searchSidebar__type--textbox", placeholder: "例）シャネル"
       .searchSidebar__type
         = icon('fas', 'thumbs-up')
         %label 商品の状態
@@ -40,9 +40,9 @@
         = icon('fas', 'dollar-sign')
         = f.label :price, '価格'
         .searchSidebar__type__numberfield
-          = f.number_field :price_gteq, class: "searchSidebar__type__numberfield--box", min: 300, max:99999999
+          = f.number_field :price_gteq, class: "searchSidebar__type__numberfield--box", min: 300, max:99999999, placeholder: "Min"
           %p 〜
-          = f.number_field :price_lteq, class: "searchSidebar__type__numberfield--box", min: 300, max:99999999
+          = f.number_field :price_lteq, class: "searchSidebar__type__numberfield--box", min: 300, max:99999999, placeholder: "Max"
       .searchSidebar__type
         = icon('fas', 'truck-moving')
         = f.label :sent_charge, '配送料'
@@ -54,54 +54,72 @@
                 = b.check_box
               .searchSidebar__type__checkfield__label--name
                 = b.label {b.text}
-      .searchSidebar__type
-        = f.submit
-  .searchPickupArea
-    %ul.parts-nav
-      %li
-        - @keywords.each do |keyword|
-          = keyword + " "
-        の検索結果
-    %ul.searchPickupArea__lists
-      - @items.each do |item|
-        - if item.trading.status == true
-          %li.searchPickupArea__list
-            = link_to item_path(item.id) do
-              .searchPickupArea__list--image
-                - if item.images.present?
-                  = image_tag @itemImage[:"#{item.id}"].image.url
-              .searchPickupArea__list__index
-                .searchPickupArea__list__index--name
-                  = item.name
-                .searchPickupArea__list__index__details
-                  %ul
-                    %li<
-                      = "#{item.price}円"
-                    %li
-                      .searchPickupArea__list__index__details--icon
-                        = icon('fas', 'star')
-                        0
-                  %p (税込)
-        - else
-          %li.searchPickupArea__list
-            = link_to item_path(item.id) do
-              .searchPickupArea__list--image
-                .item__soldout--text
-                  %span SOLD
-                - if item.images.present?
-                  = image_tag @itemImage[:"#{item.id}"].image.url
-              .searchPickupArea__list__index
-                .searchPickupArea__list__index--name
-                  = item.name
-                .searchPickupArea__list__index__details
-                  %ul
-                    %li<
-                      = "#{item.price}円"
-                    %li
-                      .searchPickupArea__list__index__details--icon
-                        = icon('fas', 'star')
-                        0
-                  %p (税込)
+      .searchSidebar__btn
+        = f.submit class: "searchSidebar__btn--submit"
+  - if @items.present?
+    .searchPickupArea
+      - if @keywords.present?
+        %ul.parts-nav
+          %li
+            - @keywords.each do |keyword|
+              = keyword + " "
+            の検索結果
+      - else
+        %ul.parts-nav
+          %li 検索結果
+      %ul.searchPickupArea__lists
+        - @items.each do |item|
+          - if item.trading.status == true
+            %li.searchPickupArea__list
+              = link_to item_path(item.id) do
+                .searchPickupArea__list--image
+                  - if item.images.present?
+                    = image_tag @itemImage[:"#{item.id}"].image.url
+                .searchPickupArea__list__index
+                  .searchPickupArea__list__index--name
+                    = item.name
+                  .searchPickupArea__list__index__details
+                    %ul
+                      %li<
+                        = "#{item.price}円"
+                      %li
+                        .searchPickupArea__list__index__details--icon
+                          = icon('fas', 'star')
+                          0
+                    %p (税込)
+          - else
+            %li.searchPickupArea__list
+              = link_to item_path(item.id) do
+                .searchPickupArea__list--image
+                  .item__soldout--text
+                    %span SOLD
+                  - if item.images.present?
+                    = image_tag @itemImage[:"#{item.id}"].image.url
+                .searchPickupArea__list__index
+                  .searchPickupArea__list__index--name
+                    = item.name
+                  .searchPickupArea__list__index__details
+                    %ul
+                      %li<
+                        = "#{item.price}円"
+                      %li
+                        .searchPickupArea__list__index__details--icon
+                          = icon('fas', 'star')
+                          0
+                    %p (税込)
+  - else
+    .searchPickupArea
+      - if @keywords.present?
+        %ul.parts-nav
+          %li
+            - @keywords.each do |keyword|
+              = keyword + " "
+            の検索結果
+      - else
+        %ul.parts-nav
+          %li 検索結果
+      .searchNone
+        %p 検索結果がありません  
 
 = render 'shared/footer'
 

@@ -16,7 +16,7 @@ $(function(){
     return html;
   }
   function appendCategoryParentBox(insertHTML){
-    const html = `<select required="required" id= 'search_parentcategory'>
+    const html = `<select required="required" id="search_parentcategory"   class="searchSidebar__type--textbox">
                     <option value="">選択してください</option>
                     ${insertHTML}
                   </select>`;
