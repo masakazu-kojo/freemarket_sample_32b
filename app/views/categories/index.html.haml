@@ -11,18 +11,20 @@
       .category-list-nav
         - @categories_root.each_with_index do |category_root,i|
           .category-list-nav__list{data: { index: i}}
-            %p{class: "category_root-name"} #{category_root.name}
+            %p.category_root-name
+              = category_root.name
       .category-index__box
         - @categories_root.each_with_index do |category_root,i|
           .category-index__box__list
             .category-index__box__list__name{name: "category-index-#{i}"}
-              ="#{category_root.name}"
+              = category_root.name
             .category-index__box__list__inner-box
               = link_to category_path(category_root.id) do
-                %p{class:"category_root-all"} すべて
+                %p.category_root-all
+                  すべて
               - @categories.where(ancestry: category_root.id).each do |category_parent|
                 .category-index__box__list__inner-box__name
-                  ="#{category_parent.name}"
+                  = category_parent.name
                 .category-index__box__list__inner-box__sub-box
                   .category-index__box__list__inner-box__sub-box__name
                     = link_to "すべて",category_path(category_parent.id), class: "category23-all"

@@ -23,7 +23,7 @@
       margin: 0 auto;  
       &--login{
         padding: 40px 64px;
-        font-size: 14px;
+        font-size: 15px;
         border-bottom: 1px solid $white_gray;
         a{
           display: block;
@@ -31,7 +31,7 @@
           border: 1px solid $main_color;
           background: $main_color;
           color: $white;
-          line-height: 40px;
+          line-height: 50px;
           text-decoration: none;
           border-radius: 5px;
         }
@@ -55,8 +55,9 @@
             left: 10px;
           }
           a{
-            font-size: 13px;
+            font-size: 15px;
             margin: 0px 60px;
+            color: palevioletred;
           }
         }  
           .sns-text{
@@ -82,9 +83,18 @@
           line-height: 50px;
           position: relative;
           border-radius: 5px;
-          img{
-
+          i{
+            font-size: 28px;
             float: left;
+            position: absolute;
+            top: 20%;
+            left: 10px;
+            color: deeppink;
+          }
+          a{
+            font-size: 16px;
+            margin: 0px 60px;
+            color: palevioletred;
           }
           p{
             margin: 13px 45px 0  0;
@@ -98,11 +108,13 @@
           input{
             width: 325px;
             height: 45px;
+            padding: 10px;
             border-radius: 5px;
           }
         }
         .actions{
           margin: 24px 0 0;
+          font-size: 17px;
           input{
             width: 325px;
             height: 50px;

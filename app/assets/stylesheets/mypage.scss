@@ -1,0 +1,163 @@
+.maincontainer{
+  margin: 0 auto;
+  padding: 40px 0 0;
+  width: 1020px;
+  display: flex;
+  &__lightcontent{
+    width: 700px;
+    background-color: #ffffff;
+    &__mypagebox{
+      height: 50px;
+      border-bottom: 1px solid #eee;
+      text-align: center;
+      display: table;
+      width: 100%;
+      p {
+        vertical-align: middle;
+        display: table-cell;
+        font-size: 24px;
+        font-weight: bold;
+      }
+     } 
+    &__panelbody{
+      padding: 20px 27px 0 48px;
+      line-height: 1.7;
+      color: #212121;
+      clear: both;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      min-height: 250px;
+    }
+   }
+  // 左の索引リスト
+  &__leftcontent{
+    width: 280px;
+    margin: 0 40px 0 0;
+    &__navi{
+      background-repeat: no-repeat;
+      margin: 0;
+      padding-bottom: 16px;
+      &__title{
+        margin: 0 0 8px;
+        padding: 8px 8px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &__tablist{
+        border: 0;
+        padding: 0;
+        a {
+          input {
+            position: relative;
+            padding: 10px 15px;
+            background-color: #fff;
+            width: 100%;
+            border: 1px solid #e5e5e5;
+            background-color: #fff;
+            cursor: pointer;
+          }
+          input:hover {
+            background: #eee;
+            border: 1px solid gainsboro;
+          }
+        }
+      }
+    }
+  }
+}
+
+.listing-lightcontent {
+  width: 700px;
+  float: right;
+  &__head {
+    height: 72px;
+    background: #FAFAFA;
+    padding: 0 16px;
+    font-size: 16px;
+    display: table;
+    width: 100%;
+    p {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+  // 出品した商品
+  &__tabs {
+    height: 72px;
+    display: table;
+    li {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      width: 233px;
+      font-weight: bold;
+      font-size: 16px;
+      background: #eee;
+    }
+    a {
+      text-decoration: none;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      width: 233px;
+      font-weight: bold;
+      font-size: 16px;
+      background: #eee;
+      color: black;
+    }
+    .active {
+      background: #ffffff;
+      border-top: 2px solid #ea352d;
+    }
+  }
+  // 購入した商品
+  .purchase-lightcontent__tabs{
+    height: 72px;
+    display: table;
+    li {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      width: 350px;
+      font-weight: bold;
+      font-size: 16px;
+      background: #eee;
+    }
+    a {
+      text-decoration: none;
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      width: 350px;
+      font-weight: bold;
+      font-size: 16px;
+      background: #eee;
+      color: black;
+    }
+    .active {
+      background: #ffffff;
+      border-top: 2px solid #ea352d;
+    }
+  }
+  &__items {
+    padding: 20px 27px 0 48px;
+  }
+  &__content {
+    min-height: 236px;
+    background: #ffffff;
+    padding: 160px 0 60px;
+    position: relative;
+    .listing-item-not-found {
+      font-size: 16px;
+      color: #ccc;
+      text-align: center;
+    }
+    .listing-image {
+      position: absolute;
+      top: 40px;
+      left: 305px;
+      width: 90px;
+      height: 90px;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.brand-list
+  .brand-list__nav
+    = link_to brands_path, class:"brand-list__nav--textBtn" do
+      ブランド
+  .brand-list__box
+    .brand-list__box__select.brand-js-root
+      - Brand.order("id").limit(13).each do |brand|
+        .brand-list__box__select__contents.brand-js-root__contents
+          = link_to brand_path(brand.id) do
+            = brand.name

@@ -1,7 +1,7 @@
 .item-message-content
-  %ul{class: "message-items"}
+  .message-items
     - @comments.each do |comment|
-      %li{class: "message-list"}
+      .message-list
         .message-user
           .message-user__name
             = comment.user.nickname
@@ -13,21 +13,22 @@
             = comment.comment
           .message-icons
             .message-icon-left
-              %i{ class: "far fa-clock"}
+              %i.far.fa-clock
               %time{datetime:"#{comment.created_at}"}
                 = "#{time_ago_in_words(comment.created_at)}前"
-        %i{ class: "icon-balloon"}
-.item-comment-box
-  .item-comment-box__contents
-    .item-comment-box__contents__commentform
-      %textarea{class:"item-comment-box__contents__commentform__format", id:"comment-form"}
-      .comment-error
-        入力してください
-      .item-comment-box__contents__commentform__textform
-        %p.text 
-          相手のことを考え丁寧なコメントを心がけましょう。
-          %br
-          不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      .comment-button{id: 'comment-button', data:{index: @item.id, current: current_user.id, item: @item.user_id}}
-        = icon('fas', 'comment', class: 'icon') 
-        コメントする
+        %i.icon-balloon
+-if user_signed_in?
+  .item-comment-box
+    .item-comment-box__contents
+      .item-comment-box__contents__commentform
+        %textarea.item-comment-box__contents__commentform__format{id:"comment-form"}
+        .comment-error
+          入力してください
+        .item-comment-box__contents__commentform__textform
+          %p.text 
+            相手のことを考え丁寧なコメントを心がけましょう。
+            %br
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        .comment-button{id: 'comment-button', data:{index: @item.id, current: current_user.id, item: @item.user_id}}
+          = icon('fas', 'comment', class: 'icon') 
+          コメントする

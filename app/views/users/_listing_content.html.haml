@@ -1,0 +1,9 @@
+-if items[0].present?
+  .listing-lightcontent__items
+    = render partial: "shared/item_list", collection: items, as: :item
+-else
+  .listing-lightcontent__content
+    %p.listing-item-not-found
+      商品がありません
+    .listing-image
+      = image_tag 'logo/logo-gray.png'

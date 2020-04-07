@@ -1,5 +1,8 @@
 .items-box
   = link_to item_path(id: item.id), class:"item_path_link" do
+    -if item.trading.status == false
+      .item__soldout--text
+        %span SOLD
     -if item.images[0].present?
       = image_tag item.images[0].image.url, width: "188", height: '160'
     -else 
@@ -12,14 +15,14 @@
       .items-box__body__num__price
         ="¥#{item.price}"
       .items-box__body__num__like
-        -if Favorite.includes(:user).where(user_id: current_user.id).find_by(item_id: item.id).present?
+        -if user_signed_in? && Favorite.includes(:user).where(user_id: current_user.id).find_by(item_id: item.id).present?
           .favorite_btn_on{data: { index: item.id}}
-            %i{class: "fas fa-heart", style:"color: red;"}
+            %i.fas.fa-heart{style:"color: red;"}
           .like_total{style:"color: red;"}
             = Favorite.where(item_id: item.id).count
         -else
           .favorite_btn_off{data: { index: item.id}}
-            %i{class: "far fa-heart"}
+            %i.far.fa-heart
           .like_total
             -if Favorite.where(item_id: item.id).count > 0
               = Favorite.where(item_id: item.id).count

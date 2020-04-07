@@ -11,8 +11,6 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update, :new] do
     collection do
       get 'like'
-      get 'notification'
-      get 'todo'
       get 'listings_listing'
       get 'listings_in-progress'
       get 'listings_purchased'
@@ -36,7 +34,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :brands, only: [:index,:create,:edit,:update] do
+  resources :brands, only: [:index,:show,:create,:edit,:update] do
     resources :brand_groups, only: [:index,:show] do
       member do
         get 'brand_category'
@@ -57,5 +55,7 @@ Rails.application.routes.draw do
   resources :favorites, only: [:create, :destroy]
 
   resources :comments, only: [:create, :destroy]
+
+  resources :addresses, only: [:index, :new, :create, :edit, :update]
 
 end

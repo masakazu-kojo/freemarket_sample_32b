@@ -45,23 +45,38 @@
                   height: 346px;
                   width: 100%;
                   vertical-align: bottom;
-                  border: 3px dashed #c0c0c0;
+                }
+
+                &__noimage{
+                  object-fit: cover;
+                  height: 346px;
+                  width: 100%;
+                  vertical-align: bottom;
+                  font-size: 60px;
+                  text-align: center;
+                  color: white;
+                  background: gray;
+                  padding: 140px 0;
                 }
 
                 &__downimage{
                   display: flex;
                   width: 100%;
-
-                  &--imagephoto{
-                    width: 33.3%;
-                    padding: 50px;
-                    border: 3px dashed #c0c0c0;
+                  li {
+                    display: flex;
+                    margin: 0 10px 0 0;
+                    height: 87px;
+                    flex-wrap: wrap;
+                    margin-bottom: 70px;
+                    img {
+                      vertical-align: bottom;
+                      width: auto;
+                    }
                   }
+                 }                    
                 }
-              }
-            }                    
+            }
           }
-
             &__price {
               margin: 24px 0 24px;
               text-align: center;
@@ -133,12 +148,15 @@
                     border: 1px solid #dedede;
                     font-size: 14px;
                     line-height: initial;
+                    a {
+                      text-decoration: none;
+                      color: #3CCACE;
+                    }
                   }
                 }
               }
             }
           }
-
           &--option {
             display: flex;
             justify-content: space-between;
@@ -177,6 +195,8 @@
               }
             }
           }
+        .item-message-content{
+          margin: 0;
         }
 
         ul {
@@ -186,15 +206,24 @@
             float: left;
             text-decoration: none;
             color: #3CCACE;
+            a {
+              text-decoration: none;
+              color: #3CCACE;
+            }
           }
 
           li2 {
             float: right;
             text-decoration: none;
             color: #3CCACE;
+            a {
+              text-decoration: none;
+              color: #3CCACE;
+            }
             }
         }
-
+      }
+      
         &--relateditem{
 
           p {
@@ -205,9 +234,13 @@
             font-weight: bold;
             font-size: 22px;
             position: relative;
+            a {
+              text-decoration: none;
+              color: #3CCACE;
+            }
           }
         }
       }
      }
-  }      
+ }
 }

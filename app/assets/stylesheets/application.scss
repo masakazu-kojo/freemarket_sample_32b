@@ -10,6 +10,8 @@
 
 // ヘッダー用
 @import "modules/header";
+@import "modules/header-category";
+
 // フッター用
 @import "modules/footer";
 // 出品ボタン用
@@ -30,23 +32,26 @@
 @import "modules/search";
 
 // マイページ用
-@import "users";
+@import "mypage";
 @import "favorite";
+
+// 送付先住所用
+@import "send_address";
 
 // カテゴリー一覧用
 @import "categorys";
+// アイテムリスト
+@import "modules/item-list";
 
 // 新規出品
 @import "new";
 
-//商品詳細
+
+// 商品詳細
 @import "show";
 @import "comment";
 
 @import "brand_groups";
-
-// マイページ用
-@import "users";
 
 // クレジットカード用
 @import "modules/card";

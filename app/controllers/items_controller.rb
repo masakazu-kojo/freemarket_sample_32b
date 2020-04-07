@@ -127,6 +127,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @comments = @item.comments
     @category = @item.category
+    @category = Category.find(@item.category_id)
+    @category_parent = @category.parent
+    @category_root = @category.root
   end
   
   def destroy

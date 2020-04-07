@@ -1,1 +1,16 @@
-購入した商品ー過去の取引
+= render 'shared/header'
+- breadcrumb :users_like
+= render "layouts/breadcrumbs"
+.default-container-gray
+  .maincontainer
+    = render 'users/mypage-leftcontent'
+    .listing-lightcontent
+      %h2.listing-lightcontent__head
+        %p 購入した商品
+      %ul.purchase-lightcontent__tabs
+        = link_to purchase_users_path do
+          %li
+            取引中
+        %li.active
+          過去の取引
+      = render partial: 'users/listing_content', locals: { items: @items }
