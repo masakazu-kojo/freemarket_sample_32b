@@ -57,3 +57,13 @@ crumb :card_new do
   link "クレジットカード新規登録", new_card_path
   parent :users_index
 end
+
+crumb :address_new do
+  link "発送元・お届け先住所／新規登録", new_address_path
+  parent :users_index
+end
+
+crumb :address_edit do
+  link "発送元・お届け先住所／編集", edit_address_path
+  parent :users_index
+end
