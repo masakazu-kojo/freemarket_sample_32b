@@ -19,7 +19,7 @@ class AddressesController < ApplicationController
   end
 
   def edit
-    @address = User.find(params[:id]).address
+    @address = User.find(current_user.id).address
   end
 
   def update

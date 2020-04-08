@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_items, only: [:index, :listings_purchased]
   before_action :set_purchase, only: [:index, :purchase, :purchased]
+  before_action :set_address
   
+  
+
   def index
     @items = @purchases.map {|purchase| purchase.item }
   end
@@ -45,4 +48,10 @@ class UsersController < ApplicationController
     @purchases = Purchase.where(user_id: current_user.id)
     @items = @purchases.map {|purchase| purchase.item }
   end
+
+  def set_address
+    @address = User.find(current_user.id).address
+  end
+
+
 end
