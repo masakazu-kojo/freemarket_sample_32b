@@ -81,6 +81,7 @@ gem 'dotenv-rails'
 gem "gretel"
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
+gem 'ransack'
 
 group :production do
   gem 'unicorn', '5.4.1'

@@ -100,6 +100,27 @@ class ItemsController < ApplicationController
     @items.each do |item|
       @itemImage[:"#{item.id}"] = item.images.first
     end
+    @q = @items.ransack(params[:q])
+    @condition = @items.group(:condition)
+    @sent_charge = @items.group(:sent_charge)
+    @category = Category.all
+    @categories_root = Category.order("id").limit(13)
+    @itemsDetail = @q.result.includes(:category, :brand, :size)
+  end
+
+  def detail
+    @q = Item.ransack(params[:q])
+    @keywords = params.require(:q).permit(:name_cont)
+    @keyword = @keywords[:name_cont]
+    @items = @q.result.includes(:category, :brand, :size)
+    @condition = @items.group(:condition)
+    @sent_charge = @items.group(:sent_charge)
+    @category = Category.all
+    @categories_root = Category.order("id").limit(13)
+    @itemImage = {}
+    @items.each do |item|
+      @itemImage[:"#{item.id}"] = item.images.first
+    end
   end
 
   def show
@@ -131,4 +152,5 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:name, :category_id, :explanation, :price, :size_id, :condition, :sent_charge, :shipping_area, :days_to_ship, images_attributes: [:image, :_destroy, :id]).merge(user_id: current_user.id, brand_id: @brand.id)
   end
+
 end

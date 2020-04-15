@@ -9,7 +9,7 @@
         = icon('fas', 'search-plus')
         = f.label :name_cont, 'キーワードを変更する'
         %br
-        = f.search_field :name_cont, value: "#{params[:key]}", class: "searchSidebar__type--textbox"
+        = f.search_field :name_cont, value: "#{params[:key]}", class: "searchSidebar__type--textbox", value: "#{@keyword}"
       #searchCategory.searchSidebar__type
         = icon('fas', 'list-alt')
         = f.label :category_id_eq, 'カテゴリー'
@@ -58,11 +58,10 @@
         = f.submit class: "searchSidebar__btn--submit"
   - if @items.present?
     .searchPickupArea
-      - if @keywords.present?
+      - if @keyword.present?
         %ul.parts-nav
           %li
-            - @keywords.each do |keyword|
-              = keyword + " "
+            = @keyword
             の検索結果
       - else
         %ul.parts-nav
@@ -109,11 +108,10 @@
                     %p (税込)
   - else
     .searchPickupArea
-      - if @keywords.present?
+      - if @keyword.present?
         %ul.parts-nav
           %li
-            - @keywords.each do |keyword|
-              = keyword + " "
+            = @keyword
             の検索結果
       - else
         %ul.parts-nav
