@@ -79,6 +79,8 @@ gem 'fog-aws'
 gem 'payjp'
 gem 'dotenv-rails'
 gem "gretel"
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
 
 group :production do
   gem 'unicorn', '5.4.1'
