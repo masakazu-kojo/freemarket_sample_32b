@@ -9,12 +9,10 @@
           = link_to new_user_registration_path ,class: 'btn-default btn-mail' do
             %i.fa.fa-envelope
             メールアドレスで登録
-          %br
-          = link_to do
-            %button{type: "submit", class: "aco-container__main--box--fbookbutton"}
-              Facebookで登録
-          %br
-          = link_to do
-            %button{type: "submit", class: "aco-container__main--box--googlebutton"}
-              Googleで登録
+          #facebook-login
+            %i.fab.fa-facebook-square
+              = link_to "Facebookで登録"
+          #google-login
+            %i.fab.fa-google
+              = link_to "Googleで登録", user_google_oauth2_omniauth_authorize_path, method: :post
   = render partial: 'shared/login-footer'
