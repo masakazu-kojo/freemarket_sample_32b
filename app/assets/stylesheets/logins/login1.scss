@@ -32,13 +32,13 @@
         margin: 0 auto;
       }
       .btn-default.btn-mail{
-          color: #fff;
-          background-color: #3CCACE;
-          border-radius: 4px;
-          font-size: 13px;
-          position: relative;
-          display: block;
-          padding: 20px;
+        color: #fff;
+        background-color: #3CCACE;
+        border-radius: 4px;
+        font-size: 15px;
+        position: relative;
+        display: block;
+        padding: 16px;
           p {
             margin-left: 30px;
           }
@@ -50,48 +50,46 @@
       }
 
       #facebook-login{
-        width: 100%;
-        height: 40%;
-        font-size: 13px;
+        height: 57px;
         background: #385185;
-        color: white;
-        border-radius: 5px;
+        color: #fff;
         position: relative;
-        border-radius: 4px;
-        font-size: 13px;
-        position: relative;
-        display: block;
-        padding: 20px;
-        margin: 16px 0 0;
-      }
-
-      &--fbookbutton__logo{
-        width: 8%;
-        height: 60%;
         border-radius: 5px;
-        float: left;
-        margin-bottom: 2%;
-        position: absolute;
-        top: 22%;
-        left: 5%;
+        margin: 10px 0;
+        i{
+          font-size: 30px;
+          float: left;
+          position: absolute;
+          top: 20%;
+          left: 10px;
+        }
+        a{
+          color: white;
+          padding: 6px 70px;
+          font-size: 15px;
+        }
       }
-
-      &--fbookbutton__title{
-        color: white;
-      }
-
       #google-login{
-        background: white;
-        color: black;
-        position: relative;
-        width: 100%;
-        height: 40%;
-        border-radius: 4px;
+        height: 50px;
         font-size: 13px;
-        display: block;
-        padding: 20px;
-        border: #979797 solid 1px;
-        margin: 16px 0 0;
+        background-color: #fffffe;
+        border: 1px solid gray;
+        line-height: 50px;
+        position: relative;
+        border-radius: 5px;
+        i{
+          font-size: 28px;
+          float: left;
+          position: absolute;
+          top: 20%;
+          left: 10px;
+          color: deeppink;
+        }
+        a{
+          color: deeppink;
+          padding: 6px 70px;
+          font-size: 15px;
+        }
       }
 
       &--googlebutton__logo{

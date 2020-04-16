@@ -37,5 +37,5 @@
         = link_to edit_address_path(@address) do
           %input{type:"button", value:"発送元・お届け先住所編集"}
     .maincontainer__leftcontent__navi__tablist
-      = link_to destroy_user_session_path do
+      = link_to destroy_user_session_path, method: :delete do
         %input{type:"button", value:"ログアウト"}
