@@ -18,22 +18,25 @@
               %span.form-require 必須
               %br/
             = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
-          .field
-            .field-name
-              %h3 パスワード
-              %span.form-require 必須
-            - if @minimum_password_length
-              %em
-                -# (#{@minimum_password_length} characters minimum)
-            = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字"
-            %p.info ※英字と数字の両方を含めて設定してください
-          .field
-            .field-name
-              %h3 パスワード再入力
-              %span.form-require 必須
-              %br/
-            = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "7文字以上の半角英数字"
-            %p.info ※英字と数字の両方を含めて設定してください
+          - if @sns_id.present?
+            = hidden_field_tag :sns_auth, true
+          - else
+            .field
+              .field-name
+                %h3 パスワード
+                %span.form-require 必須
+              - if @minimum_password_length
+                %em
+                  -# (#{@minimum_password_length} characters minimum)
+              = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字"
+              %p.info ※英字と数字の両方を含めて設定してください
+            .field
+              .field-name
+                %h3 パスワード再入力
+                %span.form-require 必須
+                %br/
+              = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "7文字以上の半角英数字"
+              %p.info ※英字と数字の両方を含めて設定してください
           .text
             %h3.text-left.l-chapter-sub-head 本人確認
             %p.l-single-text

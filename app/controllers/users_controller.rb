@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_items, only: [:index, :listings_purchased]
   before_action :set_purchase, only: [:index, :purchase, :purchased]
-  before_action :set_address
+  before_action :set_address, except: :new
   
-  
+  def new
+    
+  end
 
   def index
     @items = @purchases.map {|purchase| purchase.item }

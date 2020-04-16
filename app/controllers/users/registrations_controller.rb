@@ -10,9 +10,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if @user.save
       sign_in @user
       redirect_to root_path
+    elsif params[:sns_auth] == 'true'
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
     else
       render :new
     end
+    super
   end
 
   protected
