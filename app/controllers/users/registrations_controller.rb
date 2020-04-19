@@ -17,7 +17,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       render :new
     end
-    super
+    # super
   end
 
   protected
