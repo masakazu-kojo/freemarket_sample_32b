@@ -23,7 +23,8 @@
                     NO IMAGE
           .main__showmain__content__topcontent__itembox__price
             %span
-              = @item.price
+              ¥
+              = converting_to_jpy(@item.price)
             .main__showmain__content__topcontent__itembox__price--pricedetail
               %span1 (税込)
               %spam1 送料込み
